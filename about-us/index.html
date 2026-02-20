@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Purple Current | Commercial Electrician Tampa Bay</title>
 <meta name="description" content="Purple Current is a licensed commercial electrical contractor in Tampa Bay. 20 years of experience serving businesses across 9 Florida counties.">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lexend+Exa:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --purple: #411144;
@@ -15,13 +15,14 @@
     --black: #000000;
     --light-bg: #f8f5f9;
     --purple-light: #5a1a5e;
+    --purple-dark: #2a0a2d;
     --purple-overlay: rgba(65, 17, 68, 0.92);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--black);
     background: var(--white);
     line-height: 1.7;
@@ -32,6 +33,7 @@
   h1, h2, h3, h4, h5 {
     font-family: 'Poppins', sans-serif;
     line-height: 1.25;
+    font-weight: 600;
   }
 
   /* ===== NAV ===== */
@@ -46,35 +48,27 @@
     height: 72px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+
+  .nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .nav-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
     text-decoration: none;
   }
 
-  .nav-logo-icon {
-    width: 40px;
+  .nav-logo img {
     height: 40px;
-    background: var(--orange);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .nav-logo-icon svg { width: 24px; height: 24px; }
-
-  .nav-logo span {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--white);
-    letter-spacing: -0.5px;
+    width: auto;
   }
 
   .nav-links {
@@ -87,10 +81,11 @@
   .nav-links a {
     color: rgba(255,255,255,0.8);
     text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-family: 'Lexend Exa', sans-serif;
+    font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.3px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     transition: color 0.2s;
   }
 
@@ -158,6 +153,7 @@
   .hero h1 {
     font-size: 52px;
     font-weight: 800;
+    text-transform: uppercase;
     color: var(--white);
     margin-bottom: 24px;
     letter-spacing: -1px;
@@ -181,13 +177,26 @@
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 100px;
-    padding: 8px 20px;
+    padding: 6px 16px;
     margin-bottom: 28px;
-    font-size: 13px;
+    font-size: 11px;
     color: var(--orange);
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.5px;
+    line-height: 1.4;
+  }
+
+  .hero-badge svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+
+  .hero-badge-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
   }
 
   .hero-photo {
@@ -222,51 +231,71 @@
 
   .photo-placeholder-icon {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
+    font-size: 13px;
   }
 
   .photo-placeholder-icon svg {
-    width: 48px;
-    height: 48px;
-    opacity: 0.4;
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
   }
 
-  /* ===== SECTIONS ===== */
-  section {
-    padding: 96px 48px;
-  }
-
+  /* ===== UTILITY & ANIMATIONS ===== */
   .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  section {
+    padding: 100px 48px;
   }
 
   .section-label {
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
+    font-family: 'Lexend Exa', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--lilac);
+    color: var(--orange);
     margin-bottom: 12px;
+    display: inline-block;
   }
 
   .section-title {
-    font-size: 38px;
-    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
     color: var(--purple);
     margin-bottom: 20px;
     letter-spacing: -0.5px;
   }
 
   .section-subtitle {
-    font-size: 17px;
+    font-size: 18px;
     color: #555;
-    max-width: 640px;
-    line-height: 1.8;
+    line-height: 1.7;
+    max-width: 760px;
+    margin-bottom: 48px;
   }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
 
   /* ===== ORIGIN STORY ===== */
   .origin {
@@ -315,76 +344,101 @@
     background: linear-gradient(90deg, var(--purple), var(--lilac), var(--orange));
   }
 
-  /* ===== TESTIMONIALS ===== */
-  .testimonials {
-    background: var(--purple);
-    position: relative;
-    overflow: hidden;
-  }
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+  background: var(--purple);
+  position: relative;
+  overflow: hidden;
+}
 
-  .testimonials::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 50% 80% at 90% 20%, rgba(189,110,244,0.1) 0%, transparent 60%);
-    pointer-events: none;
-  }
+.testimonials::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 90% 20%, rgba(189,110,244,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
 
-  .testimonials .section-label { color: var(--orange); }
-  .testimonials .section-title { color: var(--white); }
+.testimonials .section-label { color: var(--orange); }
+.testimonials .section-title { color: var(--white); }
 
-  .testimonial-card {
-    position: relative;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px;
-    padding: 40px;
-    margin-top: 48px;
-    max-width: 720px;
-  }
+.testimonials-carousel {
+  position: relative;
+  overflow: hidden;
+  margin-top: 48px;
+}
 
-  .testimonial-stars {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 20px;
-  }
+.testimonials-track {
+  display: flex;
+  gap: 24px;
+  animation: scroll-testimonials 30s linear infinite;
+}
 
-  .testimonial-stars svg {
-    width: 22px;
-    height: 22px;
-    fill: var(--orange);
-  }
+@keyframes scroll-testimonials {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-40% * 5 - 24px * 5)); }
+}
 
-  .testimonial-quote {
-    font-size: 19px;
-    color: rgba(255,255,255,0.9);
-    font-style: italic;
-    line-height: 1.8;
-    margin-bottom: 24px;
-  }
+.testimonials-track:hover {
+  animation-play-state: paused;
+}
 
-  .testimonial-author {
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.6);
-  }
+.testimonial-card {
+  position: relative;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 40px;
+  flex: 0 0 40%;
+  max-width: 40%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 
-  .review-count {
-    margin-top: 32px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-    color: rgba(255,255,255,0.5);
-    font-family: 'Poppins', sans-serif;
-  }
+.testimonial-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
 
-  .review-count strong {
-    color: var(--orange);
-    font-size: 28px;
-    font-weight: 700;
-  }
+.testimonial-stars svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--orange);
+}
+
+.testimonial-quote {
+  font-size: 19px;
+  color: rgba(255,255,255,0.9);
+  font-style: italic;
+  line-height: 1.8;
+  margin-bottom: 24px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.testimonial-author {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+}
+
+.review-count {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Poppins', sans-serif;
+}
+
+.review-count strong {
+  color: var(--orange);
+  font-size: 28px;
+  font-weight: 700;
+}
 
   /* ===== WHY CHOOSE ===== */
   .why-choose {
@@ -526,7 +580,20 @@
     font-size: 18px;
     font-weight: 700;
     color: var(--purple);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+  }
+
+  .industry-image-display {
+    aspect-ratio: 4/3;
+    background: var(--light-bg);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(65,17,68,0.3);
+    font-size: 13px;
+    margin-bottom: 20px;
+    transition: opacity 0.3s;
   }
 
   .industry-tags {
@@ -544,6 +611,14 @@
     font-weight: 500;
     color: var(--purple);
     font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .industry-tag:hover {
+    background: var(--purple);
+    color: var(--white);
+    border-color: var(--purple);
   }
 
   /* ===== OUR APPROACH ===== */
@@ -555,7 +630,6 @@
     margin-bottom: 56px;
   }
 
-  /* Case study carousel */
   .carousel-container {
     position: relative;
     margin-bottom: 64px;
@@ -797,7 +871,7 @@
     margin-bottom: 20px;
   }
 
-  .cta-inner p {
+  .cta-inner > p {
     font-size: 17px;
     color: rgba(255,255,255,0.75);
     line-height: 1.8;
@@ -809,6 +883,7 @@
     gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 24px;
   }
 
   .btn {
@@ -830,6 +905,11 @@
     transform: translateY(-2px);
   }
 
+  .btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
   .btn-primary {
     background: var(--orange);
     color: var(--purple);
@@ -837,30 +917,73 @@
   }
 
   .btn-primary:hover {
-    box-shadow: 0 8px 24px rgba(234,169,81,0.4);
+    box-shadow: 0 8px 24px rgba(234,169,81,0.35);
   }
 
-  .btn-outline {
-    background: transparent;
-    color: var(--white);
-    border: 2px solid rgba(255,255,255,0.25);
+  .cta-contact {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 24px;
   }
 
-  .btn-outline:hover {
-    border-color: rgba(255,255,255,0.5);
-    box-shadow: 0 4px 16px rgba(255,255,255,0.05);
+  .cta-contact a {
+    color: var(--orange);
+    text-decoration: none;
+    font-weight: 600;
   }
 
-  .cta-note {
-    margin-top: 24px;
-    font-size: 13px;
-    color: rgba(255,255,255,0.4);
-    font-family: 'Poppins', sans-serif;
+  .cta-contact a:hover {
+    text-decoration: underline;
+  }
+
+  .cta-checklist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .cta-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .cta-check svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--orange);
+  }
+
+  .cta-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .cta-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .cta-trust-item svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--orange);
   }
 
   /* ===== FOOTER ===== */
   footer {
-    background: #2a0a2d;
+    background: var(--purple-dark); 
+    color: rgba(255,255,255,0.7);
     padding: 64px 48px 32px;
   }
 
@@ -870,137 +993,147 @@
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 48px;
-    padding-bottom: 48px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 48px;
   }
 
   .footer-brand p {
-    color: rgba(255,255,255,0.5);
     font-size: 14px;
     line-height: 1.7;
     margin-top: 16px;
-    max-width: 280px;
-  }
-
-  .footer-col h4 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--orange);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-
-  .footer-col a {
-    display: block;
-    color: rgba(255,255,255,0.5);
-    text-decoration: none;
-    font-size: 14px;
-    margin-bottom: 10px;
-    transition: color 0.2s;
-  }
-
-  .footer-col a:hover { color: var(--white); }
-
-  .footer-bottom {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    color: rgba(255,255,255,0.3);
   }
 
   .footer-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    margin-bottom: 16px;
   }
 
   .footer-logo-icon {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     background: var(--orange);
-    border-radius: 6px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
+  .footer-logo-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
   .footer-logo span {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
     color: var(--white);
   }
 
-  /* ===== ANIMATIONS ===== */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+  .footer-col h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 16px;
   }
 
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
+  .footer-col a {
+    display: block;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.2s;
   }
 
-  .stagger-1 { transition-delay: 0.1s; }
-  .stagger-2 { transition-delay: 0.2s; }
-  .stagger-3 { transition-delay: 0.3s; }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 960px) {
-    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-    .hero h1 { font-size: 40px; }
-    .hero-photo { max-width: 480px; }
-    .origin-grid { grid-template-columns: 1fr; gap: 40px; }
-    .why-cards { grid-template-columns: 1fr; max-width: 480px; }
-    .who-grid { grid-template-columns: 1fr; }
-    .carousel-track { grid-template-columns: 1fr; max-width: 480px; }
-    .licensing-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    nav { padding: 0 24px; }
-    section { padding: 72px 24px; }
+  .footer-col a:hover {
+    color: var(--orange);
   }
 
-  @media (max-width: 600px) {
-    .hero h1 { font-size: 32px; }
-    .section-title { font-size: 28px; }
-    .cta-inner h2 { font-size: 28px; }
-    .county-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-grid { grid-template-columns: 1fr; }
-    .cta-buttons { flex-direction: column; align-items: center; }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  .footer-bottom span {
+    color: rgba(255,255,255,0.6);
+  }
+
+  @media (max-width: 768px) {
+    .hero-inner,
+    .origin-grid,
+    .licensing-grid,
+    .who-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .why-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .carousel-track {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .nav-container {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .testimonial-card {
+      min-width: 80%;
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- NAVIGATION -->
 <nav>
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#411144" stroke-width="2.5" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-    </div>
-    <span>Purple Current</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Service Areas</a></li>
-    <li><a href="#" style="color: var(--orange);">About</a></li>
-    <li><a href="#">Projects</a></li>
-    <li><a href="#" class="nav-cta">Get a Quote</a></li>
-  </ul>
+  <div class="nav-container">
+    <a href="/" class="nav-logo">
+      <img src="pc-logo-primary-light-inverse-color.png" alt="Purple Current">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/services">Services</a></li>
+      <li><a href="/industries">Industries</a></li>
+      <li><a href="/service-areas">Service Areas</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-badge">⚡ Part of The Purple Standard</div>
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span class="hero-badge-text">
+          <span>Powered by</span>
+          <span>The Purple Standard</span>
+        </span>
+      </div>
       <h1>About <span>Purple Current</span></h1>
       <p>Purple Current is a licensed commercial, industrial, and municipal electrical contractor serving Tampa Bay businesses. We handle large-scale electrical projects: new construction, tenant improvements, retrofits, maintenance, and emergency power systems.</p>
     </div>
@@ -1040,16 +1173,129 @@
   <div class="container">
     <div class="section-label fade-up">What Our Clients Say</div>
     <h2 class="section-title fade-up">Testimonials</h2>
-    <div class="testimonial-card fade-up stagger-1">
-      <div class="testimonial-stars">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <div class="testimonials-carousel fade-up">
+      <div class="testimonials-track">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-quote">"They showed up exactly when they said they would and finished the panel upgrade in one day. No surprises on the bill."</p>
+          <p class="testimonial-author">— Property Manager, Tampa</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-quote">"Outstanding service from start to finish! The team was professional, on time, and handled our commercial wiring project flawlessly. Easily the best electric company in Tampa."</p>
+          <p class="testimonial-author">— Restaurant Owner, Lakeland</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-quote">"We've used this company for multiple commercial properties and they always deliver. Fast response times, fair pricing, and top-quality work every time."</p>
+          <p class="testimonial-author">— Manufacturer, Tampa</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-quote">"Highly recommend! They upgraded our electrical panels and lighting system efficiently with zero disruption to our business. True professionals."</p>
+          <p class="testimonial-author">— Big Box Store, Clearwater</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-quote">"Reliable, knowledgeable, and easy to work with. If you need a commercial electrician in Tampa, this is the company to call. Five stars all the way!"</p>
+          <p class="testimonial-author">— Facility Manager, Tampa</p>
+        </div>
+
+        <!-- Duplicate for seamless loop -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-quote">"They showed up exactly when they said they would and finished the panel upgrade in one day. No surprises on the bill."</p>
+          <p class="testimonial-author">— Property Manager, Tampa</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-quote">"Outstanding service from start to finish! The team was professional, on time, and handled our commercial wiring project flawlessly. Easily the best electric company in Tampa."</p>
+          <p class="testimonial-author">— Restaurant Owner, Lakeland</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-quote">"We've used this company for multiple commercial properties and they always deliver. Fast response times, fair pricing, and top-quality work every time."</p>
+          <p class="testimonial-author">— Manufacturer, Tampa</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-quote">"Highly recommend! They upgraded our electrical panels and lighting system efficiently with zero disruption to our business. True professionals."</p>
+          <p class="testimonial-author">— Big Box Store, Clearwater</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-quote">"Reliable, knowledgeable, and easy to work with. If you need a commercial electrician in Tampa, this is the company to call. Five stars all the way!"</p>
+          <p class="testimonial-author">— Facility Manager, Tampa</p>
+        </div>
       </div>
-      <p class="testimonial-quote">"They showed up exactly when they said they would and finished the panel upgrade in one day. No surprises on the bill."</p>
-      <p class="testimonial-author">— Property Manager, Tampa</p>
     </div>
     <div class="review-count fade-up stagger-2">
       <strong>1,600+</strong>
@@ -1127,15 +1373,18 @@
       </div>
       <div class="industries-box fade-up stagger-1">
         <h3>Industries We Serve</h3>
+        <div class="industry-image-display" id="industryDisplay">
+          <div>Hover over an industry to see image</div>
+        </div>
         <div class="industry-tags">
-          <span class="industry-tag">Offices</span>
-          <span class="industry-tag">Retail</span>
-          <span class="industry-tag">Warehouses</span>
-          <span class="industry-tag">Healthcare</span>
-          <span class="industry-tag">Manufacturing</span>
-          <span class="industry-tag">Hospitality</span>
-          <span class="industry-tag">Municipal</span>
-          <span class="industry-tag">Industrial</span>
+          <span class="industry-tag" data-industry="offices">Offices</span>
+          <span class="industry-tag" data-industry="retail">Retail</span>
+          <span class="industry-tag" data-industry="warehouses">Warehouses</span>
+          <span class="industry-tag" data-industry="healthcare">Healthcare</span>
+          <span class="industry-tag" data-industry="manufacturing">Manufacturing</span>
+          <span class="industry-tag" data-industry="hospitality">Hospitality</span>
+          <span class="industry-tag" data-industry="municipal">Municipal</span>
+          <span class="industry-tag" data-industry="industrial">Industrial</span>
         </div>
       </div>
     </div>
@@ -1280,16 +1529,46 @@
       <h2>Let's Discuss Your Project</h2>
       <p>If you need electrical work done at your facility, reach out with a call or fill out the form below. We'll ask a few questions about your property and timeline, then provide a detailed quote within a day or two.</p>
       <div class="cta-buttons">
-        <a href="tel:0000000000" class="btn btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Call Us Now
-        </a>
-        <a href="mailto:info@purple-current.com" class="btn btn-outline">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Email Us
+        <a href="/contact" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get a Quote
         </a>
       </div>
-      <p class="cta-note">Most projects start with a 15-minute phone conversation.</p>
+      <div class="cta-contact">
+        Or call us at <a href="tel:0000000000">(XXX) XXX-XXXX</a> &nbsp;•&nbsp; Email: <a href="mailto:info@purple-current.com">info@purple-current.com</a>
+      </div>
+      <div class="cta-checklist">
+        <span class="cta-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Project type
+        </span>
+        <span class="cta-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Property address
+        </span>
+        <span class="cta-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Timeline
+        </span>
+        <span class="cta-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Best way to reach you
+        </span>
+      </div>
+      <div class="cta-trust">
+        <span class="cta-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Licensed in All 9 Counties
+        </span>
+        <span class="cta-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Based in Land O' Lakes
+        </span>
+        <span class="cta-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+          20 Years of Experience
+        </span>
+      </div>
     </div>
   </div>
 </section>
@@ -1304,7 +1583,7 @@
         </div>
         <span>Purple Current</span>
       </div>
-      <p>Licensed commercial, industrial, and municipal electrical contractor serving Tampa Bay. Part of The Purple Standard family.</p>
+      <p>Licensed commercial, industrial, and municipal electrical contractor serving Tampa Bay.</p>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
@@ -1330,7 +1609,7 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 Purple Current. All rights reserved.</span>
-    <span>A Purple Standard Company</span>
+    <span>Powered by The Purple Standard</span>
   </div>
 </footer>
 
@@ -1351,10 +1630,41 @@
     btn.addEventListener('click', () => {
       const item = btn.parentElement;
       const isOpen = item.classList.contains('open');
-      // Close all
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      // Toggle clicked
-      if (!isOpen) item.classList.add('open');
+      
+      // Close all items
+      document.querySelectorAll('.faq-item').forEach(faqItem => {
+        faqItem.classList.remove('open');
+        faqItem.querySelector('.faq-answer').style.maxHeight = '0';
+      });
+      
+      // Open clicked item if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        const answer = item.querySelector('.faq-answer');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Industry hover functionality
+  const industryTags = document.querySelectorAll('.industry-tag');
+  const industryDisplay = document.getElementById('industryDisplay');
+  
+  const industryImages = {
+    offices: 'Office space placeholder image',
+    retail: 'Retail storefront placeholder image',
+    warehouses: 'Warehouse interior placeholder image',
+    healthcare: 'Healthcare facility placeholder image',
+    manufacturing: 'Manufacturing floor placeholder image',
+    hospitality: 'Hotel/restaurant placeholder image',
+    municipal: 'Municipal building placeholder image',
+    industrial: 'Industrial facility placeholder image'
+  };
+
+  industryTags.forEach(tag => {
+    tag.addEventListener('mouseenter', () => {
+      const industry = tag.dataset.industry;
+      industryDisplay.innerHTML = `<div style="padding: 24px; text-align: center; color: rgba(65,17,68,0.5);">${industryImages[industry]}</div>`;
     });
   });
 </script>
