@@ -5,598 +5,1103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Service Area | Commercial Electrician | Purple Current</title>
   <meta name="description" content="Commercial electrician serving 9 counties across Tampa Bay. Based in Land O' Lakes with same-day service in most areas. Licensed, insured, 20 years of experience.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lexend+Exa:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    /* ============================================================
+       DESIGN SYSTEM — Purple Current Brand v1
+       ============================================================ */
     :root {
-      --purple-deep: #411144;
-      --purple-mid: #5a1d5e;
-      --purple-light: #bd6ef4;
-      --purple-pale: #f8f5f9;
-      --purple-wash: #ede4f0;
-      --gold: #eba950;
-      --gold-light: #f5cc82;
-      --gold-dark: #d4932e;
-      --text-primary: #1a1a1a;
-      --text-secondary: #4a4a4a;
-      --text-muted: #6e6e6e;
-      --white: #ffffff;
-      --gray-50: #f9f9f9;
-      --gray-100: #f0f0f0;
-      --gray-200: #e0e0e0;
-      --gray-800: #2a2a2a;
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
-      --shadow-sm: 0 1px 3px rgba(65,17,68,0.06);
-      --shadow-md: 0 4px 16px rgba(65,17,68,0.08);
-      --shadow-lg: 0 8px 32px rgba(65,17,68,0.12);
-      --shadow-xl: 0 16px 48px rgba(65,17,68,0.16);
+      --purple:       #411144;
+      --orange:       #eaa951;
+      --lilac:        #bd6ef4;
+      --white:        #ffffff;
+      --black:        #000000;
+      --light-bg:     #f8f5f9;
+      --purple-light: #5a1a5e;
+      --purple-dark:  #2a0a2d;
+      --purple-overlay: rgba(65,17,68,0.92);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
-      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      color: var(--black);
       background: var(--white);
-      line-height: 1.6;
+      line-height: 1.7;
+      font-weight: 400;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ────────────────────────────────────── */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(65,17,68,0.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(189,110,244,0.15);
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.25;
+      font-weight: 600;
     }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 68px;
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ── CONTAINER ──────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
     }
+
+    section { padding: 100px 48px; }
+
+    /* ── SECTION LABELS / TITLES ─────────────────── */
+    .section-label {
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 40px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      font-size: 17px;
+      color: #555;
+      line-height: 1.75;
+      max-width: 680px;
+      margin-bottom: 48px;
+    }
+
+    /* ── FADE ANIMATIONS ─────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--purple);
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     .nav-logo {
-      display: flex; align-items: center; gap: 12px;
-      text-decoration: none; color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
     }
+
     .nav-logo-icon {
       width: 36px; height: 36px;
-      background: var(--gold);
+      background: var(--orange);
       border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
     .nav-logo-icon svg { width: 20px; height: 20px; }
+
     .nav-logo-text {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.35rem; font-weight: 400; letter-spacing: 0.01em;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
     }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      list-style: none;
+    }
+
     .nav-links a {
-      color: rgba(255,255,255,0.8); text-decoration: none;
-      font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links a.active { color: var(--gold); }
-    .nav-cta {
-      background: var(--gold) !important; color: var(--purple-deep) !important;
-      padding: 9px 20px !important; border-radius: var(--radius-sm) !important;
-      font-weight: 600 !important; transition: all 0.2s !important;
-    }
-    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
 
-    /* ── HERO ───────────────────────────────────── */
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--orange); }
+
+    .nav-cta {
+      background: var(--orange) !important;
+      color: var(--purple) !important;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(234,169,81,0.4);
+      color: var(--purple) !important;
+    }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── HERO ─────────────────────────────────────── */
     .hero {
-      padding: 140px 24px 80px;
-      background: var(--purple-deep);
-      position: relative; overflow: hidden;
+      margin-top: 72px;
+      background: var(--purple);
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
     }
+
     .hero::before {
-      content: ''; position: absolute; inset: 0;
+      content: '';
+      position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 75% 40%, rgba(189,110,244,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(235,169,80,0.06) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 60% at 80% 40%, rgba(189,110,244,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(234,169,81,0.08) 0%, transparent 60%);
+      pointer-events: none;
     }
+
     .hero::after {
-      content: ''; position: absolute; inset: 0;
-      background: repeating-linear-gradient(
-        90deg, transparent, transparent 119px,
-        rgba(189,110,244,0.03) 119px, rgba(189,110,244,0.03) 120px
-      );
+      content: '';
+      position: absolute; inset: 0;
+      opacity: 0.04;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.5) 59px, rgba(255,255,255,0.5) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.5) 59px, rgba(255,255,255,0.5) 60px);
+      pointer-events: none;
     }
+
     .hero-inner {
-      max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
     }
-    .hero-content {}
+
     .hero-breadcrumb {
       display: flex; align-items: center; gap: 8px;
-      margin-bottom: 24px; font-size: 0.82rem; color: rgba(255,255,255,0.5);
+      margin-bottom: 24px;
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
     }
-    .hero-breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
-    .hero-breadcrumb a:hover { color: var(--gold); }
-    .hero-breadcrumb span { color: rgba(255,255,255,0.3); }
+    .hero-breadcrumb a { color: rgba(255,255,255,0.45); }
+    .hero-breadcrumb a:hover { color: var(--orange); }
+
     .hero h1 {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(2.2rem, 4vw, 3.1rem);
-      font-weight: 400; line-height: 1.15;
-      color: var(--white); margin-bottom: 24px;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 24px;
+      letter-spacing: -1px;
     }
+
     .hero h1 em {
-      font-style: italic; color: var(--gold);
+      font-style: normal;
+      color: var(--orange);
     }
+
     .hero-desc {
-      font-size: 1.05rem; line-height: 1.7;
-      color: rgba(255,255,255,0.75); margin-bottom: 32px;
-      max-width: 540px;
+      font-size: 17px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 32px;
     }
+
     .hero-badges {
-      display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px;
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin-bottom: 36px;
     }
+
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 8px 16px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 100px; font-size: 0.82rem;
-      color: rgba(255,255,255,0.85); font-weight: 500;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
     }
-    .hero-badge svg { width: 14px; height: 14px; color: var(--gold); flex-shrink: 0; }
+    .hero-badge svg { width: 14px; height: 14px; stroke: var(--orange); flex-shrink: 0; }
+
     .hero-ctas { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+
     .btn-primary {
       display: inline-flex; align-items: center; gap: 10px;
       padding: 16px 32px;
-      background: var(--gold); color: var(--purple-deep);
-      border: none; border-radius: var(--radius-sm);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem; font-weight: 700;
+      background: var(--orange); color: var(--purple);
+      border: none; border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px; font-weight: 600;
       text-decoration: none; cursor: pointer;
-      transition: all 0.25s; letter-spacing: 0.01em;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(234,169,81,0.3);
     }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(235,169,80,0.3); }
-    .btn-primary svg { width: 18px; height: 18px; }
-    .hero-phone {
-      color: rgba(255,255,255,0.6); font-size: 0.9rem;
-    }
-    .hero-phone a { color: var(--gold-light); text-decoration: none; font-weight: 600; }
-    .hero-phone a:hover { text-decoration: underline; }
 
-    /* Hero map graphic */
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(234,169,81,0.4);
+    }
+
+    .btn-primary svg { width: 18px; height: 18px; }
+
+    .hero-phone {
+      color: rgba(255,255,255,0.6); font-size: 15px;
+    }
+    .hero-phone a { color: var(--orange); font-weight: 600; }
+
+    /* Hero map container */
     .hero-map-container {
       position: relative;
       background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius-lg);
-      padding: 32px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 20px;
       display: flex; align-items: center; justify-content: center;
-    }
-    .hero-map-container svg { width: 100%; height: auto; max-width: 460px; }
-
-    /* ── SECTION STYLING ───────────────────────── */
-    section { padding: 80px 24px; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--purple-light);
-      margin-bottom: 12px;
-    }
-    .section-label::before {
-      content: ''; width: 20px; height: 2px;
-      background: var(--gold); border-radius: 2px;
-    }
-    .section-title {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
-      font-weight: 400; line-height: 1.2;
-      color: var(--purple-deep); margin-bottom: 16px;
-    }
-    .section-subtitle {
-      font-size: 1.05rem; color: var(--text-secondary);
-      max-width: 640px; line-height: 1.7; margin-bottom: 48px;
+      min-height: 400px;
+      overflow: hidden;
     }
 
-    /* ── COUNTIES MAP SECTION ──────────────────── */
+    .hero-map-container::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px; bottom: -1px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--lilac), transparent 40%, transparent 60%, var(--orange));
+      opacity: 0.2;
+    }
+
+    .hero-map-img {
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: contain;
+      border-radius: 10px;
+      position: relative; z-index: 1;
+      /* Color-correct orange to match brand #eaa951 from ~#eba950 */
+      filter: saturate(0.97) brightness(0.995) hue-rotate(-0.4deg);
+    }
+
+    /* ── COUNTIES SECTION ─────────────────────────── */
     .counties-section { background: var(--white); }
+
     .counties-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
       margin-bottom: 32px;
     }
+
+    /* County card — 2-col internal layout */
     .county-card {
       background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      padding: 28px 24px;
-      transition: all 0.3s;
-      position: relative; overflow: hidden;
-      cursor: pointer; text-decoration: none; color: inherit;
-      display: block;
+      border: 1px solid #eee;
+      border-radius: 14px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      position: relative;
+      transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
+      text-decoration: none;
+      color: inherit;
     }
+
     .county-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 3px; background: var(--purple-light);
-      transform: scaleX(0); transform-origin: left;
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--lilac);
+      transform: scaleX(0);
+      transform-origin: left;
       transition: transform 0.3s;
     }
+
     .county-card:hover {
-      border-color: var(--purple-light);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-3px);
+      border-color: var(--lilac);
+      box-shadow: 0 12px 40px rgba(65,17,68,0.09);
+      transform: translateY(-2px);
     }
+
     .county-card:hover::before { transform: scaleX(1); }
-    .county-card-header {
-      display: flex; align-items: flex-start; justify-content: space-between;
+
+    /* Left column — county info */
+    .county-main {
+      padding: 32px 36px 28px;
+      border-right: 1px solid #f0ecf0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .county-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
       margin-bottom: 14px;
     }
-    .county-card h3 {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.3rem; font-weight: 400;
-      color: var(--purple-deep);
-    }
-    .county-badge {
-      font-size: 0.68rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      padding: 4px 10px; border-radius: 100px;
-    }
-    .county-badge.same-day { background: rgba(235,169,80,0.15); color: var(--gold-dark); }
-    .county-badge.next-day { background: rgba(189,110,244,0.12); color: var(--purple-mid); }
-    .county-card p {
-      font-size: 0.88rem; color: var(--text-secondary);
-      line-height: 1.6; margin-bottom: 16px;
-    }
-    .county-projects {
-      margin-bottom: 16px; padding-top: 14px;
-      border-top: 1px solid var(--gray-100);
-    }
-    .county-projects-label {
-      font-size: 0.72rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      color: var(--text-muted); margin-bottom: 8px;
-    }
-    .county-projects a {
-      display: block; font-size: 0.82rem; color: var(--purple-mid);
-      text-decoration: none; line-height: 1.5; margin-bottom: 4px;
-    }
-    .county-projects a:hover { color: var(--gold-dark); text-decoration: underline; }
-    .county-cities {
-      display: flex; flex-wrap: wrap; gap: 6px;
-    }
-    .county-cities a, .county-cities span {
-      font-size: 0.78rem; padding: 3px 10px;
-      background: var(--purple-pale);
-      border-radius: 100px; color: var(--purple-mid);
-      text-decoration: none; font-weight: 500;
-      transition: all 0.2s;
-    }
-    .county-cities a:hover { background: var(--purple-wash); color: var(--purple-deep); }
-    .county-cities span { background: var(--gray-100); color: var(--text-muted); }
 
-    /* Extended service area cards */
+    .county-card h3 {
+      font-size: 19px; font-weight: 700;
+      color: var(--purple);
+    }
+
+    .county-badge {
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 9px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 4px 12px; border-radius: 100px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+
+    .county-badge.same-day {
+      background: rgba(234,169,81,0.15);
+      color: #a0700a;
+    }
+
+    .county-badge.next-day {
+      background: rgba(189,110,244,0.12);
+      color: var(--purple-light);
+    }
+
+    .county-card-desc {
+      font-size: 14px; color: #555;
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+
+    /* Cities row — bottom of left column */
+    .county-cities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 20px;
+      border-top: 1px solid #f0ecf0;
+    }
+
+    .city-pill {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px; font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 100px;
+      background: var(--light-bg);
+      color: var(--purple);
+      border: 1px solid #e0d8e2;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .city-pill:hover {
+      background: var(--purple);
+      color: var(--white);
+      border-color: var(--purple);
+    }
+
+    .city-pill.muted {
+      background: #f2f2f2;
+      color: #999;
+      border-color: #e8e8e8;
+    }
+
+    /* Right column — recent projects */
+    .county-projects {
+      padding: 32px 24px 28px;
+      background: var(--light-bg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .county-projects-label {
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 9px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: #aaa;
+      margin-bottom: 16px;
+    }
+
+    .project-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      text-decoration: none;
+    }
+
+    .project-item:last-child { margin-bottom: 0; }
+
+    .project-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--lilac);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .project-text {
+      font-size: 13px; color: #555;
+      line-height: 1.55;
+      transition: color 0.2s;
+    }
+
+    .project-item:hover .project-text { color: var(--purple-light); }
+
+    /* Extended area */
     .extended-area {
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
+      background: var(--light-bg);
+      border: 1px solid #e0d8e2;
+      border-radius: 12px;
       padding: 32px;
     }
+
     .extended-area-label {
-      font-size: 0.72rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--text-muted); margin-bottom: 20px;
-      display: flex; align-items: center; gap: 8px;
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 9px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: #999; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
     }
+
     .extended-area-label::after {
-      content: ''; flex: 1; height: 1px; background: var(--gray-200);
+      content: ''; flex: 1; height: 1px; background: #ddd;
     }
+
     .extended-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
     }
+
     .ext-county {
       background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-sm);
+      border: 1px solid #eee;
+      border-radius: 8px;
       padding: 18px 16px;
     }
+
     .ext-county h4 {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.05rem; font-weight: 400;
-      color: var(--purple-deep); margin-bottom: 6px;
-    }
-    .ext-county p {
-      font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;
-    }
-    .ext-county .response-tag {
-      display: inline-block; margin-top: 10px;
-      font-size: 0.7rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.06em;
-      padding: 3px 8px; border-radius: 4px;
-      background: var(--gray-100); color: var(--text-muted);
+      font-size: 15px; font-weight: 700;
+      color: var(--purple); margin-bottom: 6px;
     }
 
-    /* ── SERVICES SECTION ──────────────────────── */
-    .services-section { background: var(--purple-pale); }
-    .services-strip {
-      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px;
+    .ext-county p {
+      font-size: 13px; color: #666; line-height: 1.55;
     }
+
+    .ext-county .response-tag {
+      display: inline-block; margin-top: 10px;
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 9px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 3px 8px; border-radius: 4px;
+      background: #f0ecf0; color: var(--purple-light);
+    }
+
+    /* ── SERVICES SECTION ─────────────────────────── */
+    .services-section { background: var(--light-bg); }
+
+    .services-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Image display panel */
+    .service-image-wrap { position: relative; }
+
+    .service-image-display {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      background: var(--purple);
+      box-shadow: 0 8px 32px rgba(65,17,68,0.18);
+    }
+
+    .service-slide {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 16px; padding: 32px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .service-slide.active { opacity: 1; }
+
+    .service-slide.idle {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 100%);
+    }
+
+    .service-slide[data-service="installation"]  { background: linear-gradient(135deg, #2a0a2d 0%, #5a1a5e 100%); }
+    .service-slide[data-service="maintenance"]   { background: linear-gradient(135deg, #1a1a3a 0%, #3a2a5a 100%); }
+    .service-slide[data-service="panel"]         { background: linear-gradient(135deg, #0d1a2e 0%, #1e3a5e 100%); }
+    .service-slide[data-service="generator"]     { background: linear-gradient(135deg, #1a2a0d 0%, #2e4a1a 100%); }
+    .service-slide[data-service="lighting"]      { background: linear-gradient(135deg, #2a2000 0%, #5a4400 100%); }
+    .service-slide[data-service="surge"]         { background: linear-gradient(135deg, #1a0a2a 0%, #4a1a6a 100%); }
+    .service-slide[data-service="ups"]           { background: linear-gradient(135deg, #0a1a2a 0%, #1a3a5a 100%); }
+    .service-slide[data-service="ev"]            { background: linear-gradient(135deg, #001a1a 0%, #003a3a 100%); }
+    .service-slide[data-service="emergency"]     { background: linear-gradient(135deg, #2a0a0a 0%, #5a1a1a 100%); }
+    .service-slide[data-service="retrofits"]     { background: linear-gradient(135deg, #0a1a0a 0%, #1e3a1e 100%); }
+    .service-slide[data-service="renovations"]   { background: linear-gradient(135deg, #1a100a 0%, #3a2a1a 100%); }
+
+    .slide-icon {
+      width: 64px; height: 64px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .slide-icon svg {
+      width: 32px; height: 32px;
+      stroke: var(--orange); stroke-width: 1.5;
+      fill: none; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .slide-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--white); text-align: center;
+    }
+
+    .slide-desc {
+      font-size: 14px; color: rgba(255,255,255,0.65);
+      text-align: center; line-height: 1.65; max-width: 280px;
+    }
+
+    .service-image-display::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--lilac), var(--orange));
+      z-index: 2;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .service-image-display.has-active::after { transform: scaleX(1); }
+
+    .services-cta-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 20px;
+      color: var(--purple-light); font-weight: 600;
+      text-decoration: none; font-size: 15px;
+      font-family: 'Poppins', sans-serif;
+      transition: color 0.2s;
+    }
+
+    .services-cta-link svg { width: 18px; height: 18px; transition: transform 0.2s; }
+    .services-cta-link:hover { color: var(--orange); }
+    .services-cta-link:hover svg { transform: translateX(4px); }
+
+    /* Chips column */
+    .chips-col { display: flex; flex-direction: column; gap: 16px; }
+
+    .chips-col-label {
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: #aaa;
+    }
+
+    .service-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
     .service-chip {
       padding: 10px 20px;
       background: var(--white);
-      border: 1px solid var(--purple-wash);
+      border: 1px solid #e0d8e2;
       border-radius: 100px;
-      font-size: 0.88rem; font-weight: 500;
-      color: var(--purple-deep);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px; font-weight: 500;
+      color: var(--purple);
+      cursor: pointer;
       transition: all 0.2s;
+      user-select: none;
     }
-    .service-chip:hover { border-color: var(--purple-light); background: var(--white); box-shadow: var(--shadow-sm); }
-    .services-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: var(--purple-mid); font-weight: 600;
-      text-decoration: none; font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-    .services-link:hover { color: var(--gold-dark); }
-    .services-link svg { width: 18px; height: 18px; transition: transform 0.2s; }
-    .services-link:hover svg { transform: translateX(4px); }
 
-    /* ── WHY MULTI-COUNTY ──────────────────────── */
+    .service-chip:hover,
+    .service-chip.active {
+      background: var(--purple);
+      color: var(--white);
+      border-color: var(--purple);
+      box-shadow: 0 4px 12px rgba(65,17,68,0.2);
+    }
+
+    /* ── WHY MULTI-COUNTY ─────────────────────────── */
     .why-section { background: var(--white); }
+
     .why-grid {
       display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
     }
+
     .why-card {
-      padding: 32px;
+      padding: 40px 32px;
       background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      transition: all 0.3s;
-    }
-    .why-card:hover {
-      border-color: var(--purple-wash);
-      box-shadow: var(--shadow-md);
-    }
-    .why-icon {
-      width: 48px; height: 48px;
-      background: var(--purple-pale);
-      border-radius: var(--radius-sm);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 18px;
-    }
-    .why-icon svg { width: 24px; height: 24px; color: var(--purple-deep); }
-    .why-card h3 {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.2rem; font-weight: 400;
-      color: var(--purple-deep); margin-bottom: 10px;
-    }
-    .why-card p {
-      font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      position: relative; overflow: hidden;
     }
 
-    /* ── RESPONSE TIMES ────────────────────────── */
-    .response-section { background: var(--purple-pale); }
+    .why-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--lilac);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .why-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(65,17,68,0.08);
+      border-color: var(--lilac);
+    }
+
+    .why-card:hover::before { transform: scaleX(1); }
+
+    .why-icon {
+      width: 52px; height: 52px;
+      background: var(--light-bg);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .why-icon svg { width: 26px; height: 26px; stroke: var(--purple); }
+
+    .why-card h3 {
+      font-size: 19px; font-weight: 700;
+      color: var(--purple); margin-bottom: 12px;
+    }
+
+    .why-card p {
+      font-size: 15px; color: #555; line-height: 1.75;
+    }
+
+    /* ── RESPONSE TIMES ───────────────────────────── */
+    .response-section { background: var(--light-bg); }
+
     .response-tiers {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
       margin-bottom: 32px;
     }
+
     .tier-card {
       background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 28px 24px;
-      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 32px 24px;
+      border: 1px solid #eee;
       text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
+
+    .tier-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(65,17,68,0.08);
+    }
+
     .tier-card.featured {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 1px var(--gold);
+      border-color: var(--orange);
+      box-shadow: 0 0 0 1px var(--orange);
     }
+
     .tier-icon {
-      width: 52px; height: 52px;
+      width: 56px; height: 56px;
       margin: 0 auto 16px;
-      background: var(--purple-pale);
+      background: var(--light-bg);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
     }
-    .tier-card.featured .tier-icon { background: rgba(235,169,80,0.12); }
-    .tier-icon svg { width: 24px; height: 24px; color: var(--purple-deep); }
-    .tier-card.featured .tier-icon svg { color: var(--gold-dark); }
+
+    .tier-card.featured .tier-icon { background: rgba(234,169,81,0.12); }
+    .tier-icon svg { width: 26px; height: 26px; stroke: var(--purple); }
+    .tier-card.featured .tier-icon svg { stroke: #a0700a; }
+
     .tier-label {
-      font-size: 0.72rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.1em;
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 9px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1px;
       margin-bottom: 6px;
     }
-    .tier-card.featured .tier-label { color: var(--gold-dark); }
-    .tier-card .tier-label { color: var(--purple-light); }
-    .tier-time {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.5rem; color: var(--purple-deep);
-      margin-bottom: 10px;
-    }
-    .tier-counties {
-      font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;
-    }
-    .quote-note {
-      text-align: center; padding: 20px;
-      background: var(--white);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--gray-200);
-    }
-    .quote-note p {
-      font-size: 0.92rem; color: var(--text-secondary);
-    }
-    .quote-note strong { color: var(--purple-deep); }
 
-    /* ── WHO WE WORK WITH ──────────────────────── */
+    .tier-card.featured .tier-label { color: #a0700a; }
+    .tier-card .tier-label { color: var(--purple-light); }
+
+    .tier-time {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--purple); margin-bottom: 10px;
+    }
+
+    .tier-counties {
+      font-size: 14px; color: #555; line-height: 1.55;
+    }
+
+    .quote-note {
+      text-align: center; padding: 24px;
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid #eee;
+    }
+
+    .quote-note p { font-size: 15px; color: #555; }
+    .quote-note strong { color: var(--purple); }
+
+    /* ── WHO WE WORK WITH ─────────────────────────── */
     .audience-section { background: var(--white); }
+
     .audience-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
       margin-bottom: 32px;
     }
+
     .audience-card {
-      text-align: center; padding: 28px 16px;
-      background: var(--purple-pale);
-      border-radius: var(--radius-md);
+      text-align: center; padding: 32px 16px;
+      background: var(--light-bg);
+      border-radius: 12px;
+      border: 1px solid transparent;
       transition: all 0.3s;
     }
-    .audience-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+    .audience-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(65,17,68,0.08);
+      border-color: var(--lilac);
+    }
+
     .audience-icon {
-      width: 52px; height: 52px;
+      width: 56px; height: 56px;
       background: var(--white);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 14px;
+      margin: 0 auto 16px;
     }
-    .audience-icon svg { width: 24px; height: 24px; color: var(--purple-deep); }
+
+    .audience-icon svg { width: 26px; height: 26px; stroke: var(--purple); }
+
     .audience-card h3 {
-      font-size: 0.92rem; font-weight: 600;
-      color: var(--purple-deep); margin-bottom: 6px;
+      font-size: 15px; font-weight: 700;
+      color: var(--purple); margin-bottom: 6px;
     }
+
     .audience-card p {
-      font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;
+      font-size: 13px; color: #666; line-height: 1.55;
     }
+
     .industries-strip {
       display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-      padding-top: 24px; border-top: 1px solid var(--gray-200);
+      padding-top: 28px; border-top: 1px solid #eee;
     }
+
     .industry-tag {
-      padding: 6px 16px;
-      font-size: 0.82rem; font-weight: 500;
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: 100px; color: var(--text-secondary);
+      padding: 8px 18px;
+      border-radius: 100px;
+      background: var(--light-bg);
+      border: 1px solid #e0d8e2;
+      font-size: 13px; font-weight: 500;
+      color: var(--purple); font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s;
     }
+
+    .industry-tag:hover {
+      background: var(--purple);
+      color: var(--white);
+      border-color: var(--purple);
+    }
+
     .residential-note {
       text-align: center; margin-top: 20px;
-      font-size: 0.85rem; color: var(--text-muted);
-      font-style: italic;
+      font-size: 14px; color: #999; font-style: italic;
     }
 
-    /* ── FINAL CTA ─────────────────────────────── */
+    /* ── CTA SECTION ──────────────────────────────── */
     .cta-section {
-      background: var(--purple-deep); position: relative; overflow: hidden;
+      background: var(--purple);
+      position: relative; overflow: hidden;
     }
+
     .cta-section::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(189,110,244,0.1) 0%, transparent 60%);
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 10% 90%, rgba(234,169,81,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 60% at 90% 20%, rgba(189,110,244,0.1) 0%, transparent 50%);
+      pointer-events: none;
     }
+
     .cta-inner {
-      max-width: 700px; margin: 0 auto;
-      text-align: center; position: relative; z-index: 1;
-    }
-    .cta-inner .section-label { color: var(--gold); }
-    .cta-inner .section-label::before { background: var(--gold); }
-    .cta-inner .section-title { color: var(--white); margin-bottom: 16px; }
-    .cta-desc {
-      font-size: 1.05rem; color: rgba(255,255,255,0.7);
-      line-height: 1.7; margin-bottom: 36px;
-    }
-    .cta-btn-wrap { margin-bottom: 20px; }
-    .cta-contact {
-      font-size: 0.92rem; color: rgba(255,255,255,0.5); margin-bottom: 32px;
-    }
-    .cta-contact a { color: var(--gold-light); text-decoration: none; }
-    .cta-contact a:hover { text-decoration: underline; }
-    .cta-checklist {
-      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
-      margin-bottom: 36px;
-    }
-    .cta-check {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 0.82rem; color: rgba(255,255,255,0.6);
-    }
-    .cta-check svg { width: 14px; height: 14px; color: var(--gold); }
-    .cta-trust {
-      display: flex; justify-content: center; gap: 24px;
-      padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .cta-trust-item {
-      font-size: 0.78rem; font-weight: 500;
-      color: rgba(255,255,255,0.4);
-      display: flex; align-items: center; gap: 6px;
-    }
-    .cta-trust-item svg { width: 14px; height: 14px; color: var(--gold); opacity: 0.6; }
-
-    /* ── FOOTER ─────────────────────────────────── */
-    .footer {
-      background: var(--gray-800); padding: 40px 24px;
+      position: relative; z-index: 2;
       text-align: center;
+      max-width: 640px; margin: 0 auto;
     }
-    .footer p {
-      font-size: 0.82rem; color: rgba(255,255,255,0.4);
-    }
-    .footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
-    .footer a:hover { color: var(--gold); }
 
-    /* ── ANIMATIONS ─────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-in {
-      opacity: 0; animation: fadeUp 0.6s ease forwards;
-    }
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-    .delay-4 { animation-delay: 0.4s; }
-    .delay-5 { animation-delay: 0.5s; }
+    .cta-section .section-label { color: var(--orange); }
+    .cta-section .section-title { color: var(--white); }
 
-    /* ── RESPONSIVE ─────────────────────────────── */
+    .cta-desc {
+      font-size: 17px; color: rgba(255,255,255,0.75);
+      line-height: 1.8; margin-bottom: 36px;
+    }
+
+    .cta-btn-wrap { margin-bottom: 24px; }
+
+    .cta-contact {
+      font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 28px;
+    }
+    .cta-contact a { color: var(--orange); font-weight: 600; }
+    .cta-contact a:hover { text-decoration: underline; }
+
+    .cta-checklist {
+      display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .cta-check {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; color: rgba(255,255,255,0.6);
+    }
+
+    .cta-check svg { width: 16px; height: 16px; stroke: var(--orange); }
+
+    .cta-trust {
+      display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
+      padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cta-trust-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 500;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .cta-trust-item svg { width: 16px; height: 16px; stroke: var(--orange); }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    footer {
+      background: var(--purple-dark);
+      color: rgba(255,255,255,0.7);
+      padding: 64px 48px 32px;
+    }
+
+    .footer-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+
+    .footer-brand p {
+      font-size: 14px; line-height: 1.7; margin-top: 16px;
+    }
+
+    .footer-logo {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    }
+
+    .footer-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--orange);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .footer-logo-icon svg { width: 20px; height: 20px; }
+
+    .footer-logo span {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700; font-size: 18px; color: var(--white);
+    }
+
+    .footer-col h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--white); margin-bottom: 16px;
+    }
+
+    .footer-col a {
+      display: block; font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none; margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--orange); }
+
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px;
+    }
+
+    .footer-bottom span { color: rgba(255,255,255,0.6); }
+
+    /* ── RESPONSIVE ───────────────────────────────── */
     @media (max-width: 1024px) {
       .hero-inner { grid-template-columns: 1fr; }
       .hero-map-container { display: none; }
-      .counties-grid { grid-template-columns: repeat(2, 1fr); }
+      .county-card { grid-template-columns: 1fr; }
+      .county-main { border-right: none; border-bottom: 1px solid #f0ecf0; }
       .extended-grid { grid-template-columns: repeat(2, 1fr); }
       .why-grid { grid-template-columns: 1fr; }
       .audience-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-layout { grid-template-columns: 1fr; }
     }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      section { padding: 72px 24px; }
+      .hero-inner { padding: 60px 24px; }
+      .section-title { font-size: 28px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .county-main { padding: 24px 20px 20px; }
+      .county-projects { padding: 20px; }
+    }
+
     @media (max-width: 640px) {
-      .nav-links { display: none; }
-      section { padding: 60px 16px; }
-      .hero { padding: 110px 16px 60px; }
-      .counties-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; flex-direction: column; gap: 0; }
+      .nav-links.open {
+        display: flex;
+        position: fixed;
+        top: 72px; left: 0; right: 0;
+        background: var(--purple);
+        padding: 24px;
+        gap: 4px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        z-index: 99;
+      }
+      .nav-links.open a {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        font-size: 12px;
+      }
+      .nav-links.open .nav-cta {
+        margin-top: 12px;
+        text-align: center;
+        border-radius: 6px;
+        padding: 12px 24px !important;
+      }
+      .nav-hamburger { display: flex; }
+      .section-title { font-size: 24px; }
       .extended-grid { grid-template-columns: 1fr; }
       .response-tiers { grid-template-columns: 1fr; }
       .audience-grid { grid-template-columns: 1fr; }
       .hero-badges { gap: 8px; }
       .cta-trust { flex-direction: column; align-items: center; gap: 12px; }
+      .why-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══ NAV ═══ -->
-<nav class="nav">
-  <div class="nav-inner">
+<!-- ── NAV ──────────────────────────────────────────── -->
+<nav>
+  <div class="nav-container">
     <a href="/" class="nav-logo">
       <div class="nav-logo-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#411144"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#411144" stroke-width="2.5" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </div>
       <span class="nav-logo-text">Purple Current</span>
     </a>
-    <div class="nav-links">
-      <a href="/about/">About</a>
-      <a href="/services/">Services</a>
-      <a href="/service-area/" class="active">Service Area</a>
-      <a href="/industries/">Industries</a>
-      <a href="/contact/" class="nav-cta">Request a Quote</a>
-    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/industries/">Industries</a></li>
+      <li><a href="/service-area/" class="active">Service Area</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/request-a-quote/" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- ═══ HERO ═══ -->
+<!-- ── HERO ─────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-breadcrumb animate-in">
+      <div class="hero-breadcrumb fade-up">
         <a href="/">Home</a> <span>›</span> <span>Service Area</span>
       </div>
-      <h1 class="animate-in delay-1">Commercial Electrician Serving <em>9 Counties</em> Across Tampa Bay</h1>
-      <p class="hero-desc animate-in delay-2">We've been pulling permits from Pasco to Polk since 2006. Licensed in all nine counties we serve, with teams ready to deploy throughout Central Florida. Same-day site visits for most areas, quotes within 24–48 hours, and teams that know your local inspectors and code requirements.</p>
-      <div class="hero-badges animate-in delay-3">
+      <h1 class="fade-up stagger-1">Commercial Electrician Serving <em>9 Counties</em> Across Tampa Bay</h1>
+      <p class="hero-desc fade-up stagger-1">We've been pulling permits from Pasco to Polk since 2006. Licensed in all nine counties we serve, with teams ready to deploy throughout Central Florida. Same-day site visits for most areas, quotes within 24–48 hours, and teams that know your local inspectors and code requirements.</p>
+      <div class="hero-badges fade-up stagger-2">
         <span class="hero-badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg>
           Based in Land O' Lakes
@@ -610,204 +1115,170 @@
           20 Years of Experience
         </span>
       </div>
-      <div class="hero-ctas animate-in delay-4">
-        <a href="/contact/" class="btn-primary">
+      <div class="hero-ctas fade-up stagger-2">
+        <a href="/request-a-quote/" class="btn-primary">
           Request a Quote
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <span class="hero-phone">Or call <a href="tel:+18005551234">(XXX) XXX-XXXX</a></span>
+        <span class="hero-phone">Or call <a href="tel:+10000000000">(XXX) XXX-XXXX</a></span>
       </div>
     </div>
-    <div class="hero-map-container animate-in delay-3">
-      <!-- Simplified SVG map of the 9 Central FL counties -->
-      <svg viewBox="0 0 400 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- County shapes (simplified polygons) -->
-        <!-- Levy -->
-        <path d="M40 40 L130 30 L140 90 L50 100 Z" fill="rgba(189,110,244,0.15)" stroke="rgba(189,110,244,0.3)" stroke-width="1.5"/>
-        <text x="85" y="68" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-size="11" font-family="DM Sans">Levy</text>
-        <!-- Marion -->
-        <path d="M130 30 L260 20 L270 100 L140 90 Z" fill="rgba(189,110,244,0.15)" stroke="rgba(189,110,244,0.3)" stroke-width="1.5"/>
-        <text x="195" y="62" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-size="11" font-family="DM Sans">Marion</text>
-        <!-- Citrus -->
-        <path d="M50 100 L140 90 L150 170 L55 180 Z" fill="rgba(189,110,244,0.15)" stroke="rgba(189,110,244,0.3)" stroke-width="1.5"/>
-        <text x="98" y="140" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-size="11" font-family="DM Sans">Citrus</text>
-        <!-- Sumter -->
-        <path d="M140 90 L270 100 L260 175 L150 170 Z" fill="rgba(189,110,244,0.15)" stroke="rgba(189,110,244,0.3)" stroke-width="1.5"/>
-        <text x="202" y="140" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-size="11" font-family="DM Sans">Sumter</text>
-        <!-- Hernando -->
-        <path d="M55 180 L150 170 L158 230 L60 240 Z" fill="rgba(189,110,244,0.25)" stroke="rgba(189,110,244,0.5)" stroke-width="1.5"/>
-        <text x="106" y="210" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11" font-family="DM Sans">Hernando</text>
-        <!-- Pasco -->
-        <path d="M60 240 L158 230 L170 310 L65 318 Z" fill="rgba(235,169,80,0.3)" stroke="rgba(235,169,80,0.6)" stroke-width="2"/>
-        <text x="114" y="278" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="12" font-weight="600" font-family="DM Sans">Pasco</text>
-        <!-- Home base marker -->
-        <circle cx="114" cy="290" r="5" fill="#eba950" stroke="#fff" stroke-width="2"/>
-        <text x="114" y="306" text-anchor="middle" fill="rgba(235,169,80,0.9)" font-size="8" font-family="DM Sans" font-weight="600">HQ</text>
-        <!-- Pinellas -->
-        <path d="M35 320 L65 318 L68 410 L40 415 Z" fill="rgba(189,110,244,0.35)" stroke="rgba(189,110,244,0.6)" stroke-width="1.5"/>
-        <text x="52" y="370" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10" font-family="DM Sans">Pinellas</text>
-        <!-- Hillsborough -->
-        <path d="M65 318 L170 310 L180 410 L68 410 Z" fill="rgba(189,110,244,0.35)" stroke="rgba(189,110,244,0.6)" stroke-width="2"/>
-        <text x="120" y="365" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="12" font-weight="600" font-family="DM Sans">Hillsborough</text>
-        <!-- Polk -->
-        <path d="M170 310 L310 295 L325 410 L180 410 Z" fill="rgba(189,110,244,0.25)" stroke="rgba(189,110,244,0.5)" stroke-width="1.5"/>
-        <text x="245" y="358" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-size="12" font-family="DM Sans">Polk</text>
-        <!-- Sarasota -->
-        <path d="M68 410 L180 410 L175 445 L65 445 Z" fill="rgba(189,110,244,0.2)" stroke="rgba(189,110,244,0.4)" stroke-width="1.5"/>
-        <text x="122" y="432" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="10" font-family="DM Sans">Sarasota</text>
-        <!-- Legend -->
-        <circle cx="310" cy="30" r="5" fill="#eba950"/>
-        <text x="322" y="34" fill="rgba(255,255,255,0.5)" font-size="9" font-family="DM Sans">Home Base</text>
-        <rect x="304" y="46" width="12" height="12" rx="2" fill="rgba(189,110,244,0.35)" stroke="rgba(189,110,244,0.6)"/>
-        <text x="322" y="56" fill="rgba(255,255,255,0.5)" font-size="9" font-family="DM Sans">Core Coverage</text>
-        <rect x="304" y="66" width="12" height="12" rx="2" fill="rgba(189,110,244,0.15)" stroke="rgba(189,110,244,0.3)"/>
-        <text x="322" y="76" fill="rgba(255,255,255,0.5)" font-size="9" font-family="DM Sans">Extended Area</text>
-      </svg>
+    <div class="hero-map-container fade-up stagger-2">
+      <img
+        src="service-area-map.png"
+        alt="Purple Current service area map — 9 counties across Central Florida highlighted in orange"
+        class="hero-map-img"
+      />
     </div>
   </div>
 </section>
 
-<!-- ═══ COUNTIES WE SERVE ═══ -->
+<!-- ── COUNTIES WE SERVE ─────────────────────────────── -->
 <section class="counties-section" id="counties">
-  <div class="section-inner">
-    <div class="section-label">Coverage</div>
-    <h2 class="section-title">Counties We Serve</h2>
-    <p class="section-subtitle">Licensed and actively working across nine Central Florida counties. From our Land O' Lakes headquarters, we deploy teams daily throughout the Tampa Bay region and beyond.</p>
+  <div class="container">
+    <div class="section-label fade-up">Coverage</div>
+    <h2 class="section-title fade-up">Counties We Serve</h2>
+    <p class="section-subtitle fade-up">Licensed and actively working across nine Central Florida counties. From our Land O' Lakes headquarters, we deploy teams daily throughout the Tampa Bay region and beyond.</p>
 
     <div class="counties-grid">
 
-      <!-- Hillsborough -->
-      <a href="/service-area/hillsborough-county/" class="county-card">
-        <div class="county-card-header">
-          <h3>Hillsborough County</h3>
-          <span class="county-badge same-day">Same-Day</span>
+      <div class="county-card fade-up" onclick="location.href='/service-area/hillsborough-county/'" style="cursor:pointer;">
+        <div class="county-main">
+          <div class="county-header">
+            <h3>Hillsborough County</h3>
+            <span class="county-badge same-day">Same-Day</span>
+          </div>
+          <p class="county-card-desc">Our busiest county and home base. We've been working in Hillsborough since 2006, starting with lift station electrical for commercial properties. We know the Tampa building department well — they move fast if you know the inspectors, and we do.</p>
+          <div class="county-cities">
+            <a href="/service-area/hillsborough-county/tampa/" class="city-pill">Tampa</a>
+            <a href="/service-area/hillsborough-county/brandon/" class="city-pill">Brandon</a>
+            <a href="/service-area/hillsborough-county/riverview/" class="city-pill">Riverview</a>
+            <span class="city-pill muted">Temple Terrace</span>
+            <span class="city-pill muted">Valrico</span>
+          </div>
         </div>
-        <p>Our busiest county and home base. We've been working in Hillsborough since 2006, starting with lift station electrical for commercial properties. We know the Tampa building department well — they move fast if you know the inspectors, and we do.</p>
         <div class="county-projects">
           <div class="county-projects-label">Recent Projects</div>
-          <a href="#">Panel replacement across 8 locations for Tampa property management company</a>
-          <a href="#">Emergency generator installation for Brandon medical office</a>
-          <a href="#">Complete electrical buildout for Riverview warehouse</a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Panel replacement across 8 locations for Tampa property management company</span></a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Emergency generator installation for Brandon medical office</span></a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Complete electrical buildout for Riverview warehouse</span></a>
         </div>
-        <div class="county-cities">
-          <a href="/service-area/hillsborough-county/tampa/">Tampa</a>
-          <a href="/service-area/hillsborough-county/brandon/">Brandon</a>
-          <a href="/service-area/hillsborough-county/riverview/">Riverview</a>
-          <span>Temple Terrace</span>
-          <span>Valrico</span>
-        </div>
-      </a>
+      </div>
 
-      <!-- Pinellas -->
-      <a href="/service-area/pinellas-county/" class="county-card">
-        <div class="county-card-header">
-          <h3>Pinellas County</h3>
-          <span class="county-badge same-day">Same-Day</span>
+      <div class="county-card fade-up stagger-1" onclick="location.href='/service-area/pinellas-county/'" style="cursor:pointer;">
+        <div class="county-main">
+          <div class="county-header">
+            <h3>Pinellas County</h3>
+            <span class="county-badge same-day">Same-Day</span>
+          </div>
+          <p class="county-card-desc">Pinellas has its own quirks — they're particular about service entrance locations and require master electricians on-site for most commercial work over 200A. We've handled projects from downtown St. Petersburg office buildings to Clearwater retail centers.</p>
+          <div class="county-cities">
+            <a href="/service-area/pinellas-county/st-petersburg/" class="city-pill">St. Petersburg</a>
+            <a href="/service-area/pinellas-county/clearwater/" class="city-pill">Clearwater</a>
+            <a href="/service-area/pinellas-county/largo/" class="city-pill">Largo</a>
+            <span class="city-pill muted">Palm Harbor</span>
+            <span class="city-pill muted">Tarpon Springs</span>
+            <span class="city-pill muted">Dunedin</span>
+          </div>
         </div>
-        <p>Pinellas has its own quirks — they're particular about service entrance locations and require master electricians on-site for most commercial work over 200A. We've handled projects from downtown St. Petersburg office buildings to Clearwater retail centers.</p>
         <div class="county-projects">
           <div class="county-projects-label">Recent Projects</div>
-          <a href="#">LED retrofit for 45,000 sq ft St. Petersburg office building</a>
-          <a href="#">Service upgrade for Clearwater restaurant expansion</a>
-          <a href="#">EV charging station installation at Largo shopping center</a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">LED retrofit for 45,000 sq ft St. Petersburg office building</span></a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Service upgrade for Clearwater restaurant expansion</span></a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">EV charging station installation at Largo shopping center</span></a>
         </div>
-        <div class="county-cities">
-          <a href="/service-area/pinellas-county/st-petersburg/">St. Petersburg</a>
-          <a href="/service-area/pinellas-county/clearwater/">Clearwater</a>
-          <a href="/service-area/pinellas-county/largo/">Largo</a>
-          <span>Palm Harbor</span>
-          <span>Tarpon Springs</span>
-          <span>Dunedin</span>
-        </div>
-      </a>
+      </div>
 
-      <!-- Pasco -->
-      <a href="/service-area/pasco-county/" class="county-card">
-        <div class="county-card-header">
-          <h3>Pasco County</h3>
-          <span class="county-badge same-day">Same-Day</span>
+      <div class="county-card fade-up" onclick="location.href='/service-area/pasco-county/'" style="cursor:pointer;">
+        <div class="county-main">
+          <div class="county-header">
+            <h3>Pasco County</h3>
+            <span class="county-badge same-day">Same-Day</span>
+          </div>
+          <p class="county-card-desc">Home base. We're located in Land O' Lakes and have deep roots in Pasco. The county's growing fast — Wesley Chapel alone has doubled in size since we started. We know the inspectors by name.</p>
+          <div class="county-cities">
+            <a href="/service-area/pasco-county/wesley-chapel/" class="city-pill">Wesley Chapel</a>
+            <a href="/service-area/pasco-county/zephyrhills/" class="city-pill">Zephyrhills</a>
+            <a href="/service-area/pasco-county/new-port-richey/" class="city-pill">New Port Richey</a>
+            <span class="city-pill muted">Land O' Lakes</span>
+            <span class="city-pill muted">Dade City</span>
+          </div>
         </div>
-        <p>Home base. We're located in Land O' Lakes and have deep roots in Pasco. The county's growing fast — Wesley Chapel alone has doubled in size since we started. We know the inspectors by name.</p>
         <div class="county-projects">
           <div class="county-projects-label">Recent Projects</div>
-          <a href="#">400A service upgrade for Wesley Chapel medical facility</a>
-          <a href="#">Generator installation for Zephyrhills cold storage</a>
-          <a href="#">Complete electrical for New Port Richey retail buildout</a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">400A service upgrade for Wesley Chapel medical facility</span></a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Generator installation for Zephyrhills cold storage</span></a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Complete electrical for New Port Richey retail buildout</span></a>
         </div>
-        <div class="county-cities">
-          <a href="/service-area/pasco-county/wesley-chapel/">Wesley Chapel</a>
-          <a href="/service-area/pasco-county/zephyrhills/">Zephyrhills</a>
-          <a href="/service-area/pasco-county/new-port-richey/">New Port Richey</a>
-          <span>Land O' Lakes</span>
-          <span>Dade City</span>
-        </div>
-      </a>
+      </div>
 
-      <!-- Polk -->
-      <a href="/service-area/polk-county/" class="county-card">
-        <div class="county-card-header">
-          <h3>Polk County</h3>
-          <span class="county-badge next-day">Next-Day</span>
+      <div class="county-card fade-up stagger-1" onclick="location.href='/service-area/polk-county/'" style="cursor:pointer;">
+        <div class="county-main">
+          <div class="county-header">
+            <h3>Polk County</h3>
+            <span class="county-badge next-day">Next-Day</span>
+          </div>
+          <p class="county-card-desc">Lakeland and Winter Haven are industrial hubs — we've done substantial work in warehouses and manufacturing facilities here. Polk County runs efficient inspection schedules, and their building departments are responsive.</p>
+          <div class="county-cities">
+            <a href="/service-area/polk-county/lakeland/" class="city-pill">Lakeland</a>
+            <a href="/service-area/polk-county/winter-haven/" class="city-pill">Winter Haven</a>
+            <span class="city-pill muted">Bartow</span>
+            <span class="city-pill muted">Haines City</span>
+          </div>
         </div>
-        <p>Lakeland and Winter Haven are industrial hubs — we've done substantial work in warehouses and manufacturing facilities here. Polk County runs efficient inspection schedules, and their building departments are responsive.</p>
         <div class="county-projects">
           <div class="county-projects-label">Recent Projects</div>
-          <a href="#">Panel upgrades for Lakeland distribution center</a>
-          <a href="#">Lighting retrofit for Winter Haven warehouse</a>
-          <a href="#">Emergency power system for manufacturing plant</a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Panel upgrades for Lakeland distribution center</span></a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Lighting retrofit for Winter Haven warehouse</span></a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Emergency power system for manufacturing plant</span></a>
         </div>
-        <div class="county-cities">
-          <a href="/service-area/polk-county/lakeland/">Lakeland</a>
-          <a href="/service-area/polk-county/winter-haven/">Winter Haven</a>
-          <span>Bartow</span>
-          <span>Haines City</span>
-        </div>
-      </a>
+      </div>
 
-      <!-- Hernando -->
-      <a href="/service-area/hernando-county/" class="county-card">
-        <div class="county-card-header">
-          <h3>Hernando County</h3>
-          <span class="county-badge next-day">Next-Day</span>
+      <div class="county-card fade-up" onclick="location.href='/service-area/hernando-county/'" style="cursor:pointer;">
+        <div class="county-main">
+          <div class="county-header">
+            <h3>Hernando County</h3>
+            <span class="county-badge next-day">Next-Day</span>
+          </div>
+          <p class="county-card-desc">Hernando's electrical code follows Florida Building Code closely with few local amendments. The Spring Hill area has seen significant commercial development — retail centers, medical offices, and multi-family properties.</p>
+          <div class="county-cities">
+            <a href="/service-area/hernando-county/spring-hill/" class="city-pill">Spring Hill</a>
+            <a href="/service-area/hernando-county/brooksville/" class="city-pill">Brooksville</a>
+            <span class="city-pill muted">Weeki Wachee</span>
+          </div>
         </div>
-        <p>Hernando's electrical code follows Florida Building Code closely with few local amendments. The Spring Hill area has seen significant commercial development — retail centers, medical offices, and multi-family properties.</p>
         <div class="county-projects">
           <div class="county-projects-label">Recent Projects</div>
-          <a href="#">Service upgrade for Spring Hill medical office</a>
-          <a href="#">Parking lot lighting for Brooksville retail center</a>
-          <a href="#">Panel replacement for commercial property</a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Service upgrade for Spring Hill medical office</span></a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Parking lot lighting for Brooksville retail center</span></a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Panel replacement for commercial property</span></a>
         </div>
-        <div class="county-cities">
-          <a href="/service-area/hernando-county/spring-hill/">Spring Hill</a>
-          <a href="/service-area/hernando-county/brooksville/">Brooksville</a>
-          <span>Weeki Wachee</span>
-        </div>
-      </a>
+      </div>
 
-      <!-- Sarasota -->
-      <a href="/service-area/sarasota-county/" class="county-card">
-        <div class="county-card-header">
-          <h3>Sarasota County</h3>
-          <span class="county-badge next-day">Next-Day</span>
+      <div class="county-card fade-up stagger-1" onclick="location.href='/service-area/sarasota-county/'" style="cursor:pointer;">
+        <div class="county-main">
+          <div class="county-header">
+            <h3>Sarasota County</h3>
+            <span class="county-badge next-day">Next-Day</span>
+          </div>
+          <p class="county-card-desc">We expanded into Sarasota County in 2024 to serve clients with multi-county operations. Sarasota runs stricter coastal requirements for equipment — corrosion protection and weatherproofing standards are higher than inland counties.</p>
+          <div class="county-cities">
+            <a href="/service-area/sarasota-county/sarasota/" class="city-pill">Sarasota</a>
+            <a href="/service-area/sarasota-county/venice/" class="city-pill">Venice</a>
+            <a href="/service-area/sarasota-county/north-port/" class="city-pill">North Port</a>
+          </div>
         </div>
-        <p>We expanded into Sarasota County in 2024 to serve clients with multi-county operations. Sarasota runs stricter coastal requirements for equipment — corrosion protection and weatherproofing standards are higher than inland counties.</p>
         <div class="county-projects">
           <div class="county-projects-label">Recent Projects</div>
-          <a href="#">Electrical retrofit for Sarasota office complex</a>
-          <a href="#">Generator installation for Venice medical facility</a>
-          <a href="#">Service upgrade for North Port retail space</a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Electrical retrofit for Sarasota office complex</span></a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Generator installation for Venice medical facility</span></a>
+          <a href="#" class="project-item"><div class="project-dot"></div><span class="project-text">Service upgrade for North Port retail space</span></a>
         </div>
-        <div class="county-cities">
-          <a href="/service-area/sarasota-county/sarasota/">Sarasota</a>
-          <a href="/service-area/sarasota-county/venice/">Venice</a>
-          <a href="/service-area/sarasota-county/north-port/">North Port</a>
-        </div>
-      </a>
+      </div>
 
     </div>
 
-    <!-- Extended Service Area -->
-    <div class="extended-area">
+    <div class="extended-area fade-up">
       <div class="extended-area-label">Extended Service Area</div>
       <div class="extended-grid">
         <div class="ext-county">
@@ -832,45 +1303,134 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ═══ COMMERCIAL ELECTRICAL SERVICES ═══ -->
+<!-- ── COMMERCIAL ELECTRICAL SERVICES ─────────────────── -->
 <section class="services-section">
-  <div class="section-inner">
-    <div class="section-label">What We Do</div>
-    <h2 class="section-title">Commercial Electrical Services</h2>
-    <p class="section-subtitle">We provide a full range of commercial electrical services across all nine counties — from panel upgrades and generator installations to complete electrical buildouts.</p>
-    <div class="services-strip">
-      <span class="service-chip">Installation</span>
-      <span class="service-chip">Maintenance & Repair</span>
-      <span class="service-chip">Panel Upgrades</span>
-      <span class="service-chip">Generator Installation</span>
-      <span class="service-chip">Lighting</span>
-      <span class="service-chip">Surge Protection</span>
-      <span class="service-chip">UPS Systems</span>
-      <span class="service-chip">EV Charging</span>
-      <span class="service-chip">Emergency Lighting</span>
-      <span class="service-chip">Retrofits</span>
-      <span class="service-chip">Renovations</span>
+  <div class="container">
+    <div class="section-label fade-up">What We Do</div>
+    <h2 class="section-title fade-up">Commercial Electrical Services</h2>
+    <p class="section-subtitle fade-up">We provide a full range of commercial electrical services across all nine counties — from panel upgrades and generator installations to complete electrical buildouts.</p>
+
+    <div class="services-layout">
+
+      <!-- LEFT: hover image display -->
+      <div class="service-image-wrap fade-up">
+        <div class="service-image-display" id="serviceDisplay">
+
+          <div class="service-slide idle active" data-service="idle">
+            <div class="slide-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div class="slide-title" style="color:rgba(255,255,255,0.35); font-size:18px; font-weight:600; line-height:1.3;">Purple up.<br>Power on.</div>
+          </div>
+
+          <div class="service-slide" data-service="installation">
+            <div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2z"/><circle cx="7" cy="7" r="1.5" fill="currentColor"/></svg></div>
+            <div class="slide-title">Installation</div>
+            <div class="slide-desc">New electrical systems for commercial builds, tenant improvements, and infrastructure upgrades.</div>
+          </div>
+
+          <div class="service-slide" data-service="maintenance">
+            <div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+            <div class="slide-title">Maintenance &amp; Repair</div>
+            <div class="slide-desc">Preventive maintenance contracts and responsive repair service to keep your facility running.</div>
+          </div>
+
+          <div class="service-slide" data-service="panel">
+            <div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg></div>
+            <div class="slide-title">Panel Upgrades</div>
+            <div class="slide-desc">200A to 400A+ service upgrades, panel replacements, and load distribution improvements.</div>
+          </div>
+
+          <div class="service-slide" data-service="generator">
+            <div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+            <div class="slide-title">Generator Installation</div>
+            <div class="slide-desc">Standby and portable generator hookups, transfer switches, and emergency power systems.</div>
+          </div>
+
+          <div class="service-slide" data-service="lighting">
+            <div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><circle cx="12" cy="12" r="4"/></svg></div>
+            <div class="slide-title">Lighting</div>
+            <div class="slide-desc">LED retrofits, parking lot lighting, interior commercial lighting design and installation.</div>
+          </div>
+
+          <div class="service-slide" data-service="surge">
+            <div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="slide-title">Surge Protection</div>
+            <div class="slide-desc">Whole-facility surge protection to safeguard sensitive equipment and prevent costly downtime.</div>
+          </div>
+
+          <div class="service-slide" data-service="ups">
+            <div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg></div>
+            <div class="slide-title">UPS Systems</div>
+            <div class="slide-desc">Uninterruptible power supply installation for data centers, medical equipment, and critical operations.</div>
+          </div>
+
+          <div class="service-slide" data-service="ev">
+            <div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><path d="M12 11v5l3-3"/></svg></div>
+            <div class="slide-title">EV Charging</div>
+            <div class="slide-desc">Level 2 and DC fast charger installation for commercial parking lots, fleets, and hospitality.</div>
+          </div>
+
+          <div class="service-slide" data-service="emergency">
+            <div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div class="slide-title">Emergency Lighting</div>
+            <div class="slide-desc">Code-compliant emergency egress lighting, exit signs, and battery backup systems.</div>
+          </div>
+
+          <div class="service-slide" data-service="retrofits">
+            <div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div>
+            <div class="slide-title">Retrofits</div>
+            <div class="slide-desc">Modernizing existing electrical systems for efficiency, code compliance, and increased capacity.</div>
+          </div>
+
+          <div class="service-slide" data-service="renovations">
+            <div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div class="slide-title">Renovations</div>
+            <div class="slide-desc">Full electrical scope for commercial remodels — from demolition through final inspection.</div>
+          </div>
+
+        </div>
+
+        <a href="/services/" class="services-cta-link">
+          View all commercial electrical services
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- RIGHT: service chips -->
+      <div class="chips-col fade-up stagger-1">
+        <div class="chips-col-label">Hover to explore</div>
+        <div class="service-chips" id="serviceChips">
+          <span class="service-chip" data-service="installation">Installation</span>
+          <span class="service-chip" data-service="maintenance">Maintenance &amp; Repair</span>
+          <span class="service-chip" data-service="panel">Panel Upgrades</span>
+          <span class="service-chip" data-service="generator">Generator Installation</span>
+          <span class="service-chip" data-service="lighting">Lighting</span>
+          <span class="service-chip" data-service="surge">Surge Protection</span>
+          <span class="service-chip" data-service="ups">UPS Systems</span>
+          <span class="service-chip" data-service="ev">EV Charging</span>
+          <span class="service-chip" data-service="emergency">Emergency Lighting</span>
+          <span class="service-chip" data-service="retrofits">Retrofits</span>
+          <span class="service-chip" data-service="renovations">Renovations</span>
+        </div>
+      </div>
+
     </div>
-    <a href="/services/" class="services-link">
-      View all commercial electrical services
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
   </div>
 </section>
 
-<!-- ═══ WHY MULTI-COUNTY ═══ -->
+<!-- ── WHY MULTI-COUNTY ───────────────────────────────── -->
 <section class="why-section">
-  <div class="section-inner">
-    <div class="section-label">The Advantage</div>
-    <h2 class="section-title">Why Work With a Multi-County Contractor</h2>
-    <p class="section-subtitle">One contractor. Nine counties. No learning curve on local codes, no travel charges, no juggling multiple vendors.</p>
+  <div class="container">
+    <div class="section-label fade-up">The Advantage</div>
+    <h2 class="section-title fade-up">Why Work With a Multi-County Contractor</h2>
+    <p class="section-subtitle fade-up">One contractor. Nine counties. No learning curve on local codes, no travel charges, no juggling multiple vendors.</p>
     <div class="why-grid">
 
-      <div class="why-card">
+      <div class="why-card fade-up">
         <div class="why-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
         </div>
@@ -878,7 +1438,7 @@
         <p>Pasco requires different panel labeling than Hillsborough. Some municipalities require master electricians on-site for service work. Coastal areas like Sarasota have stricter corrosion protection standards. We know which is which.</p>
       </div>
 
-      <div class="why-card">
+      <div class="why-card fade-up stagger-1">
         <div class="why-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
@@ -886,7 +1446,7 @@
         <p>We've worked with the same building inspectors for years across all nine counties. That means we know what they look for, and your project doesn't sit waiting for corrections or re-inspections.</p>
       </div>
 
-      <div class="why-card">
+      <div class="why-card fade-up">
         <div class="why-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
         </div>
@@ -894,7 +1454,7 @@
         <p>From Wesley Chapel to Lakeland to Sarasota, we don't charge travel fees. If your business has multiple locations across Central Florida, you get consistent pricing and service regardless of county.</p>
       </div>
 
-      <div class="why-card">
+      <div class="why-card fade-up stagger-1">
         <div class="why-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
         </div>
@@ -906,15 +1466,15 @@
   </div>
 </section>
 
-<!-- ═══ RESPONSE TIMES ═══ -->
+<!-- ── RESPONSE TIMES ─────────────────────────────────── -->
 <section class="response-section">
-  <div class="section-inner">
-    <div class="section-label">What to Expect</div>
-    <h2 class="section-title">Response Times and Coverage</h2>
-    <p class="section-subtitle">Our response times are tiered by proximity to our Land O' Lakes base, with same-day availability for our core Tampa Bay counties.</p>
+  <div class="container">
+    <div class="section-label fade-up">What to Expect</div>
+    <h2 class="section-title fade-up">Response Times and Coverage</h2>
+    <p class="section-subtitle fade-up">Our response times are tiered by proximity to our Land O' Lakes base, with same-day availability for our core Tampa Bay counties.</p>
 
     <div class="response-tiers">
-      <div class="tier-card featured">
+      <div class="tier-card featured fade-up">
         <div class="tier-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
@@ -922,7 +1482,7 @@
         <div class="tier-time">Same-Day</div>
         <div class="tier-counties">Hillsborough, Pinellas, Pasco</div>
       </div>
-      <div class="tier-card">
+      <div class="tier-card fade-up stagger-1">
         <div class="tier-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
         </div>
@@ -930,7 +1490,7 @@
         <div class="tier-time">Next-Day</div>
         <div class="tier-counties">Polk, Hernando, Sarasota</div>
       </div>
-      <div class="tier-card">
+      <div class="tier-card fade-up stagger-2">
         <div class="tier-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
@@ -940,43 +1500,43 @@
       </div>
     </div>
 
-    <div class="quote-note">
+    <div class="quote-note fade-up">
       <p><strong>Quote Timeline:</strong> Most quotes provided within 24–48 hours. Complex projects requiring engineering review may take 3–5 business days.</p>
-      <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">Serving additional cities throughout Central Florida. If you're in one of our nine counties, we can handle your project. Call to confirm coverage for your specific location.</p>
+      <p style="margin-top: 10px; font-size: 13px; color: #999;">Serving additional cities throughout Central Florida. If you're in one of our nine counties, we can handle your project. Call to confirm coverage for your specific location.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ WHO WE WORK WITH ═══ -->
+<!-- ── WHO WE WORK WITH ───────────────────────────────── -->
 <section class="audience-section">
-  <div class="section-inner">
-    <div class="section-label">Our Focus</div>
-    <h2 class="section-title">Who We Work With</h2>
-    <p class="section-subtitle">We work exclusively with commercial clients — businesses and organizations that need reliable, code-compliant electrical work across Central Florida.</p>
+  <div class="container">
+    <div class="section-label fade-up">Our Focus</div>
+    <h2 class="section-title fade-up">Who We Work With</h2>
+    <p class="section-subtitle fade-up">We work exclusively with commercial clients — businesses and organizations that need reliable, code-compliant electrical work across Central Florida.</p>
 
     <div class="audience-grid">
-      <div class="audience-card">
+      <div class="audience-card fade-up">
         <div class="audience-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
         </div>
         <h3>Property Managers</h3>
         <p>Maintaining multiple commercial buildings</p>
       </div>
-      <div class="audience-card">
+      <div class="audience-card fade-up stagger-1">
         <div class="audience-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
         </div>
         <h3>Facility Directors</h3>
         <p>Managing aging electrical infrastructure</p>
       </div>
-      <div class="audience-card">
+      <div class="audience-card fade-up stagger-2">
         <div class="audience-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01M17 12h.01M7 12h.01"/></svg>
         </div>
         <h3>General Contractors</h3>
         <p>Needing reliable electrical subcontractors</p>
       </div>
-      <div class="audience-card">
+      <div class="audience-card fade-up stagger-3">
         <div class="audience-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
         </div>
@@ -985,7 +1545,7 @@
       </div>
     </div>
 
-    <div class="industries-strip">
+    <div class="industries-strip fade-up">
       <span class="industry-tag">Offices</span>
       <span class="industry-tag">Retail</span>
       <span class="industry-tag">Warehouses</span>
@@ -998,21 +1558,21 @@
   </div>
 </section>
 
-<!-- ═══ FINAL CTA ═══ -->
+<!-- ── FINAL CTA ──────────────────────────────────────── -->
 <section class="cta-section">
-  <div class="section-inner">
-    <div class="cta-inner">
+  <div class="container">
+    <div class="cta-inner fade-up">
       <div class="section-label">Ready to Start?</div>
       <h2 class="section-title">Get a Quote for Your Project</h2>
       <p class="cta-desc">Tell us about your electrical project and we'll provide a detailed quote within 24–48 hours. Whether you're in Tampa or Lakeland, we bring the same level of service and local expertise to every project.</p>
       <div class="cta-btn-wrap">
-        <a href="/contact/" class="btn-primary" style="font-size: 1.05rem; padding: 18px 40px;">
+        <a href="/request-a-quote/" class="btn-primary" style="font-size: 16px; padding: 18px 40px;">
           Request a Quote
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
       <div class="cta-contact">
-        Or call us at <a href="tel:+18005551234">(XXX) XXX-XXXX</a> &nbsp;•&nbsp; Email: <a href="mailto:info@purple-current.com">info@purple-current.com</a>
+        Or call us at <a href="tel:+10000000000">(XXX) XXX-XXXX</a> &nbsp;•&nbsp; Email: <a href="/cdn-cgi/l/email-protection#4e272028210e3e3b3c3e222b2d3b3c3c2b203a602d2123"><span class="__cf_email__" data-cfemail="c0a9aea6af80b0b5b2b0aca5a3b5b2b2a5aeb4eea3afad">[email&#160;protected]</span></a>
       </div>
       <div class="cta-checklist">
         <span class="cta-check">
@@ -1050,10 +1610,96 @@
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="footer">
-  <p>&copy; 2025 Purple Current. Commercial electrical contractor serving Tampa Bay and Central Florida. <a href="/privacy/">Privacy</a> &nbsp;•&nbsp; <a href="/sitemap/">Sitemap</a></p>
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#411144" stroke-width="2.5" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <span>Purple Current</span>
+      </div>
+      <p>Licensed commercial, industrial, and municipal electrical contractor serving Tampa Bay.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#">New Construction</a>
+      <a href="#">Tenant Improvements</a>
+      <a href="#">Retrofits</a>
+      <a href="#">Maintenance</a>
+      <a href="#">Emergency Power</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about/">About</a>
+      <a href="/service-area/">Service Areas</a>
+      <a href="#">Projects</a>
+      <a href="/request-a-quote/">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+10000000000">(XXX) XXX-XXXX</a>
+      <a href="/cdn-cgi/l/email-protection#3d54535b527d4d484f4d51585e484f4f585349135e5250"><span class="__cf_email__" data-cfemail="a1c8cfc7cee1d1d4d3d1cdc4c2d4d3d3c4cfd58fc2cecc">[email&#160;protected]</span></a>
+      <a href="#">Tampa Bay, FL</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Purple Current. All rights reserved.</span>
+    <span>Powered by The Purple Standard</span>
+  </div>
 </footer>
 
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Hamburger nav
+  const hamburger = document.getElementById('navHamburger');
+  const navLinks  = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+  }
+
+  // Service chip hover — image panel
+  const serviceChips   = document.querySelectorAll('.service-chip');
+  const serviceSlides  = document.querySelectorAll('.service-slide');
+  const serviceDisplay = document.getElementById('serviceDisplay');
+
+  function showServiceSlide(key) {
+    serviceSlides.forEach(s => s.classList.remove('active'));
+    const target = document.querySelector('.service-slide[data-service="' + key + '"]');
+    if (target) target.classList.add('active');
+    if (serviceDisplay) serviceDisplay.classList.add('has-active');
+  }
+
+  function showServiceIdle() {
+    serviceSlides.forEach(s => s.classList.remove('active'));
+    const idle = document.querySelector('.service-slide.idle');
+    if (idle) idle.classList.add('active');
+    if (serviceDisplay) serviceDisplay.classList.remove('has-active');
+  }
+
+  serviceChips.forEach(chip => {
+    chip.addEventListener('mouseenter', () => {
+      serviceChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      showServiceSlide(chip.dataset.service);
+    });
+    chip.addEventListener('mouseleave', () => {
+      chip.classList.remove('active');
+      showServiceIdle();
+    });
+  });
+</script>
 </body>
 </html>
