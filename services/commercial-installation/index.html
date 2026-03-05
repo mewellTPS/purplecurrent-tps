@@ -1,0 +1,1860 @@
+<!--
+  Purple Current Website
+  Page: Commercial Electrical Installation
+  Version: 1.2
+  Last Updated: 2025-03-04
+
+  Changes in this version:
+  - v1.2 (2025-03-04): Visual balance pass
+    - What We Install: two-column hover-image-swap layout
+    - How It Works: two-column layout with image placeholder
+    - Project Types: added icons per type, image placeholder
+    - CTA: de-emphasized phone to text link, primary button dominates
+  - v1.1 (2025-03-04): Rebuild from scratch — strict content fidelity
+  - v1.0 (2025-03-03): Initial attempt (retired)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commercial Electrical Installation in Tampa Bay | Purple Current</title>
+  <meta name="description" content="Commercial electrical installation for new construction, buildouts, and expansions across Tampa Bay. Permitted, inspected, and built to spec. Get a quote.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lexend+Exa:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Schema: Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Commercial Electrical Installation",
+    "description": "Full-scope commercial electrical installation for new construction, tenant buildouts, expansions, and multi-phase projects across Tampa Bay and Florida.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Purple Current",
+      "url": "https://purplecurrent.com",
+      "telephone": "(XXX) XXX-XXXX",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Land O' Lakes",
+        "addressRegion": "FL",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": [
+      "Tampa Bay, FL",
+      "Tampa, FL",
+      "Hillsborough County, FL",
+      "Pasco County, FL",
+      "Pinellas County, FL",
+      "Florida"
+    ],
+    "serviceType": "Commercial Electrical Installation",
+    "url": "https://purplecurrent.com/services/commercial-installation/"
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is included in a commercial electrical installation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A commercial electrical installation covers the full electrical scope of a building or tenant space: power distribution, branch circuits, panel and switchgear installation, lighting, emergency lighting, fire alarm conduit, low-voltage rough-in, equipment connections, and final testing. The exact scope depends on the project, but every installation includes permitting, inspection coordination, and full documentation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a commercial electrical installation take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Timeline depends on the size and complexity of the project. A small tenant buildout might take a few weeks of electrical work spread across the construction schedule. A ground-up commercial building could span several months. The biggest factor in staying on schedule is coordination with other trades."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Purple Current handle permits and inspections?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Purple Current pulls every permit, coordinates every inspection, and documents the results. Our work is built to pass inspection the first time, and our documentation is organized so that inspectors, property managers, and compliance teams can verify it without chasing us down for paperwork."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+       DESIGN SYSTEM — Purple Current Brand
+       Tokens from tokens-v1_1.css
+       ============================================================ */
+    :root {
+      --color-standard-purple:   #49104F;
+      --color-purple-grey:       #BAB0C6;
+      --color-pale-grey:         #F5EFFB;
+      --color-mid-purple:        #771686;
+      --color-neon-purple:       #A263D2;
+      --color-light-purple:      #D9BBF2;
+      --color-dark-purple:       #2A0A2D;
+      --color-black-purple:      #170218;
+      --color-horizon-yellow:    #EBA950;
+      --color-pale-yellow:       #E4B776;
+
+      --color-standard-purple-rgb: 73, 16, 79;
+      --color-dark-purple-rgb:     42, 10, 45;
+      --color-black-purple-rgb:    23, 2, 24;
+      --color-horizon-yellow-rgb:  235, 169, 80;
+      --color-neon-purple-rgb:     162, 99, 210;
+
+      --color-text-body:        #555555;
+      --color-text-muted:       #666666;
+      --color-text-subtle:      #888888;
+      --color-border-subtle:    #EEEEEE;
+      --color-border-medium:    #DDDDDD;
+      --color-border-strong:    #E5E5E5;
+      --color-border-purple-tint: #E0D8E2;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--color-black-purple);
+      background: #fff;
+      line-height: 1.7;
+      font-weight: 400;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.25;
+      font-weight: 600;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .section-label {
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-horizon-yellow);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 40px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      font-size: 17px;
+      line-height: 1.8;
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+
+    /* ── FADE ANIMATIONS ───────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+
+    /* ── NAV ────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--color-standard-purple);
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--color-horizon-yellow);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-logo-icon svg { width: 20px; height: 20px; }
+
+    .nav-logo-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--color-horizon-yellow); }
+
+    .nav-cta {
+      background: var(--color-horizon-yellow) !important;
+      color: var(--color-standard-purple) !important;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(var(--color-horizon-yellow-rgb), 0.4);
+      color: var(--color-standard-purple) !important;
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+    /* ── HERO ───────────────────────────────────────── */
+    .hero {
+      margin-top: 72px;
+      background: var(--color-standard-purple);
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 80% 40%, rgba(var(--color-neon-purple-rgb), 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(var(--color-horizon-yellow-rgb), 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      opacity: 0.04;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.5) 59px, rgba(255,255,255,0.5) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.5) 59px, rgba(255,255,255,0.5) 60px);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 48px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 24px;
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .hero-breadcrumb a {
+      color: rgba(255,255,255,0.45);
+      transition: color 0.2s;
+    }
+    .hero-breadcrumb a:hover { color: var(--color-horizon-yellow); }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--color-horizon-yellow);
+    }
+
+    .img-placeholder {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-placeholder::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg,
+        var(--color-standard-purple),
+        var(--color-neon-purple),
+        var(--color-horizon-yellow));
+    }
+
+    .img-placeholder svg {
+      width: 48px; height: 48px;
+      stroke: rgba(255,255,255,0.2);
+    }
+
+    .img-placeholder span {
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* Light-bg variant for image placeholders */
+    .img-placeholder--light {
+      background: var(--color-pale-grey);
+      border-color: var(--color-border-purple-tint);
+    }
+
+    .img-placeholder--light::after {
+      background: linear-gradient(90deg,
+        var(--color-standard-purple),
+        var(--color-neon-purple),
+        var(--color-horizon-yellow));
+    }
+
+    .img-placeholder--light svg {
+      stroke: var(--color-purple-grey);
+    }
+
+    .img-placeholder--light span {
+      color: var(--color-purple-grey);
+    }
+
+    /* White-bg variant */
+    .img-placeholder--white {
+      background: #fff;
+      border-color: var(--color-border-subtle);
+    }
+
+    .img-placeholder--white::after {
+      background: linear-gradient(90deg,
+        var(--color-standard-purple),
+        var(--color-neon-purple),
+        var(--color-horizon-yellow));
+    }
+
+    .img-placeholder--white svg {
+      stroke: var(--color-purple-grey);
+    }
+
+    .img-placeholder--white span {
+      color: var(--color-purple-grey);
+    }
+
+    /* Placeholder icon SVG reusable */
+    .ph-icon {
+      width: 48px; height: 48px;
+      fill: none; stroke-width: 1.5;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+
+    /* ============================================================
+       WHAT WE INSTALL — White bg, two-column hover-image-swap
+       ============================================================ */
+    .what-we-install {
+      padding: 100px 48px;
+      background: #fff;
+    }
+
+    .what-we-install .section-title {
+      color: var(--color-standard-purple);
+    }
+
+    .install-intro {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--color-text-body);
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+
+    .install-intro p { margin-bottom: 20px; }
+    .install-intro p:last-child { margin-bottom: 0; }
+
+    .install-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .install-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .install-item {
+      padding: 24px 24px 24px 0;
+      border-bottom: 1px solid var(--color-border-subtle);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .install-item:first-child {
+      padding-top: 0;
+    }
+
+    .install-item:last-child {
+      border-bottom: none;
+    }
+
+    .install-item::before {
+      content: '';
+      position: absolute;
+      left: -24px; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--color-neon-purple);
+      border-radius: 2px;
+      transform: scaleY(0);
+      transition: transform 0.25s ease;
+    }
+
+    .install-item.active::before {
+      transform: scaleY(1);
+    }
+
+    .install-item.active {
+      padding-left: 24px;
+    }
+
+    .install-item h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-standard-purple);
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .install-item:hover h3,
+    .install-item.active h3 {
+      color: var(--color-neon-purple);
+    }
+
+    .install-item p {
+      font-size: 15px;
+      color: var(--color-text-body);
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+      margin-bottom: 0;
+    }
+
+    .install-item.active p {
+      max-height: 300px;
+      opacity: 1;
+      margin-bottom: 8px;
+    }
+
+    .install-item-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
+
+    .install-item.active .install-item-links {
+      max-height: 60px;
+      opacity: 1;
+    }
+
+    .install-item-links a {
+      font-size: 13px;
+      color: var(--color-neon-purple);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s;
+    }
+
+    .install-item-links a:hover {
+      color: var(--color-mid-purple);
+    }
+
+    .install-item-links a svg {
+      width: 14px; height: 14px;
+      stroke: currentColor;
+    }
+
+    /* Image display panel */
+    .install-image-panel {
+      position: sticky;
+      top: 120px;
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 420px;
+      background: var(--color-pale-grey);
+      border: 1px solid var(--color-border-purple-tint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .install-image-panel::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg,
+        var(--color-standard-purple),
+        var(--color-neon-purple),
+        var(--color-horizon-yellow));
+      z-index: 2;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .install-image-panel.has-active::after {
+      transform: scaleX(1);
+    }
+
+    .install-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 32px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .install-slide.active {
+      opacity: 1;
+    }
+
+    .install-slide-icon {
+      width: 72px; height: 72px;
+      background: rgba(var(--color-standard-purple-rgb), 0.06);
+      border: 1px solid rgba(var(--color-standard-purple-rgb), 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .install-slide-icon svg {
+      width: 36px; height: 36px;
+      stroke: var(--color-standard-purple);
+      fill: none; stroke-width: 1.5;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .install-slide-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-standard-purple);
+      text-align: center;
+    }
+
+    .install-slide-hint {
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-purple-grey);
+    }
+
+
+    /* ============================================================
+       HOW IT WORKS — Pale grey bg
+       ============================================================ */
+    .how-it-works {
+      padding: 100px 48px;
+      background: var(--color-pale-grey);
+    }
+
+    .how-it-works .section-title {
+      color: var(--color-standard-purple);
+    }
+
+    /* Horizontal stepper */
+    .stepper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      max-width: 780px;
+      margin: 0 auto 64px;
+      position: relative;
+    }
+
+    .stepper::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: calc(16.667%);
+      right: calc(16.667%);
+      height: 2px;
+      background: var(--color-purple-grey);
+    }
+
+    .step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--color-standard-purple);
+      color: var(--color-horizon-yellow);
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 0 4px var(--color-pale-grey);
+    }
+
+    .step-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-standard-purple);
+      max-width: 160px;
+    }
+
+    /* Process content — two-column with image */
+    .process-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .process-blocks {}
+
+    .process-block {
+      margin-bottom: 48px;
+    }
+    .process-block:last-child { margin-bottom: 0; }
+
+    .process-block-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .process-block-number {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--color-standard-purple);
+      color: var(--color-horizon-yellow);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .process-block h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-standard-purple);
+    }
+
+    .process-block p {
+      font-size: 16px;
+      color: var(--color-text-body);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .process-block p:last-child { margin-bottom: 0; }
+
+    .process-image {
+      position: sticky;
+      top: 120px;
+    }
+
+    .process-image .img-placeholder--light {
+      min-height: 480px;
+    }
+
+
+    /* ============================================================
+       PROJECT TYPES — White bg
+       ============================================================ */
+    .project-types {
+      padding: 100px 48px;
+      background: #fff;
+    }
+
+    .project-types .section-title {
+      color: var(--color-standard-purple);
+    }
+
+    .project-types-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .project-type-items {}
+
+    .project-type-item {
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--color-border-subtle);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .project-type-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .project-type-icon {
+      width: 48px; height: 48px;
+      background: var(--color-pale-grey);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .project-type-icon svg {
+      width: 24px; height: 24px;
+      stroke: var(--color-standard-purple);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .project-type-content { flex: 1; }
+
+    .project-type-content h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--color-standard-purple);
+      margin-bottom: 8px;
+    }
+
+    .project-type-content p {
+      font-size: 15px;
+      color: var(--color-text-body);
+      line-height: 1.8;
+    }
+
+    .project-type-content a {
+      color: var(--color-neon-purple);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .project-type-content a:hover {
+      color: var(--color-mid-purple);
+    }
+
+    .type-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-neon-purple);
+      transition: color 0.2s, gap 0.2s;
+    }
+    .type-link:hover {
+      color: var(--color-mid-purple);
+      gap: 10px;
+    }
+    .type-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor;
+    }
+
+    .project-types-image {
+      position: sticky;
+      top: 120px;
+    }
+
+    .project-types-image .img-placeholder--white {
+      min-height: 520px;
+    }
+
+
+    /* ============================================================
+       WHY COMMERCIAL — Pale grey bg
+       ============================================================ */
+    .why-commercial {
+      padding: 100px 48px;
+      background: var(--color-pale-grey);
+    }
+
+    .why-commercial .section-title {
+      color: var(--color-standard-purple);
+    }
+
+    .why-commercial-content {
+      max-width: 860px;
+    }
+
+    .why-commercial-content p {
+      font-size: 16px;
+      color: var(--color-text-body);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .why-commercial-content p:last-child { margin-bottom: 0; }
+
+
+    /* ============================================================
+       FAQ — White bg
+       ============================================================ */
+    .faq-section {
+      padding: 100px 48px;
+      background: #fff;
+    }
+
+    .faq-section .section-title {
+      color: var(--color-standard-purple);
+      margin-bottom: 48px;
+    }
+
+    .faq-wrapper {
+      max-width: 800px;
+      border-top: 3px solid var(--color-standard-purple);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--color-border-strong);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-standard-purple);
+      text-align: left;
+      transition: color 0.2s;
+      gap: 24px;
+    }
+
+    .faq-question:hover { color: var(--color-neon-purple); }
+
+    .faq-chevron {
+      width: 20px; height: 20px;
+      stroke: var(--color-standard-purple);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding-bottom: 24px;
+    }
+
+    .faq-answer p {
+      font-size: 16px;
+      color: var(--color-text-body);
+      line-height: 1.8;
+    }
+
+
+    /* ============================================================
+       CTA — Purple bg
+       ============================================================ */
+    .cta-section {
+      padding: 100px 48px;
+      background: var(--color-standard-purple);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 10% 90%, rgba(var(--color-horizon-yellow-rgb), 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 60% at 90% 20%, rgba(var(--color-neon-purple-rgb), 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      position: relative; z-index: 2;
+      text-align: center;
+      max-width: 640px; margin: 0 auto;
+    }
+
+    .cta-section .section-title { color: #fff; }
+
+    .cta-desc {
+      font-size: 17px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    .cta-btn-wrap { margin-bottom: 24px; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-horizon-yellow);
+      color: var(--color-black-purple);
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 18px 40px;
+      border-radius: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(var(--color-horizon-yellow-rgb), 0.35);
+    }
+
+    .btn-primary svg {
+      width: 18px; height: 18px;
+      stroke: currentColor;
+    }
+
+    .cta-contact {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 28px;
+    }
+    .cta-contact a {
+      color: var(--color-horizon-yellow);
+      font-weight: 600;
+    }
+    .cta-contact a:hover { text-decoration: underline; }
+
+    .cta-checklist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .cta-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+    }
+    .cta-check svg {
+      width: 16px; height: 16px;
+      stroke: var(--color-horizon-yellow);
+    }
+
+    .cta-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cta-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+    }
+    .cta-trust-item svg {
+      width: 16px; height: 16px;
+      stroke: var(--color-horizon-yellow);
+    }
+
+
+    /* ============================================================
+       FOOTER — Dark purple bg
+       ============================================================ */
+    footer {
+      background: var(--color-dark-purple);
+      color: rgba(255,255,255,0.7);
+      padding: 64px 48px 32px;
+    }
+
+    .footer-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p { font-size: 14px; line-height: 1.7; margin-top: 16px; }
+
+    .footer-logo {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    }
+
+    .footer-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--color-horizon-yellow);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .footer-logo-icon svg { width: 20px; height: 20px; }
+
+    .footer-logo span {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700; font-size: 18px; color: #fff;
+    }
+
+    .footer-col h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: #fff; margin-bottom: 16px;
+    }
+
+    .footer-col a {
+      display: block; font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--color-horizon-yellow); }
+
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px;
+    }
+    .footer-bottom span { color: rgba(255,255,255,0.6); }
+
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero .img-placeholder { display: none; }
+
+      .install-layout { grid-template-columns: 1fr; gap: 40px; }
+      .install-image-panel { position: relative; top: auto; min-height: 300px; }
+
+      .process-layout { grid-template-columns: 1fr; gap: 40px; }
+      .process-image { position: relative; top: auto; }
+      .process-image .img-placeholder--light { min-height: 300px; }
+
+      .project-types-layout { grid-template-columns: 1fr; gap: 40px; }
+      .project-types-image { position: relative; top: auto; }
+      .project-types-image .img-placeholder--white { min-height: 300px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+
+      .hero-inner { padding: 0 24px 80px; }
+      .hero h1 { font-size: 36px; }
+
+      .what-we-install,
+      .how-it-works,
+      .project-types,
+      .why-commercial,
+      .faq-section,
+      .cta-section { padding: 72px 24px; }
+
+      .container { padding: 0 24px; }
+
+      .section-title { font-size: 28px; }
+
+      /* Stepper stacks vertical on mobile */
+      .stepper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        max-width: 100%;
+        margin-bottom: 48px;
+      }
+
+      .stepper::before {
+        top: 0; bottom: 0;
+        left: 23px; right: auto;
+        width: 2px; height: auto;
+      }
+
+      .step {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 16px;
+      }
+
+      .step-number {
+        width: 40px; height: 40px;
+        font-size: 16px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+        box-shadow: 0 0 0 4px var(--color-pale-grey);
+      }
+
+      .step-label { max-width: none; }
+
+      .process-block h3 { font-size: 19px; }
+
+      /* Install items always expanded on mobile */
+      .install-item p {
+        max-height: none;
+        opacity: 1;
+        margin-bottom: 8px;
+      }
+
+      .install-item-links {
+        max-height: none;
+        opacity: 1;
+      }
+
+      .install-item::before { display: none; }
+      .install-item.active { padding-left: 0; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .nav-links.open {
+        display: flex;
+        position: fixed;
+        top: 72px; left: 0; right: 0;
+        background: var(--color-standard-purple);
+        padding: 24px;
+        gap: 4px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        z-index: 99;
+      }
+
+      .nav-links.open a {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        font-size: 12px;
+      }
+
+      .nav-links.open .nav-cta {
+        margin-top: 12px;
+        text-align: center;
+        border-radius: 6px;
+        padding: 12px 24px !important;
+      }
+
+      .nav-hamburger { display: flex; }
+
+      .section-title { font-size: 24px; }
+      .hero h1 { font-size: 30px; }
+
+      .project-type-item { flex-direction: column; gap: 12px; }
+
+      .cta-trust { flex-direction: column; align-items: center; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────── -->
+<nav>
+  <div class="nav-container">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#49104F" stroke-width="2.5" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <span class="nav-logo-text">Purple Current</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/services/" class="active">Services</a></li>
+      <li><a href="/industries/">Industries</a></li>
+      <li><a href="/service-areas/">Service Areas</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-breadcrumb fade-up">
+        <a href="/">Home</a>
+        <span>›</span>
+        <a href="/services/">Services</a>
+        <span>›</span>
+        <span>Commercial Installation</span>
+      </div>
+      <h1 class="fade-up stagger-1">Commercial Electrical <em>Installation</em> for Tampa Bay Businesses</h1>
+    </div>
+    <div class="img-placeholder fade-up stagger-2">
+      <svg class="ph-icon" viewBox="0 0 24 24" stroke="currentColor">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <path d="M21 15l-5-5L5 21"/>
+      </svg>
+      <span>Hero Photo Placeholder</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── WHAT WE INSTALL — White bg ──────────────────── -->
+<section class="what-we-install">
+  <div class="container">
+    <h2 class="section-title fade-up">What We Install</h2>
+
+    <div class="install-intro fade-up stagger-1">
+      <p>Every commercial electrical installation starts with a set of plans and ends with a facility that has power where it needs to be, built to code, and cleared by inspection. What happens between those two points is where most contractors either deliver or create problems.</p>
+      <p>Purple Current handles the full electrical scope on commercial, industrial, and multi-family projects across Tampa Bay. That includes:</p>
+    </div>
+
+    <div class="install-layout fade-up stagger-2">
+
+      <!-- Left: scope items -->
+      <div class="install-items">
+
+        <div class="install-item active" data-scope="power">
+          <h3>Power distribution and branch circuits.</h3>
+          <p>Main service entrances, distribution panels, three-phase systems, dedicated circuits for equipment, and motor connections. We size everything to the actual load requirements of the building, not to a generic spec. If capacity needs change during construction, we catch it in planning, not during the rough-in.</p>
+          <div class="install-item-links">
+            <a href="/services/panel-upgrades/">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Panel Upgrades &amp; Service Upgrades
+            </a>
+            <a href="/services/retrofit-renovation/power-distribution-upgrades/">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Power Distribution Upgrades
+            </a>
+          </div>
+        </div>
+
+        <div class="install-item" data-scope="lighting">
+          <h3>Lighting rough-in and installation.</h3>
+          <p>Interior and exterior commercial lighting, including controls, dimming systems, and code-compliant fixture layouts. We coordinate fixture placement with the architect's reflected ceiling plan and handle everything from conduit to final trim.</p>
+          <div class="install-item-links">
+            <a href="/services/lighting-installation/">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Commercial Lighting Installation
+            </a>
+          </div>
+        </div>
+
+        <div class="install-item" data-scope="emergency">
+          <h3>Emergency and exit lighting.</h3>
+          <p>Battery backup units, central inverter systems, and photometric layouts that satisfy occupancy requirements. This isn't a line item to check off at the end of a project. It gets planned, installed, and inspected as part of the full electrical scope.</p>
+          <div class="install-item-links">
+            <a href="/services/emergency-lighting/">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Emergency Lighting Installation
+            </a>
+          </div>
+        </div>
+
+        <div class="install-item" data-scope="firealarm">
+          <h3>Fire alarm conduit and low-voltage rough-in.</h3>
+          <p>We install the conduit and wiring infrastructure for fire alarm systems, data networks, access control, and security cameras. The signal and termination work is typically handled by the specialty contractor. We make sure they have clean, code-compliant pathways to work with.</p>
+          <div class="install-item-links"></div>
+        </div>
+
+        <div class="install-item" data-scope="equipment">
+          <h3>Equipment connections and dedicated circuits.</h3>
+          <p>Commercial kitchens, manufacturing floors, server rooms, medical equipment. Whatever the facility needs connected, we provide the correct circuit type, wire gauge, and overcurrent protection for the load.</p>
+          <div class="install-item-links"></div>
+        </div>
+
+      </div>
+
+      <!-- Right: image swap panel -->
+      <div class="install-image-panel has-active" id="installImagePanel">
+
+        <!-- Idle / default -->
+        <div class="install-slide" data-scope="idle">
+          <div class="install-slide-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <div class="install-slide-hint">Photo Placeholder</div>
+        </div>
+
+        <!-- Power distribution -->
+        <div class="install-slide active" data-scope="power">
+          <div class="install-slide-icon">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="install-slide-title">Power Distribution &amp; Branch Circuits</div>
+          <div class="install-slide-hint">Photo Placeholder</div>
+        </div>
+
+        <!-- Lighting -->
+        <div class="install-slide" data-scope="lighting">
+          <div class="install-slide-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>
+          </div>
+          <div class="install-slide-title">Lighting Rough-In &amp; Installation</div>
+          <div class="install-slide-hint">Photo Placeholder</div>
+        </div>
+
+        <!-- Emergency -->
+        <div class="install-slide" data-scope="emergency">
+          <div class="install-slide-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="install-slide-title">Emergency &amp; Exit Lighting</div>
+          <div class="install-slide-hint">Photo Placeholder</div>
+        </div>
+
+        <!-- Fire alarm -->
+        <div class="install-slide" data-scope="firealarm">
+          <div class="install-slide-icon">
+            <svg viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          </div>
+          <div class="install-slide-title">Fire Alarm Conduit &amp; Low-Voltage Rough-In</div>
+          <div class="install-slide-hint">Photo Placeholder</div>
+        </div>
+
+        <!-- Equipment -->
+        <div class="install-slide" data-scope="equipment">
+          <div class="install-slide-icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div class="install-slide-title">Equipment Connections &amp; Dedicated Circuits</div>
+          <div class="install-slide-hint">Photo Placeholder</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── HOW IT WORKS — Pale grey bg ─────────────────── -->
+<section class="how-it-works">
+  <div class="container">
+    <h2 class="section-title fade-up">How a Commercial Electrical Installation Works</h2>
+
+    <!-- Horizontal stepper -->
+    <div class="stepper fade-up stagger-1">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-label">Pre-Construction and Planning</div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-label">Rough-In</div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-label">Trim-Out and Final</div>
+      </div>
+    </div>
+
+    <!-- Two-column: process blocks + image -->
+    <div class="process-layout">
+
+      <div class="process-blocks">
+        <div class="process-block fade-up">
+          <div class="process-block-header">
+            <div class="process-block-number">1</div>
+            <h3>Pre-Construction and Planning</h3>
+          </div>
+          <p>The electrical scope starts before anyone pulls wire. We review the construction drawings, run load calculations, identify coordination points with other trades, and flag anything that looks like it will cause a problem during the build. Permit applications go in early. Material procurement happens before the job starts, not the week of.</p>
+          <p>For projects in Tampa Bay, we work with the local AHJ, whether that's the City of Tampa Building Department, Pasco County Building Services, or any of the other jurisdictions across our nine-county service area. We know who reviews what, how long it takes, and what they look for.</p>
+        </div>
+
+        <div class="process-block fade-up">
+          <div class="process-block-header">
+            <div class="process-block-number">2</div>
+            <h3>Rough-In</h3>
+          </div>
+          <p>Rough-in is where the electrical system takes shape inside the walls, ceilings, and floors before everything gets closed up. Conduit runs, wire pulls, box placement, panel mounting, grounding, and bonding all happen during this phase.</p>
+          <p>This is also the phase where coordination with the GC and other subcontractors matters most. If the plumber moves a line and nobody tells the electrician, you get conflicts that cost time and money at trim-out. We stay on the coordination schedule and communicate changes when they happen, not after the drywall is up.</p>
+        </div>
+
+        <div class="process-block fade-up">
+          <div class="process-block-header">
+            <div class="process-block-number">3</div>
+            <h3>Trim-Out and Final</h3>
+          </div>
+          <p>Trim-out is the finish phase: devices, fixtures, covers, and connections go in. Panels get labeled. Circuits get tested. Then we schedule the final inspection.</p>
+          <p>Our goal at final inspection is a clean pass. That means the work is right, the documentation is right, and the inspector can see both without digging. We don't treat inspection day as a surprise.</p>
+        </div>
+      </div>
+
+      <div class="process-image fade-up stagger-2">
+        <div class="img-placeholder img-placeholder--light">
+          <svg class="ph-icon" viewBox="0 0 24 24" stroke="currentColor">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Process Photo Placeholder</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── PROJECT TYPES — White bg ────────────────────── -->
+<section class="project-types">
+  <div class="container">
+    <h2 class="section-title fade-up">Project Types We Handle</h2>
+
+    <div class="project-types-layout">
+
+      <div class="project-type-items">
+
+        <div class="project-type-item fade-up">
+          <div class="project-type-icon">
+            <!-- New construction / building icon -->
+            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22V12h6v10"/><line x1="8" y1="6" x2="8" y2="6.01"/><line x1="12" y1="6" x2="12" y2="6.01"/><line x1="16" y1="6" x2="16" y2="6.01"/><line x1="8" y1="9" x2="8" y2="9.01"/><line x1="12" y1="9" x2="12" y2="9.01"/><line x1="16" y1="9" x2="16" y2="9.01"/></svg>
+          </div>
+          <div class="project-type-content">
+            <h3>New Construction</h3>
+            <p>Ground-up commercial builds are our core work. We take the electrical scope from plan review through certificate of occupancy, coordinating with the GC and every other trade on the schedule. Office buildings, <a href="/who-we-serve/retail-stores/">retail spaces</a>, <a href="/who-we-serve/restaurants/">restaurants</a>, <a href="/who-we-serve/commercial-industrial-facilities/">industrial facilities</a>, <a href="/who-we-serve/healthcare-facilities/">healthcare buildings</a>, and multi-family developments all fall within our scope.</p>
+          </div>
+        </div>
+
+        <div class="project-type-item fade-up">
+          <div class="project-type-icon">
+            <!-- Tenant buildout / layout icon -->
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </div>
+          <div class="project-type-content">
+            <h3>Tenant Buildouts</h3>
+            <p>When a new tenant moves into a commercial shell, the electrical has to match their layout, their equipment, and their timeline. We handle tenant improvement electrical for office, retail, restaurant, and industrial spaces, phased to minimize disruption to neighboring tenants and building operations.</p>
+            <a href="/who-we-serve/tenant-shell-fit-outs/" class="type-link">
+              See more about our tenant buildout work
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-type-item fade-up">
+          <div class="project-type-icon">
+            <!-- Expansion / plus icon -->
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <div class="project-type-content">
+            <h3>Expansions and Additions</h3>
+            <p>Adding square footage to an existing facility means tying new electrical into existing infrastructure without creating capacity problems. We assess the current system, determine whether a <a href="/services/panel-upgrades/">service upgrade</a> is needed, and build the new scope to integrate cleanly with what's already there.</p>
+          </div>
+        </div>
+
+        <div class="project-type-item fade-up">
+          <div class="project-type-icon">
+            <!-- Multi-phase / layers icon -->
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="15" height="13" rx="2"/><path d="M7 7V5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
+          </div>
+          <div class="project-type-content">
+            <h3>Multi-Phase Projects</h3>
+            <p>Some projects don't happen all at once. Phased construction, rolling tenant improvements, and campus-wide buildouts require an electrical contractor who can plan for future phases while delivering the current one. We document everything so the next phase starts with a clear picture of what's in place.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="project-types-image fade-up stagger-2">
+        <div class="img-placeholder img-placeholder--white">
+          <svg class="ph-icon" viewBox="0 0 24 24" stroke="currentColor">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Project Photo Placeholder</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── WHY COMMERCIAL — Pale grey bg ───────────────── -->
+<section class="why-commercial">
+  <div class="container">
+    <h2 class="section-title fade-up">Why Commercial Installation Requires a Commercial Contractor</h2>
+
+    <div class="why-commercial-content">
+      <p class="fade-up stagger-1">The gap between residential and commercial electrical work is wider than most people think. Three-phase power, higher voltages, stricter inspection standards, AHJ coordination, fire alarm integration, and NEC requirements that change based on occupancy type are all part of the job on a commercial site. A contractor who does houses during the week and picks up a commercial job on the side is operating in an environment they don't live in.</p>
+
+      <p class="fade-up stagger-2">The problems show up in predictable places. Inspection failures from code misses on three-phase systems. Schedule delays because the contractor didn't know how to work within a GC's coordination timeline. Change orders from scope that should have been caught during plan review. These aren't rare occurrences. They're what happens when the contractor isn't built for the work.</p>
+
+      <p class="fade-up stagger-3">Purple Current does commercial electrical work exclusively. Our crews are trained for it, our processes are built around it, and our 15 years in Tampa Bay mean we know the local jurisdictions, the inspection standards, and the coordination demands that come with commercial construction.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FAQ — White bg ──────────────────────────────── -->
+<section class="faq-section">
+  <div class="container">
+    <h2 class="section-title fade-up">Frequently Asked Questions</h2>
+
+    <div class="faq-wrapper fade-up stagger-1">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What is included in a commercial electrical installation?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>A commercial electrical installation covers the full electrical scope of a building or tenant space: power distribution, branch circuits, panel and switchgear installation, lighting, emergency lighting, fire alarm conduit, low-voltage rough-in, equipment connections, and final testing. The exact scope depends on the project, but every installation we do includes permitting, inspection coordination, and full documentation.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How long does a commercial electrical installation take?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Timeline depends on the size and complexity of the project. A small tenant buildout might take a few weeks of electrical work spread across the construction schedule. A ground-up commercial building could span several months. We provide a schedule during the planning phase and communicate any changes as they come up. The biggest factor in staying on schedule is coordination with other trades, which is why we stay active on the GC's coordination timeline from day one.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Does Purple Current handle permits and inspections?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. We pull every permit, coordinate every inspection, and document the results. Our work is built to pass inspection the first time, and our documentation is organized so that inspectors, property managers, and compliance teams can verify it without chasing us down for paperwork.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA — Purple bg ─────────────────────────────── -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner fade-up">
+      <h2 class="section-title">Ready to Talk About Your Project?</h2>
+      <p class="cta-desc">Tell us what you're working on. We'll give you a straight answer on scope, timeline, and cost.</p>
+
+      <div class="cta-btn-wrap">
+        <a href="/request-a-quote/" class="btn-primary">
+          Request a Quote
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <p class="cta-contact">Or call us at <a href="tel:+10000000000">(XXX) XXX-XXXX</a></p>
+
+      <div class="cta-checklist">
+        <span class="cta-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Project type and location
+        </span>
+        <span class="cta-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Facility size or scope
+        </span>
+        <span class="cta-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Construction timeline
+        </span>
+        <span class="cta-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Best way to reach you
+        </span>
+      </div>
+
+      <div class="cta-trust">
+        <span class="cta-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Based in Land O' Lakes, FL
+        </span>
+        <span class="cta-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Licensed Commercial Electrical Contractor
+        </span>
+        <span class="cta-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+          15 Years of Commercial Experience
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ──────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#49104F" stroke-width="2.5" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <span>Purple Current</span>
+      </div>
+      <p>Licensed commercial electrical contractor serving Tampa Bay and Florida.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="/services/">All Services</a>
+      <a href="/services/commercial-installation/">Installation</a>
+      <a href="/services/panel-upgrades/">Panel Upgrades</a>
+      <a href="/services/lighting-installation/">Lighting</a>
+      <a href="/services/emergency-lighting/">Emergency Lighting</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about/">About</a>
+      <a href="/service-areas/">Service Areas</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+10000000000">(XXX) XXX-XXXX</a>
+      <a>Land O' Lakes, FL</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Purple Current. All rights reserved.</span>
+    <span>Powered by The Purple Standard</span>
+  </div>
+</footer>
+
+
+<!-- ── SCRIPTS ──────────────────────────────────────── -->
+<script>
+  // Scroll fade-in
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+  // ── What We Install: hover-image-swap ──
+  var installItems = document.querySelectorAll('.install-item');
+  var installSlides = document.querySelectorAll('.install-slide');
+  var installPanel = document.getElementById('installImagePanel');
+
+  function setActiveScope(scopeKey) {
+    // Update items
+    installItems.forEach(function(item) {
+      if (item.getAttribute('data-scope') === scopeKey) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+    // Update slides
+    installSlides.forEach(function(slide) {
+      if (slide.getAttribute('data-scope') === scopeKey) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+    // Gradient bar
+    if (installPanel) {
+      if (scopeKey && scopeKey !== 'idle') {
+        installPanel.classList.add('has-active');
+      } else {
+        installPanel.classList.remove('has-active');
+      }
+    }
+  }
+
+  installItems.forEach(function(item) {
+    item.addEventListener('mouseenter', function() {
+      setActiveScope(item.getAttribute('data-scope'));
+    });
+    item.addEventListener('click', function() {
+      setActiveScope(item.getAttribute('data-scope'));
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Hamburger nav
+  var hamburger = document.getElementById('navHamburger');
+  var navLinks = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', function() {
+      var open = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+  }
+</script>
+
+</body>
+</html>
