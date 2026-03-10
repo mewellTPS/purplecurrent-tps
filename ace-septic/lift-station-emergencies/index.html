@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lift Station Emergency Services | 24/7 Response | ACE Septic &amp; Waste</title>
+  <meta name="description" content="24/7 lift station emergency services across Tampa Bay. Pump failure, sewage backups, alarm response, and bypass pumping for commercial, municipal, and HOA systems. Call 1-800-DWN-LIFT.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== ACE Brand Tokens ===== */
+    :root {
+      --ace-sangria: #49104f;
+      --ace-sailfish: #335e89;
+      --ace-water: #3c81f5;
+      --ace-gulf: #63c1c1;
+      --ace-lawn: #0ba94b;
+      --ace-orange: #f16522;
+      --ace-sand: #efebda;
+      --ace-sunshine: #e7b94d;
+      --ace-coral: #f09976;
+      --ace-flamingo: #eb4868;
+      --ace-strawberry: #cc4a57;
+      --ace-white: #ffffff;
+      --ace-body-text: #474747;
+      --container-max: 1110px;
+      --section-pad-x: 8%;
+      --section-pad-y: 5%;
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Jost', sans-serif;
+    }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--ace-body-text);
+      background: var(--ace-white);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; }
+
+    /* ===== Top Bar ===== */
+    .top-bar {
+      background: var(--ace-lawn);
+      color: var(--ace-white);
+      font-family: var(--font-body);
+      font-size: 0.8em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .top-bar-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: stretch;
+    }
+    .top-bar-item {
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      font-size: 0.85em;
+      letter-spacing: 0.03em;
+    }
+    .top-bar-item a { color: inherit; }
+    .top-bar-item svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+    .tb-schedule { background: var(--ace-orange); border-radius: 0 0 14px 14px; }
+    .tb-espanol { background: var(--ace-sangria); border-radius: 0 0 14px 14px; color: var(--ace-coral); }
+    .tb-espanol svg { fill: var(--ace-sunshine); }
+    .tb-phone svg { fill: var(--ace-white); }
+    .tb-financing { letter-spacing: 0.04em; }
+    .tb-financing svg { fill: var(--ace-sunshine); }
+
+    /* ===== Header ===== */
+    .site-header {
+      background: var(--ace-white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem var(--section-pad-x);
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .site-logo img {
+      height: 56px;
+      width: auto;
+    }
+    .main-nav { display: flex; align-items: center; gap: 0; }
+    .main-nav a {
+      font-family: var(--font-heading);
+      font-size: 0.88em;
+      font-weight: 600;
+      color: var(--ace-body-text);
+      padding: 16px 16px;
+      transition: color 0.25s;
+      position: relative;
+    }
+    .main-nav a:hover { color: var(--ace-orange); }
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 16px; right: 16px;
+      height: 3px; background: var(--ace-orange);
+      transform: scaleX(0); transition: transform 0.25s;
+    }
+    .main-nav a:hover::after { transform: scaleX(1); }
+    .menu-toggle {
+      display: none;
+      background: rgba(0,0,0,0.05);
+      border: none; border-radius: 3px;
+      padding: 8px; cursor: pointer;
+      color: var(--ace-sangria);
+    }
+    .menu-toggle svg { width: 28px; height: 28px; fill: currentColor; }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 14px 30px;
+      border-radius: 35px;
+      text-align: center;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .btn-primary { background: var(--ace-orange); color: var(--ace-white); }
+    .btn-primary:hover { background: var(--ace-sailfish); color: var(--ace-white); }
+    .btn-secondary { background: transparent; color: var(--ace-white); border-color: var(--ace-white); }
+    .btn-secondary:hover { background: var(--ace-white); color: var(--ace-sangria); }
+    .btn-call { background: var(--ace-lawn); color: var(--ace-white); }
+    .btn-call:hover { background: var(--ace-sailfish); color: var(--ace-white); }
+    .btn-lg { padding: 18px 36px; font-size: 1.1rem; }
+
+    /* ===== Section Base ===== */
+    .section { padding: var(--section-pad-y) var(--section-pad-x); }
+    .section-inner { max-width: var(--container-max); margin: 0 auto; }
+    .section-heading {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 2.6em;
+      line-height: 1.2;
+      margin-bottom: 0.5em;
+    }
+
+    /* ===== Hero ===== */
+    .hero { background: var(--ace-white); padding: 3% var(--section-pad-x) 2%; }
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 3.2em;
+      line-height: 1.15;
+      color: var(--ace-water);
+      margin-bottom: 0.3em;
+    }
+    .hero .subhead {
+      font-family: var(--font-heading);
+      font-size: 1.3em;
+      font-weight: 600;
+      color: var(--ace-lawn);
+      line-height: 1.4;
+      margin-bottom: 1.2em;
+    }
+    .hero .hero-body {
+      font-family: var(--font-body);
+      font-size: 1.15em;
+      color: var(--ace-body-text);
+      line-height: 1.6;
+      max-width: 660px;
+      margin-bottom: 1.6em;
+    }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-top: 1.5em;
+    }
+    .hero-image {
+      border-radius: 20px;
+      overflow: hidden;
+      max-height: 380px;
+    }
+    .hero-image-placeholder {
+      width: 100%;
+      height: 340px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--ace-sailfish) 0%, var(--ace-sangria) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-family: var(--font-body);
+      font-size: 0.85em;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    /* ===== When to Call — Carousel ===== */
+    .when-to-call { background: var(--ace-white); padding-bottom: 4%; }
+    .when-to-call .section-heading { color: var(--ace-sailfish); }
+    .carousel-wrapper { position: relative; overflow: hidden; margin-top: 1em; }
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.4s ease;
+      will-change: transform;
+    }
+    .carousel-card {
+      min-width: 320px;
+      flex: 0 0 320px;
+      background: var(--ace-sand);
+      border-radius: 15px;
+      padding: 28px 24px;
+      border-left: 4px solid var(--ace-orange);
+    }
+    .carousel-card h3 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.05em;
+      color: var(--ace-sailfish);
+      margin-bottom: 8px;
+    }
+    .carousel-card p {
+      font-family: var(--font-body);
+      font-size: 1em;
+      color: var(--ace-body-text);
+      line-height: 1.5;
+    }
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .carousel-btn {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 2px solid var(--ace-sailfish);
+      background: var(--ace-white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .carousel-btn:hover { background: var(--ace-sailfish); }
+    .carousel-btn svg { width: 18px; height: 18px; fill: var(--ace-sailfish); transition: fill 0.25s; }
+    .carousel-btn:hover svg { fill: var(--ace-white); }
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .carousel-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #ccc;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .carousel-dot.active { background: var(--ace-sailfish); }
+
+    /* ===== Emergency Services (Option B) ===== */
+    .services { background: var(--ace-sand); }
+    .services .section-heading { color: var(--ace-sailfish); }
+    .service-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: center;
+      margin-bottom: 45px;
+    }
+    .service-block:last-child { margin-bottom: 0; }
+    .service-block.reverse .service-text { order: 2; }
+    .service-block.reverse .service-image { order: 1; }
+    .service-text h3 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.5em;
+      color: var(--ace-sailfish);
+      line-height: 1.25;
+      margin-bottom: 0.5em;
+    }
+    .service-text p {
+      font-family: var(--font-body);
+      font-size: 1.1em;
+      color: var(--ace-body-text);
+      line-height: 1.6;
+    }
+    .service-text .service-link {
+      display: inline-block;
+      margin-top: 0.8em;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.92em;
+      color: var(--ace-lawn);
+      border-bottom: 2px solid var(--ace-lawn);
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .service-text .service-link:hover { color: var(--ace-sailfish); border-color: var(--ace-sailfish); }
+    .service-image img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+    .img-placeholder {
+      width: 100%;
+      height: 280px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-family: var(--font-body);
+      font-size: 0.85em;
+    }
+    .sip-1 { background: linear-gradient(135deg, var(--ace-sailfish), #2a4b6e); }
+    .sip-2 { background: linear-gradient(135deg, #2a4b6e, var(--ace-sangria)); }
+    .sip-3 { background: linear-gradient(135deg, var(--ace-sangria), var(--ace-sailfish)); }
+    .sip-4 { background: linear-gradient(135deg, var(--ace-sailfish), var(--ace-gulf) 50%, var(--ace-sailfish)); }
+    .sip-5 { background: linear-gradient(135deg, #2a4b6e, var(--ace-sailfish) 60%, var(--ace-gulf)); }
+
+    /* ===== Why ACE ===== */
+    .why-ace { background: var(--ace-sailfish); color: var(--ace-white); }
+    .why-ace .section-heading { color: var(--ace-sunshine); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 0.5em;
+    }
+    .why-item {
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 28px 26px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .why-item h3 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.1em;
+      color: var(--ace-sunshine);
+      margin-bottom: 5px;
+    }
+    .why-item p { font-size: 1.05em; line-height: 1.55; }
+    .why-full { grid-column: 1 / -1; }
+
+    /* ===== Service Area ===== */
+    .service-area { background: var(--ace-white); }
+    .service-area .section-heading { color: var(--ace-water); font-size: 2.8em; }
+    .service-area .sa-intro {
+      font-family: var(--font-body);
+      font-size: 1.15em;
+      line-height: 1.6;
+      color: var(--ace-body-text);
+      max-width: 900px;
+      margin-bottom: 1.5em;
+    }
+    .service-area .sa-intro .county-name { color: var(--ace-lawn); font-weight: 500; }
+    .county-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-bottom: 1.5em;
+    }
+    .county-card {
+      border: 2px solid var(--ace-gulf);
+      border-radius: 14px;
+      padding: 22px 16px;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1em;
+      color: var(--ace-sailfish);
+      transition: background 0.25s, color 0.25s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .county-card:hover {
+      background: var(--ace-gulf);
+      color: var(--ace-white);
+    }
+    .county-card .arrow { font-weight: 400; }
+    .sa-growing {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.05em;
+      color: var(--ace-lawn);
+      text-align: center;
+      margin-bottom: 2em;
+    }
+    .sa-growing a { color: var(--ace-lawn); text-decoration: underline; }
+    .sa-growing a:hover { color: var(--ace-sailfish); }
+    .sa-map {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      display: block;
+    }
+    .sa-map img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    /* ===== FAQ ===== */
+    .faq { background: var(--ace-sand); }
+    .faq .section-heading { color: var(--ace-sailfish); }
+    .faq-list { max-width: 860px; }
+    .faq-item { border-bottom: 1px solid var(--ace-sunshine); padding: 20px 0; }
+    .faq-item:first-child { padding-top: 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.05em;
+      color: var(--ace-sailfish);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: none; border: none; width: 100%;
+      text-align: left; padding: 0;
+    }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--ace-sunshine);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+    }
+    .faq-icon svg { width: 12px; height: 12px; fill: var(--ace-sangria); transition: transform 0.3s; }
+    .faq-question[aria-expanded="true"] .faq-icon svg { transform: rotate(45deg); }
+    .faq-answer {
+      font-family: var(--font-body);
+      font-size: 1.05em;
+      color: var(--ace-body-text);
+      line-height: 1.6;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding-top: 0;
+    }
+    .faq-answer.open { max-height: 400px; padding-top: 12px; }
+
+    /* ===== Closing CTA ===== */
+    .closing-cta { background: var(--ace-sangria); text-align: center; }
+    .closing-cta .section-heading { color: var(--ace-orange); margin-bottom: 0.3em; }
+    .closing-cta .cta-body {
+      font-size: 1.2em;
+      color: var(--ace-white);
+      max-width: 650px;
+      margin: 0 auto 1.5em;
+      line-height: 1.55;
+    }
+    .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+    /* ===== Footer ===== */
+    .site-footer {
+      background: var(--ace-sangria);
+      color: var(--ace-white);
+      padding: 40px var(--section-pad-x) 20px;
+      border-top: 3px solid var(--ace-lawn);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      gap: 30px;
+      max-width: var(--container-max);
+      margin: 0 auto;
+    }
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+    .footer-col.fc-loc h4 { color: var(--ace-orange); }
+    .footer-col.fc-svc h4 { color: var(--ace-coral); }
+    .footer-col.fc-sup h4 { color: var(--ace-flamingo); }
+    .footer-col.fc-co h4 { color: var(--ace-gulf); }
+    .footer-col ul li { margin-bottom: 2px; }
+    .footer-col ul li a {
+      font-family: var(--font-heading);
+      font-size: 0.85em;
+      font-weight: 400;
+      color: var(--ace-white);
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+    .footer-col ul li a:hover { color: var(--ace-sunshine); }
+    .footer-col p {
+      font-family: var(--font-heading);
+      font-size: 0.85em;
+      line-height: 1.7;
+    }
+    .footer-logo-img { height: 48px; width: auto; margin-bottom: 14px; }
+    .footer-socials { display: flex; gap: 6px; margin-top: 14px; }
+    .footer-socials a {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.3s;
+    }
+    .footer-socials a:hover { opacity: 0.8; }
+    .footer-socials a svg { width: 15px; height: 15px; fill: var(--ace-white); }
+    .s-fb { background: var(--ace-water); }
+    .s-ig { background: var(--ace-flamingo); }
+    .s-li { background: var(--ace-gulf); }
+    .s-yt { background: var(--ace-strawberry); }
+    .footer-bottom {
+      max-width: var(--container-max);
+      margin: 25px auto 0;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      text-align: center;
+    }
+    .footer-bottom p { font-family: var(--font-heading); font-size: 0.8em; color: var(--ace-sunshine); }
+    .footer-bottom a { color: var(--ace-coral); text-decoration: underline; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+      .hero h1 { font-size: 2.4em; }
+      .section-heading { font-size: 2.1em; }
+      .hero-layout { gap: 25px; }
+      .hero-image-placeholder, .hero-image img { height: 280px; }
+      .county-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 25px; }
+    }
+    @media (max-width: 767px) {
+      :root { --section-pad-x: 5%; --section-pad-y: 8%; }
+
+      .top-bar-inner { justify-content: center; flex-wrap: wrap; }
+      .top-bar-item { font-size: 0.72em; padding: 5px 10px; }
+      .tb-financing { display: none; }
+
+      .main-nav { display: none; }
+      .main-nav.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--ace-orange); z-index: 999;
+      }
+      .main-nav.open a {
+        color: var(--ace-white); padding: 14px 24px;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+      }
+      .main-nav.open a:hover { background: var(--ace-sunshine); color: var(--ace-sangria); }
+      .main-nav.open a::after { display: none; }
+      .menu-toggle { display: flex; }
+
+      .hero h1 { font-size: 1.8em; }
+      .hero .subhead { font-size: 1.05em; }
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-image-placeholder, .hero-image img { height: 240px; }
+
+      .section-heading { font-size: 1.6em; }
+
+      .carousel-card { min-width: 280px; flex: 0 0 280px; }
+
+      .service-block { grid-template-columns: 1fr; margin-bottom: 40px; }
+      .service-block.reverse .service-text { order: 1; }
+      .service-block.reverse .service-image { order: 2; }
+      .img-placeholder, .service-image img { height: 220px; }
+
+      .why-grid { grid-template-columns: 1fr; }
+
+      .county-grid { grid-template-columns: repeat(2, 1fr); }
+      .sa-map img { max-height: 380px; }
+
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .cta-buttons .btn { width: 100%; max-width: 320px; }
+
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .footer-socials { justify-content: center; }
+      .footer-logo-img { margin: 0 auto 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Top Bar ===== -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <a href="https://www.acesepticandwaste.com/contact/" class="top-bar-item tb-schedule">
+        <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+        Schedule Now
+      </a>
+      <span class="top-bar-item tb-espanol">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        ¡Hablamos Español!
+      </span>
+      <a href="tel:8139718770" class="top-bar-item tb-phone">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        813-971-8770
+      </a>
+      <span class="top-bar-item tb-financing">
+        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+        Financing Available
+      </span>
+    </div>
+  </div>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="https://www.acesepticandwaste.com/" class="site-logo" aria-label="ACE Septic &amp; Waste Home">
+        <img src="ace-logo-dark.png" alt="ACE Septic &amp; Waste" style="height:56px;width:auto;">
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <a href="https://www.acesepticandwaste.com/septic-services/">Septic Services</a>
+        <a href="https://www.acesepticandwaste.com/wastewater-services/">Wastewater Services</a>
+        <a href="https://www.acesepticandwaste.com/maintenance-plans/">Maintenance Plans</a>
+        <a href="https://www.acesepticandwaste.com/service-areas/">Service Areas</a>
+        <a href="https://www.acesepticandwaste.com/resources/">Resources</a>
+        <a href="https://www.acesepticandwaste.com/about/">About Us</a>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero section">
+      <div class="section-inner">
+        <h1>Lift Station Emergency Services: 24/7 Across Tampa Bay</h1>
+        <p class="subhead">ACE Septic &amp; Waste dispatches licensed crews for lift station failures, commercial sewage backups, and wastewater emergencies. Day or night, including holidays.</p>
+        <div class="hero-layout">
+          <div class="hero-text">
+            <p class="hero-body">When a lift station or commercial wastewater system fails, every minute counts. ACE provides immediate emergency response for pump failures, alarm events, sewage backups, and storm-related wastewater emergencies across Tampa Bay.</p>
+            <a href="tel:18003965438" class="btn btn-primary btn-lg">Call 1-800-DWN-LIFT</a>
+          </div>
+          <div class="hero-image">
+            <!-- Replace with actual photo: VAC truck at commercial lift station -->
+            <div class="hero-image-placeholder">[Photo: VAC truck at commercial lift station]</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== When to Call — Carousel ===== -->
+    <section class="when-to-call section">
+      <div class="section-inner">
+        <h2 class="section-heading">When to call ACE</h2>
+        <div class="carousel-wrapper">
+          <div class="carousel-track" id="carousel-track">
+
+            <div class="carousel-card">
+              <h3>Lift station pump failure or alarm sounding</h3>
+              <p>The pumps have stopped, the alarm is active, or the wet well is rising. Call before it overflows.</p>
+            </div>
+
+            <div class="carousel-card">
+              <h3>Sewage surfacing at wet well, manhole, or parking area</h3>
+              <p>Visible wastewater on the surface is a health hazard and a regulatory event. It needs immediate containment.</p>
+            </div>
+
+            <div class="carousel-card">
+              <h3>Multi-fixture commercial or industrial sewage backup</h3>
+              <p>If more than one restroom, floor drain, or tenant space is backing up, the problem is in the system, not a single line.</p>
+            </div>
+
+            <div class="carousel-card">
+              <h3>Grease trap overflow threatening operations</h3>
+              <p>A full or blocked grease trap can shut a kitchen down and trigger a health department visit.</p>
+            </div>
+
+            <div class="carousel-card">
+              <h3>Storm or flood impact on wastewater infrastructure</h3>
+              <p>Saturated ground, flooded control panels, and power loss all put lift stations and collection lines at risk.</p>
+            </div>
+
+            <div class="carousel-card">
+              <h3>Municipal or HOA collection system backup</h3>
+              <p>Neighborhood-scale backups require coordinated response with VAC trucks, bypass pumping, and regulatory communication.</p>
+            </div>
+
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carousel-prev" aria-label="Previous">
+            <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+          </button>
+          <div class="carousel-dots" id="carousel-dots"></div>
+          <button class="carousel-btn" id="carousel-next" aria-label="Next">
+            <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Emergency Services ===== -->
+    <section class="services section">
+      <div class="section-inner">
+        <h2 class="section-heading">Emergency services</h2>
+
+        <div class="service-block">
+          <div class="service-text">
+            <h3>Lift station emergency repair</h3>
+            <p>Pump and motor failures don't announce themselves on a convenient schedule. ACE responds with VAC trucks to stage the wet well before diagnosis begins, buying time to isolate the problem. We handle pump replacement, motor rebuilds, float switch failures, and control panel issues in-house. ACE holds septic, plumbing, electrical, and CBC licenses, so one crew handles the full scope without waiting on subcontractors.</p>
+            <a href="https://www.acesepticandwaste.com/lift-station-services/" class="service-link">Learn about our lift station services &rarr;</a>
+          </div>
+          <div class="service-image">
+            <div class="img-placeholder sip-1">[Photo: VAC truck staged at lift station]</div>
+          </div>
+        </div>
+
+        <div class="service-block reverse">
+          <div class="service-text">
+            <h3>Lift station alarm response</h3>
+            <p>An alarm means the system has detected a condition it can't resolve on its own: high water, pump failure, power loss, or a float out of position. ACE provides on-site response for alarm events and can support SCADA and telemetry-monitored stations where remote diagnostics need field confirmation. We diagnose the trigger, resolve the condition, and document what happened for your records.</p>
+          </div>
+          <div class="service-image">
+            <div class="img-placeholder sip-2">[Photo: Lift station control panel]</div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-text">
+            <h3>Commercial and industrial sewage backup</h3>
+            <p>Multi-fixture backups in a commercial building usually point to a force main issue, a failed pump, or a blockage downstream of the building. ACE deploys temporary bypass pumping to keep flows moving during diagnosis and repair, preventing additional damage to interiors, parking areas, and tenant operations. We work with property managers and facility teams to communicate status and timeline clearly.</p>
+            <a href="https://www.acesepticandwaste.com/commercial-septic-services/" class="service-link">More about commercial septic services &rarr;</a>
+          </div>
+          <div class="service-image">
+            <div class="img-placeholder sip-3">[Photo: Commercial bypass pumping]</div>
+          </div>
+        </div>
+
+        <div class="service-block reverse">
+          <div class="service-text">
+            <h3>Emergency grease trap pumping</h3>
+            <p>A grease trap at capacity can shut down a commercial kitchen in hours. ACE provides emergency grease trap pumping for restaurants, hotels, event venues, and institutional food service operations. We pump, clean, and inspect the trap to determine whether the issue was accumulation, a blockage, or a structural failure. All service is documented for your health department records.</p>
+          </div>
+          <div class="service-image">
+            <div class="img-placeholder sip-4">[Photo: Grease trap service]</div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-text">
+            <h3>Municipal and HOA wastewater emergency</h3>
+            <p>Neighborhood-scale and campus-scale overflow events require more than a single truck. ACE coordinates multi-crew response for municipal and HOA collection system failures, including bypass pumping, wet well evacuation, and temporary flow management. We've supported Hillsborough County during hurricane-related wastewater emergencies and understand the documentation and communication requirements that come with public infrastructure events. Post-event reporting is provided to support Florida DEP communication.</p>
+            <a href="https://www.acesepticandwaste.com/wastewater-services/" class="service-link">Explore our wastewater services &rarr;</a>
+          </div>
+          <div class="service-image">
+            <div class="img-placeholder sip-5">[Photo: Multi-crew municipal response]</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Why ACE ===== -->
+    <section class="why-ace section">
+      <div class="section-inner">
+        <h2 class="section-heading">Why ACE</h2>
+        <div class="why-grid">
+          <div class="why-item">
+            <h3>True 24/7 dispatch</h3>
+            <p>When you call, you reach our dispatch team. Not an answering service, not a voicemail box. Crews are assigned and rolling.</p>
+          </div>
+          <div class="why-item">
+            <h3>Fleet depth</h3>
+            <p>ACE operates multiple VAC trucks capable of concurrent deployment. If your emergency involves more than one station or site, we can resource it.</p>
+          </div>
+          <div class="why-item">
+            <h3>In-house licensing across the full scope</h3>
+            <p>ACE holds septic, plumbing, electrical, and CBC contracting licenses. One contractor from diagnosis through repair. No waiting on subs.</p>
+          </div>
+          <div class="why-item">
+            <h3>Municipal track record</h3>
+            <p>Hillsborough County's preferred emergency contractor during Hurricanes Milton and Helene in 2024. We've handled infrastructure-scale events and understand what regulators expect.</p>
+          </div>
+          <div class="why-item why-full">
+            <h3>Post-event documentation</h3>
+            <p>Every commercial emergency service includes documentation that meets Florida DEP standards: response timeline, work performed, and conditions found. Ready for your compliance files or regulatory communication.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Service Area ===== -->
+    <section class="service-area section">
+      <div class="section-inner">
+        <h2 class="section-heading">Service Areas</h2>
+        <p class="sa-intro">With locations in Land O' Lakes, Tampa, Lecanto, and Lakeland we service a growing list of counties in the Tampa Bay and Central Florida regions, serving: <span class="county-name">Hillsborough</span>, <span class="county-name">Polk</span>, <span class="county-name">Pinellas</span>, <span class="county-name">Pasco</span>, <span class="county-name">Hernando</span>, <span class="county-name">Citrus</span>, <span class="county-name">Levy</span>, <span class="county-name">Marion</span>, and <span class="county-name">Sumter</span> counties.</p>
+        <div class="county-grid">
+          <a href="https://www.acesepticandwaste.com/service-areas/" class="county-card">Hillsborough<span class="arrow">&rarr;</span></a>
+          <a href="https://www.acesepticandwaste.com/service-areas/" class="county-card">Polk<span class="arrow">&rarr;</span></a>
+          <a href="https://www.acesepticandwaste.com/service-areas/" class="county-card">Pinellas<span class="arrow">&rarr;</span></a>
+          <a href="https://www.acesepticandwaste.com/service-areas/" class="county-card">Pasco<span class="arrow">&rarr;</span></a>
+          <a href="https://www.acesepticandwaste.com/service-areas/" class="county-card">Hernando<span class="arrow">&rarr;</span></a>
+          <a href="https://www.acesepticandwaste.com/service-areas/" class="county-card">Citrus<span class="arrow">&rarr;</span></a>
+          <a href="https://www.acesepticandwaste.com/service-areas/" class="county-card">Levy<span class="arrow">&rarr;</span></a>
+          <a href="https://www.acesepticandwaste.com/service-areas/" class="county-card">Marion<span class="arrow">&rarr;</span></a>
+          <a href="https://www.acesepticandwaste.com/service-areas/" class="county-card">Sumter<span class="arrow">&rarr;</span></a>
+        </div>
+        <p class="sa-growing">Our service area is always growing. Don't worry if your county isn't listed. We may still be able to help. Please <a href="https://www.acesepticandwaste.com/contact/">give us a call</a>!</p>
+        <div class="sa-map">
+          <img src="ace-service-area-map.png" alt="ACE Septic service area map showing coverage across Central Florida counties">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq section">
+      <div class="section-inner">
+        <h2 class="section-heading">FAQ</h2>
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+              <span>How fast can ACE respond to a lift station emergency?</span>
+              <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></span>
+            </button>
+            <div class="faq-answer" id="faq-1">In most cases, a crew is dispatched within the hour. Actual arrival time depends on your location and current demand, but our dispatch team will give you a realistic ETA when you call. We don't quote a number we can't hit.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+              <span>What's the difference between a lift station alarm and a true emergency?</span>
+              <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></span>
+            </button>
+            <div class="faq-answer" id="faq-2">An alarm means the system has detected an abnormal condition. It could be a pump failure, a high-water event, a power issue, or a float malfunction. Some alarms indicate an imminent overflow; others flag a condition that needs attention soon but isn't yet critical. If you're unsure, call us. We'll help you assess it over the phone and dispatch if needed.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+              <span>Can ACE handle municipal-scale events?</span>
+              <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></span>
+            </button>
+            <div class="faq-answer" id="faq-3">Yes. We've supported Hillsborough County during hurricane-related wastewater emergencies involving multiple lift stations and collection system failures. We have the fleet, the crew depth, and the regulatory understanding to coordinate multi-site response.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+              <span>Do you provide bypass pumping during repairs?</span>
+              <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></span>
+            </button>
+            <div class="faq-answer" id="faq-4">When the system can't be taken offline without risk of overflow, we set up temporary bypass pumping to keep wastewater moving while we diagnose and repair. This is standard practice for commercial and municipal emergencies where downtime creates health or compliance risk.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+              <span>What documentation is provided after a commercial emergency?</span>
+              <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></span>
+            </button>
+            <div class="faq-answer" id="faq-5">Every emergency service call includes a written summary of what we found, what we did, and the condition of the system after service. This documentation is formatted to support Florida DEP reporting requirements and can be shared with regulators, property owners, or insurance carriers.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Closing CTA ===== -->
+    <section class="closing-cta section">
+      <div class="section-inner">
+        <h2 class="section-heading">Every minute counts</h2>
+        <p class="cta-body">Commercial wastewater emergencies cost money, create liability, and draw regulatory attention. The longer the system is down, the worse it gets. ACE is ready now.</p>
+        <div class="cta-buttons">
+          <a href="tel:18003965438" class="btn btn-primary btn-lg">Call 1-800-DWN-LIFT</a>
+          <a href="https://www.acesepticandwaste.com/contact/" class="btn btn-secondary btn-lg">Send us a message</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col fc-loc">
+        <img src="ace-logo-light.png" alt="ACE Septic &amp; Waste" class="footer-logo-img">
+        <h4>Locations</h4>
+        <p>Headquarters:<br>8005 Land O' Lakes Blvd,<br>Land O' Lakes, FL 34638</p>
+        <p style="margin-top:8px;">8602 Temple Terrace Hwy C14,<br>Tampa, FL 33637</p>
+        <p style="margin-top:8px;">3151 Bartow Rd,<br>Lakeland, FL 33803</p>
+        <a href="tel:8139718770" class="btn btn-call" style="margin-top:14px;display:inline-block;font-size:0.85em;padding:8px 20px;">Click to Call</a>
+        <div class="footer-socials">
+          <a href="#" class="s-fb" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z"/></svg></a>
+          <a href="#" class="s-ig" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="#" class="s-li" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="#" class="s-yt" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#fff"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col fc-svc">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="https://www.acesepticandwaste.com/septic-tank-pumping-services/">Septic Tank Pumping</a></li>
+          <li><a href="https://www.acesepticandwaste.com/drainfield-services/">Drainfield Installation</a></li>
+          <li><a href="https://www.acesepticandwaste.com/lift-station-services/">Lift Station Services</a></li>
+          <li><a href="https://www.acesepticandwaste.com/wastewater-services/">Wastewater Engineering</a></li>
+        </ul>
+        <h4 style="margin-top:16px;">Resources</h4>
+        <ul>
+          <li><a href="https://www.acesepticandwaste.com/blog/">Blog</a></li>
+          <li><a href="https://www.acesepticandwaste.com/ace-guide-to-floridas-onsite-septic-system-regulations/">Guide to Onsite Regulations</a></li>
+          <li><a href="https://www.acesepticandwaste.com/aces-clean-water-initiative/">Clean Water Initiative</a></li>
+        </ul>
+      </div>
+      <div class="footer-col fc-sup">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="https://www.acesepticandwaste.com/contact/">Contact Us</a></li>
+          <li><a href="https://www.acesepticandwaste.com/emergency-septic-pumping/">Emergency Service</a></li>
+          <li><a href="https://www.acesepticandwaste.com/maintenance-plans/">Maintenance Plans</a></li>
+          <li><a href="https://app.gethearth.com/financing/31454/51463/prequalify">Financing by Hearth</a></li>
+        </ul>
+      </div>
+      <div class="footer-col fc-co">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://www.acesepticandwaste.com/about/">About Us</a></li>
+          <li><a href="https://www.acesepticandwaste.com/service-areas/">Service Areas</a></li>
+          <li><a href="https://www.acesepticandwaste.com/testimonials/">Reviews and Testimonials</a></li>
+          <li><a href="https://www.acesepticandwaste.com/careers/">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ACE Septic &amp; Waste. All rights reserved. | <a href="https://www.acesepticandwaste.com/contact/">Contact</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // === FAQ Accordion ===
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.faq-question').forEach(function(b) {
+          b.setAttribute('aria-expanded', 'false');
+          document.getElementById(b.getAttribute('aria-controls')).classList.remove('open');
+        });
+        if (!expanded) {
+          this.setAttribute('aria-expanded', 'true');
+          document.getElementById(this.getAttribute('aria-controls')).classList.add('open');
+        }
+      });
+    });
+
+    // === Mobile Nav ===
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      var nav = document.getElementById('main-nav');
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      nav.classList.toggle('open');
+      this.setAttribute('aria-expanded', String(!expanded));
+    });
+
+    // === Carousel (infinite loop) ===
+    (function() {
+      var track = document.getElementById('carousel-track');
+      var cards = track.querySelectorAll('.carousel-card');
+      var prevBtn = document.getElementById('carousel-prev');
+      var nextBtn = document.getElementById('carousel-next');
+      var dotsContainer = document.getElementById('carousel-dots');
+      var currentIndex = 0;
+      var totalCards = cards.length;
+      var cardWidth = 340; // card width + gap
+
+      function getVisibleCount() {
+        var w = track.parentElement.offsetWidth;
+        return Math.max(1, Math.floor(w / cardWidth));
+      }
+
+      function getMaxIndex() {
+        return totalCards - 1;
+      }
+
+      function buildDots() {
+        dotsContainer.innerHTML = '';
+        for (var i = 0; i < totalCards; i++) {
+          var dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (i === currentIndex ? ' active' : '');
+          dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+          dot.dataset.index = i;
+          dot.addEventListener('click', function() {
+            currentIndex = parseInt(this.dataset.index);
+            update();
+          });
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function update() {
+        // Wrap around
+        if (currentIndex >= totalCards) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = totalCards - 1;
+        var offset = currentIndex * cardWidth;
+        track.style.transform = 'translateX(-' + offset + 'px)';
+        dotsContainer.querySelectorAll('.carousel-dot').forEach(function(d, i) {
+          d.classList.toggle('active', i === currentIndex);
+        });
+      }
+
+      prevBtn.addEventListener('click', function() { currentIndex--; update(); });
+      nextBtn.addEventListener('click', function() { currentIndex++; update(); });
+
+      // Touch/swipe
+      var startX = 0;
+      var isDragging = false;
+      track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+      track.addEventListener('touchend', function(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        var diff = startX - e.changedTouches[0].clientX;
+        if (diff > 40) { currentIndex++; update(); }
+        else if (diff < -40) { currentIndex--; update(); }
+      }, { passive: true });
+
+      buildDots();
+      window.addEventListener('resize', function() { buildDots(); update(); });
+    })();
+  </script>
+
+  <!-- ===== FAQ Schema ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How fast can ACE respond to a lift station emergency?",
+        "acceptedAnswer": { "@type": "Answer", "text": "In most cases, a crew is dispatched within the hour. Actual arrival time depends on your location and current demand, but our dispatch team will give you a realistic ETA when you call." }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between a lift station alarm and a true emergency?",
+        "acceptedAnswer": { "@type": "Answer", "text": "An alarm means the system has detected an abnormal condition. It could be a pump failure, a high-water event, a power issue, or a float malfunction. Some alarms indicate an imminent overflow; others flag a condition that needs attention soon but isn't yet critical." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can ACE handle municipal-scale events?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. ACE has supported Hillsborough County during hurricane-related wastewater emergencies involving multiple lift stations and collection system failures." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide bypass pumping during repairs?",
+        "acceptedAnswer": { "@type": "Answer", "text": "When the system can't be taken offline without risk of overflow, ACE sets up temporary bypass pumping to keep wastewater moving while diagnosing and repairing the issue." }
+      },
+      {
+        "@type": "Question",
+        "name": "What documentation is provided after a commercial emergency?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Every emergency service call includes a written summary of findings, work performed, and post-service system condition. Documentation is formatted to support Florida DEP reporting requirements." }
+      }
+    ]
+  }
+  </script>
+
+</body>
+</html>
