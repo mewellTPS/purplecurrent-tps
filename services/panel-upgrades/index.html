@@ -1,0 +1,1580 @@
+<!--
+  Purple Current Website
+  Page: Commercial Electrical Panel Upgrades
+  Version: 1.0
+  Last Updated: 2026-03-11
+
+  Changes in this version:
+  - v1.0 (2026-03-11): Initial wireframe build from service-page-panel-upgrades-v1_0.md
+    - Hero: purple bg, breadcrumbs, H1 with keyword em, image placeholder
+    - Intro: full-width prose section (white), no two-column — text-only reading block
+    - What's Included: numbered index layout (01/02/03) on pale-grey
+    - Common Situations: 3 icon cards on white, top-border accent
+    - Our Process: vertical timeline with 6 steps on pale-grey
+    - Service Area: compact prose on white
+    - FAQ: 4-item accordion on pale-grey
+    - CTA: page-specific checklist + trust signals on purple
+    - Schema: Service + FAQPage (placeholder values for phone/zip/license)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commercial Electrical Panel Upgrade | Tampa Bay | Purple Current</title>
+  <meta name="description" content="Commercial electrical panel upgrades across Tampa Bay. Full-scope service from load calculations through final inspection. Permitted, inspected, documented. Get a quote.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lexend+Exa:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Schema: Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Commercial Electrical Panel Upgrade",
+    "description": "Commercial electrical panel upgrades across Tampa Bay. Full-scope service from load analysis through permitting, installation, and final inspection.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Purple Current",
+      "url": "https://purplecurrent.com",
+      "telephone": "(XXX) XXX-XXXX",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Land O' Lakes",
+        "addressRegion": "FL",
+        "postalCode": "[XXXXX]",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        "Tampa Bay, FL",
+        "Tampa, FL",
+        "Hillsborough County, FL",
+        "Pasco County, FL",
+        "Pinellas County, FL",
+        "Polk County, FL",
+        "Hernando County, FL",
+        "Sarasota County, FL",
+        "Florida"
+      ]
+    },
+    "serviceType": "Commercial Electrical Panel Upgrade",
+    "url": "https://purplecurrent.com/services/panel-upgrades/"
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you upgrade a commercial electrical panel without shutting down the business?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We evaluate your system before we start and identify what can be phased, what can be switched over during low-occupancy hours, and what requires a scheduled outage. Most commercial panel upgrades involve some period where power is interrupted to the affected circuits, but we work with your schedule to keep that window as short as possible and give you advance notice so your team can plan around it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a commercial panel upgrade require a permit in Florida?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Any panel replacement or service upgrade on a commercial property in Florida requires a permit and inspection. We handle the full permit process: application, inspection scheduling, and closeout. The documentation becomes part of your building's permanent record and satisfies most compliance and insurance requirements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the signs a commercial electrical panel needs upgrading?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The most common indicators are breakers that trip frequently under normal load, a panel with no spare circuits or capacity for additional equipment, visible damage or corrosion on the panel or service equipment, and a system that was sized for a building use that no longer matches current operations. If your facility has changed tenants, added equipment, or expanded since the panel was installed, it's worth having the system evaluated."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What factors affect the cost of a commercial panel upgrade?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The biggest variables are the amperage of the new service, the number of circuits required, whether the service entrance needs to be upgraded alongside the panel, and whether utility coordination is involved. Permitting fees vary by county. Site conditions also factor in: accessibility, the age of the existing wiring, and whether the facility needs to remain operational during the work. We provide a detailed quote after the site evaluation so you know exactly what's driving the number before you approve anything."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+       DESIGN SYSTEM — Purple Current Brand
+       Tokens from tokens-v1_1.css
+       ============================================================ */
+    :root {
+      --color-standard-purple:   #49104F;
+      --color-purple-grey:       #BAB0C6;
+      --color-pale-grey:         #F5EFFB;
+      --color-mid-purple:        #771686;
+      --color-neon-purple:       #A263D2;
+      --color-light-purple:      #D9BBF2;
+      --color-dark-purple:       #2A0A2D;
+      --color-black-purple:      #170218;
+      --color-horizon-yellow:    #EBA950;
+      --color-pale-yellow:       #E4B776;
+
+      --color-standard-purple-rgb: 73, 16, 79;
+      --color-dark-purple-rgb:     42, 10, 45;
+      --color-black-purple-rgb:    23, 2, 24;
+      --color-horizon-yellow-rgb:  235, 169, 80;
+      --color-neon-purple-rgb:     162, 99, 210;
+
+      --color-text-body:        #555555;
+      --color-text-muted:       #666666;
+      --color-text-subtle:      #888888;
+      --color-border-subtle:    #EEEEEE;
+      --color-border-medium:    #DDDDDD;
+      --color-border-strong:    #E5E5E5;
+      --color-border-purple-tint: #E0D8E2;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--color-black-purple);
+      background: #fff;
+      line-height: 1.7;
+      font-weight: 400;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.25;
+      font-weight: 600;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .section-label {
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-horizon-yellow);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 40px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+
+    .inline-link {
+      color: var(--color-neon-purple);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .inline-link:hover { color: var(--color-mid-purple); }
+
+
+    /* ── FADE ANIMATIONS ───────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+
+
+    /* ============================================================
+       NAV
+       ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--color-standard-purple);
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--color-horizon-yellow);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-logo-icon svg { width: 20px; height: 20px; }
+
+    .nav-logo-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--color-horizon-yellow); }
+
+    .nav-cta {
+      background: var(--color-horizon-yellow) !important;
+      color: var(--color-standard-purple) !important;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(var(--color-horizon-yellow-rgb), 0.4);
+      color: var(--color-standard-purple) !important;
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+    /* ============================================================
+       HERO — Purple bg
+       ============================================================ */
+    .hero {
+      margin-top: 72px;
+      background: var(--color-standard-purple);
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 80% 40%, rgba(var(--color-neon-purple-rgb), 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(var(--color-horizon-yellow-rgb), 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      opacity: 0.04;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.5) 59px, rgba(255,255,255,0.5) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.5) 59px, rgba(255,255,255,0.5) 60px);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 48px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 24px;
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .hero-breadcrumb a {
+      color: rgba(255,255,255,0.45);
+      transition: color 0.2s;
+    }
+    .hero-breadcrumb a:hover { color: var(--color-horizon-yellow); }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--color-horizon-yellow);
+    }
+
+    /* Hero image placeholder */
+    .img-placeholder {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-placeholder::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg,
+        var(--color-standard-purple),
+        var(--color-neon-purple),
+        var(--color-horizon-yellow));
+    }
+
+    .img-placeholder svg {
+      width: 48px; height: 48px;
+      stroke: rgba(255,255,255,0.2);
+      fill: none; stroke-width: 1.5;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .img-placeholder span {
+      font-family: 'Lexend Exa', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* Light-bg placeholder variant */
+    .img-placeholder--light {
+      background: var(--color-pale-grey);
+      border-color: var(--color-border-purple-tint);
+    }
+
+    .img-placeholder--light::after {
+      background: linear-gradient(90deg,
+        var(--color-standard-purple),
+        var(--color-neon-purple),
+        var(--color-horizon-yellow));
+    }
+
+    .img-placeholder--light svg {
+      stroke: var(--color-purple-grey);
+    }
+
+    .img-placeholder--light span {
+      color: var(--color-purple-grey);
+    }
+
+    /* White-bg placeholder variant */
+    .img-placeholder--white {
+      background: #fff;
+      border-color: var(--color-border-subtle);
+    }
+
+    .img-placeholder--white::after {
+      background: linear-gradient(90deg,
+        var(--color-standard-purple),
+        var(--color-neon-purple),
+        var(--color-horizon-yellow));
+    }
+
+    .img-placeholder--white svg {
+      stroke: var(--color-purple-grey);
+    }
+
+    .img-placeholder--white span {
+      color: var(--color-purple-grey);
+    }
+
+    .ph-icon {
+      width: 48px; height: 48px;
+      fill: none; stroke-width: 1.5;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+
+    /* ============================================================
+       INTRO — White bg, prose-only reading section
+       ============================================================ */
+    .intro-section {
+      padding: 100px 48px;
+      background: #fff;
+    }
+
+    .intro-inner {
+      max-width: 720px;
+    }
+
+    .intro-inner .section-title {
+      color: var(--color-standard-purple);
+      font-size: 36px;
+      margin-bottom: 32px;
+    }
+
+    .intro-prose p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--color-text-body);
+      margin-bottom: 24px;
+    }
+
+    .intro-prose p:last-child {
+      margin-bottom: 0;
+    }
+
+
+    /* ============================================================
+       WHAT'S INCLUDED — Pale grey bg, numbered index layout
+       ============================================================ */
+    .included-section {
+      padding: 100px 48px;
+      background: var(--color-pale-grey);
+    }
+
+    .included-section .section-title {
+      color: var(--color-standard-purple);
+      margin-bottom: 56px;
+    }
+
+    .included-index {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .included-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 0;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--color-border-purple-tint);
+      align-items: start;
+    }
+
+    .included-item:first-child {
+      padding-top: 0;
+    }
+
+    .included-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .included-number {
+      font-family: 'Poppins', sans-serif;
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--color-standard-purple);
+      opacity: 0.12;
+      user-select: none;
+      padding-top: 4px;
+    }
+
+    .included-content h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-standard-purple);
+      text-transform: uppercase;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+    }
+
+    .included-content p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--color-text-body);
+      max-width: 640px;
+    }
+
+
+    /* ============================================================
+       COMMON SITUATIONS — White bg, 3 cards with top accent
+       ============================================================ */
+    .situations-section {
+      padding: 100px 48px;
+      background: #fff;
+    }
+
+    .situations-section .section-title {
+      color: var(--color-standard-purple);
+      margin-bottom: 56px;
+    }
+
+    .situations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .situation-card {
+      background: #fff;
+      border: 1px solid var(--color-border-subtle);
+      border-top: 4px solid var(--color-neon-purple);
+      border-radius: 0 0 12px 12px;
+      padding: 40px 32px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .situation-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(var(--color-black-purple-rgb), 0.1);
+    }
+
+    .situation-card-icon {
+      width: 56px; height: 56px;
+      background: var(--color-pale-grey);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .situation-card-icon svg {
+      width: 28px; height: 28px;
+      stroke: var(--color-standard-purple);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .situation-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-standard-purple);
+      text-transform: uppercase;
+      letter-spacing: -0.2px;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .situation-card p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-text-body);
+    }
+
+    .situation-card .inline-link {
+      font-size: 15px;
+    }
+
+
+    /* ============================================================
+       OUR PROCESS — Pale grey bg, vertical timeline
+       ============================================================ */
+    .process-section {
+      padding: 100px 48px;
+      background: var(--color-pale-grey);
+    }
+
+    .process-section .section-title {
+      color: var(--color-standard-purple);
+    }
+
+    .process-intro {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--color-text-body);
+      max-width: 720px;
+      margin-bottom: 64px;
+    }
+
+    .process-intro p {
+      margin-bottom: 20px;
+    }
+    .process-intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .process-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 48px;
+    }
+
+    /* Vertical connecting line */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--color-purple-grey);
+      opacity: 0.5;
+    }
+
+    .timeline-step {
+      position: relative;
+      padding-bottom: 44px;
+    }
+
+    .timeline-step:last-child {
+      padding-bottom: 0;
+    }
+
+    /* Dot on the line */
+    .timeline-dot {
+      position: absolute;
+      left: -48px;
+      top: 4px;
+      width: 32px; height: 32px;
+      background: var(--color-standard-purple);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      box-shadow: 0 0 0 6px var(--color-pale-grey);
+    }
+
+    .timeline-dot span {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .timeline-step h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-standard-purple);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: -0.2px;
+    }
+
+    .timeline-step p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--color-text-body);
+      max-width: 520px;
+    }
+
+    .process-image {
+      position: sticky;
+      top: 120px;
+    }
+
+    .process-image .img-placeholder--light {
+      min-height: 440px;
+      border-radius: 12px;
+    }
+
+
+    /* ============================================================
+       SERVICE AREA — White bg
+       ============================================================ */
+    .area-section {
+      padding: 100px 48px;
+      background: #fff;
+    }
+
+    .area-section .section-title {
+      color: var(--color-standard-purple);
+      margin-bottom: 32px;
+    }
+
+    .area-prose {
+      max-width: 720px;
+    }
+
+    .area-prose p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--color-text-body);
+      margin-bottom: 24px;
+    }
+
+    .area-prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    .area-prose a {
+      color: var(--color-neon-purple);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .area-prose a:hover { color: var(--color-mid-purple); }
+
+
+    /* ============================================================
+       FAQ — Pale grey bg
+       ============================================================ */
+    .faq-section {
+      padding: 100px 48px;
+      background: var(--color-pale-grey);
+    }
+
+    .faq-section .section-title {
+      color: var(--color-standard-purple);
+      margin-bottom: 48px;
+    }
+
+    .faq-list {
+      max-width: 800px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--color-border-purple-tint);
+    }
+
+    .faq-item:first-child {
+      border-top: 3px solid var(--color-standard-purple);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 48px 24px 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-standard-purple);
+      text-align: left;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s;
+      line-height: 1.4;
+    }
+
+    .faq-question:hover {
+      color: var(--color-neon-purple);
+    }
+
+    .faq-question::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 12px; height: 12px;
+      border-right: 2px solid var(--color-standard-purple);
+      border-bottom: 2px solid var(--color-standard-purple);
+      transform: translateY(-70%) rotate(45deg);
+      transition: transform 0.3s ease, border-color 0.2s;
+    }
+
+    .faq-question:hover::after {
+      border-color: var(--color-neon-purple);
+    }
+
+    .faq-item.open .faq-question::after {
+      transform: translateY(-30%) rotate(-135deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 600px;
+    }
+
+    .faq-answer-inner {
+      padding: 0 0 24px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--color-text-body);
+    }
+
+    .faq-answer-inner a {
+      color: var(--color-neon-purple);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .faq-answer-inner a:hover { color: var(--color-mid-purple); }
+
+
+    /* ============================================================
+       CTA — Purple bg
+       ============================================================ */
+    .cta-section {
+      padding: 100px 48px;
+      background: var(--color-standard-purple);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 30% 20%, rgba(var(--color-neon-purple-rgb), 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 80% 80%, rgba(var(--color-horizon-yellow-rgb), 0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      position: relative; z-index: 2;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-section .section-title {
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .cta-desc {
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-horizon-yellow);
+      color: var(--color-standard-purple);
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 18px 40px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(var(--color-horizon-yellow-rgb), 0.35);
+    }
+
+    .btn-primary svg {
+      width: 18px; height: 18px;
+      transition: transform 0.2s;
+    }
+
+    .btn-primary:hover svg {
+      transform: translateX(3px);
+    }
+
+    .cta-btn-wrap {
+      margin-bottom: 16px;
+    }
+
+    .cta-contact {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 40px;
+    }
+
+    .cta-contact a {
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .cta-contact a:hover { color: var(--color-horizon-yellow); }
+
+    .cta-checklist {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px 28px;
+      margin-bottom: 40px;
+    }
+
+    .cta-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .cta-check svg {
+      width: 18px; height: 18px;
+      stroke: var(--color-horizon-yellow);
+      flex-shrink: 0;
+    }
+
+    .cta-trust {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cta-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .cta-trust-item svg {
+      width: 16px; height: 16px;
+      stroke: rgba(255,255,255,0.3);
+      flex-shrink: 0;
+    }
+
+
+    /* ============================================================
+       FOOTER — Dark purple bg
+       ============================================================ */
+    footer {
+      background: var(--color-dark-purple);
+      color: rgba(255,255,255,0.7);
+      padding: 64px 48px 32px;
+    }
+
+    .footer-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p { font-size: 14px; line-height: 1.7; margin-top: 16px; }
+
+    .footer-logo {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    }
+
+    .footer-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--color-horizon-yellow);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .footer-logo-icon svg { width: 20px; height: 20px; }
+
+    .footer-logo span {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700; font-size: 18px; color: #fff;
+    }
+
+    .footer-col h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: #fff; margin-bottom: 16px;
+    }
+
+    .footer-col a {
+      display: block; font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--color-horizon-yellow); }
+
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px;
+    }
+    .footer-bottom span { color: rgba(255,255,255,0.6); }
+
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero .img-placeholder { display: none; }
+
+      .situations-grid { grid-template-columns: 1fr 1fr; }
+
+      .process-layout { grid-template-columns: 1fr; gap: 40px; }
+      .process-image { position: relative; top: auto; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+
+      .hero-inner { padding: 0 24px 80px; }
+      .hero h1 { font-size: 36px; }
+
+      .intro-section,
+      .included-section,
+      .situations-section,
+      .process-section,
+      .area-section,
+      .faq-section,
+      .cta-section { padding: 72px 24px; }
+
+      .container { padding: 0 24px; }
+
+      .section-title { font-size: 28px; }
+
+      .intro-inner .section-title { font-size: 26px; }
+
+      .included-item {
+        grid-template-columns: 64px 1fr;
+      }
+
+      .included-number {
+        font-size: 48px;
+      }
+
+      .included-content h3 { font-size: 19px; }
+
+      .situations-grid { grid-template-columns: 1fr; }
+
+      .situation-card { padding: 32px 24px; }
+
+      .timeline-step h4 { font-size: 16px; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .nav-links.open {
+        display: flex;
+        position: fixed;
+        top: 72px; left: 0; right: 0;
+        background: var(--color-standard-purple);
+        padding: 24px;
+        gap: 4px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        z-index: 99;
+      }
+
+      .nav-links.open a {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        font-size: 12px;
+      }
+
+      .nav-links.open .nav-cta {
+        margin-top: 12px;
+        text-align: center;
+        border-radius: 6px;
+        padding: 12px 24px !important;
+      }
+
+      .nav-hamburger { display: flex; }
+
+      .section-title { font-size: 24px; }
+      .hero h1 { font-size: 30px; }
+
+      .included-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .included-number {
+        font-size: 40px;
+        opacity: 0.08;
+      }
+
+      .cta-trust { flex-direction: column; align-items: center; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- ── NAV ──────────────────────────────────────────── -->
+<nav>
+  <div class="nav-container">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#49104F" stroke-width="2.5" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <span class="nav-logo-text">Purple Current</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/services/" class="active">Services</a></li>
+      <li><a href="/industries/">Industries</a></li>
+      <li><a href="/service-areas/">Service Areas</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-breadcrumb fade-up">
+        <a href="/">Home</a>
+        <span>›</span>
+        <a href="/services/">Services</a>
+        <span>›</span>
+        <span>Panel Upgrades</span>
+      </div>
+      <h1 class="fade-up stagger-1">Commercial Electrical <em>Panel Upgrades</em> for Tampa Bay Businesses</h1>
+    </div>
+    <div class="img-placeholder fade-up stagger-2">
+      <svg class="ph-icon" viewBox="0 0 24 24" stroke="currentColor">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <path d="M21 15l-5-5L5 21"/>
+      </svg>
+      <span>Hero Photo Placeholder</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── INTRO — White bg ────────────────────────────── -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-inner">
+      <h2 class="section-title fade-up">When a Panel Upgrade Becomes a Business Decision</h2>
+      <div class="intro-prose fade-up stagger-1">
+        <p>A commercial electrical panel upgrade isn't a maintenance task you schedule when things are slow. It's what happens when your facility can't support the equipment you need to operate, when a failed inspection holds up a buildout, or when an aging panel puts your occupancy at risk.</p>
+        <p>Purple Current handles commercial electrical panel upgrades across Tampa Bay, from load analysis through final inspection. We size the upgrade to your actual demand, coordinate with the utility when the service entrance is involved, and pull every permit required by your jurisdiction. The work is documented, the inspections are closed, and you get records that hold up when your compliance team or insurance carrier asks for them.</p>
+        <p>We've spent 15 years doing this work for property managers, facilities directors, general contractors, and business owners. We don't do residential. Every crew we send to your site works commercial and industrial jobs every day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── WHAT'S INCLUDED — Pale grey bg, numbered index ── -->
+<section class="included-section">
+  <div class="container">
+    <div class="section-label fade-up">Scope of Work</div>
+    <h2 class="section-title fade-up">What's Included in a Commercial Panel Upgrade</h2>
+
+    <div class="included-index">
+
+      <div class="included-item fade-up">
+        <div class="included-number">01</div>
+        <div class="included-content">
+          <h3>Load Analysis and System Evaluation</h3>
+          <p>Every panel upgrade starts with understanding what your facility actually draws and what it's going to need. We perform a full load analysis on the existing system, evaluate the condition of the current panel and service equipment, and identify whether the upgrade is a panel swap or a full service entrance replacement. You get a clear report on current capacity, projected demand, and what the upgrade needs to cover.</p>
+        </div>
+      </div>
+
+      <div class="included-item fade-up stagger-1">
+        <div class="included-number">02</div>
+        <div class="included-content">
+          <h3>Panel and Service Entrance Upgrades</h3>
+          <p>We handle the full scope of the upgrade: panel replacement, load center installation, service conductor upgrades, and meter base work when the service entrance needs to change. When a capacity increase requires utility coordination, we manage that process and keep you informed on the timeline. Branch circuit work, breaker replacement, and labeling are included as part of every panel job. The system is tested, labeled to current NEC standards, and ready for inspection when we're done.</p>
+        </div>
+      </div>
+
+      <div class="included-item fade-up stagger-2">
+        <div class="included-number">03</div>
+        <div class="included-content">
+          <h3>Permitting, Inspection, and Documentation</h3>
+          <p>Every commercial panel upgrade in Florida requires a permit. We handle the application, schedule inspections, and coordinate directly with the building department in your county. When the job closes, you receive full documentation: permit records, inspection results, and a scope summary for your files. That paper trail matters for lease compliance, insurance requirements, and future service work on the same system.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── COMMON SITUATIONS — White bg, 3 icon cards ──── -->
+<section class="situations-section">
+  <div class="container">
+    <div class="section-label fade-up">When You Need This</div>
+    <h2 class="section-title fade-up">Common Situations That Require a Panel Upgrade</h2>
+
+    <div class="situations-grid">
+
+      <div class="situation-card fade-up">
+        <div class="situation-card-icon">
+          <!-- Building/expansion icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M3 21h18M9 21V9l-6 3v9M21 21V6l-6-3v18M9 9l6-3M9 12h.01M9 15h.01M15 12h.01M15 15h.01M15 18h.01"/>
+          </svg>
+        </div>
+        <h3>Facility Expansion or Tenant Buildout</h3>
+        <p>A new tenant moving into a commercial space often brings electrical requirements the existing panel can't handle. Office electrical panel upgrades during a buildout are time-sensitive: the panel needs to be right before the rest of the electrical rough-in can proceed. We coordinate with your GC to keep the schedule on track and make sure the new capacity supports the full <a href="/services/commercial-installation/" class="inline-link">commercial electrical installation</a>.</p>
+      </div>
+
+      <div class="situation-card fade-up stagger-1">
+        <div class="situation-card-icon">
+          <!-- Shield/compliance icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <h3>Aging Panels and Code Compliance</h3>
+        <p>Older commercial buildings frequently carry panels that were sized for a different era of electrical demand. Breakers that trip under normal load, panels with no spare capacity, and equipment that predates current code are all signs the system needs to be replaced. We see this regularly in office buildings, retail centers, and multi-family properties across Tampa Bay. A panel that can't pass inspection is a panel that puts your occupancy at risk. If you're unsure whether your system needs attention, our <a href="/services/maintenance-repair/" class="inline-link">maintenance and repair</a> team can evaluate it.</p>
+      </div>
+
+      <div class="situation-card fade-up stagger-2">
+        <div class="situation-card-icon">
+          <!-- Equipment/bolt icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h3>Equipment Additions and Increased Load</h3>
+        <p>New equipment means new load. Industrial electrical panel upgrades are often driven by the addition of machinery, compressors, HVAC systems, or production equipment that exceeds the panel's rated capacity. The same applies to <a href="/services/ev-charging-installation/" class="inline-link">EV charging installations</a>, which frequently require a service upgrade before the chargers can be connected. We run the load calculations first and size the panel upgrade to handle both the new equipment and reasonable future growth.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── OUR PROCESS — Pale grey bg, vertical timeline ── -->
+<section class="process-section">
+  <div class="container">
+    <div class="section-label fade-up">How It Works</div>
+    <h2 class="section-title fade-up">Our Process</h2>
+    <div class="process-intro fade-up stagger-1">
+      <p>We start with a site visit to evaluate your current electrical system, review your capacity needs, and identify the scope of work. From there, you get a detailed quote that covers the full project: materials, labor, permitting, and any utility coordination required.</p>
+      <p>Once the quote is approved, we pull the permit, order materials, and schedule the work. Our crews plan the installation to minimize disruption to your operation. When the work is complete, we schedule the inspection, close the permit, and hand over full documentation.</p>
+    </div>
+
+    <div class="process-layout">
+      <div class="timeline fade-up stagger-2">
+
+        <div class="timeline-step">
+          <div class="timeline-dot"><span>1</span></div>
+          <h4>Site Evaluation and Load Analysis</h4>
+          <p>On-site review of your current panel, service equipment, and facility electrical demand.</p>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-dot"><span>2</span></div>
+          <h4>Scope, Quote, and Approval</h4>
+          <p>Detailed proposal covering materials, labor, permitting, and timeline for your review.</p>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-dot"><span>3</span></div>
+          <h4>Permit Application and Material Procurement</h4>
+          <p>We pull the permit and order all materials before scheduling the work.</p>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-dot"><span>4</span></div>
+          <h4>Installation</h4>
+          <p>Panel upgrade performed by our commercial crews, scheduled to minimize impact on your operation.</p>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-dot"><span>5</span></div>
+          <h4>Inspection and Permit Closeout</h4>
+          <p>We schedule the inspection, coordinate with the building department, and close the permit.</p>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-dot"><span>6</span></div>
+          <h4>Documentation Delivered</h4>
+          <p>Permit records, inspection results, and scope summary for your files.</p>
+        </div>
+
+      </div>
+
+      <div class="process-image">
+        <div class="img-placeholder img-placeholder--light">
+          <svg class="ph-icon" viewBox="0 0 24 24" stroke="currentColor">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Process Photo Placeholder</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SERVICE AREA — White bg ──────────────────────── -->
+<section class="area-section">
+  <div class="container">
+    <div class="section-label fade-up">Coverage</div>
+    <h2 class="section-title fade-up">Service Area</h2>
+    <div class="area-prose fade-up stagger-1">
+      <p>We handle commercial electrical panel upgrades from our base in Land O' Lakes, FL, across nine Tampa Bay counties. Hillsborough, Pinellas, and Pasco counties get same-day response for most project types. Polk, Hernando, and Sarasota are next-day. For projects in Citrus, Marion, Sumter, and Levy counties, reach out and we'll confirm your timeline.</p>
+      <p>If you're managing panel upgrades across multiple locations in Tampa, Wesley Chapel, Clearwater, Sarasota, or anywhere else in our coverage area, we can coordinate multi-site work under a single scope. <a href="/service-area/">See our full service area</a> for coverage details and response times.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FAQ — Pale grey bg ──────────────────────────── -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-label fade-up">Common Questions</div>
+    <h2 class="section-title fade-up">Frequently Asked Questions</h2>
+
+    <div class="faq-list fade-up stagger-1">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How do you upgrade a commercial electrical panel without shutting down the business?</button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">The short answer: planning. We evaluate your system before we start and identify what can be phased, what can be switched over during low-occupancy hours, and what requires a scheduled outage. Most commercial panel upgrades involve some period where power is interrupted to the affected circuits, but we work with your schedule to keep that window as short as possible and give you advance notice so your team can plan around it.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Does a commercial panel upgrade require a permit in Florida?</button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">Yes. Any panel replacement or service upgrade on a commercial property in Florida requires a permit and inspection. We handle the full permit process: application, inspection scheduling, and closeout. The documentation becomes part of your building's permanent record and satisfies most compliance and insurance requirements.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What are the signs a commercial electrical panel needs upgrading?</button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">The most common indicators are breakers that trip frequently under normal load, a panel with no spare circuits or capacity for additional equipment, visible damage or corrosion on the panel or service equipment, and a system that was sized for a building use that no longer matches current operations. If your facility has changed tenants, added equipment, or expanded since the panel was installed, it's worth having the system evaluated. We can do that as part of a <a href="/services/maintenance-repair/">maintenance visit</a> or as a standalone assessment.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What factors affect the cost of a commercial panel upgrade?</button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">The biggest variables are the amperage of the new service, the number of circuits required, whether the service entrance (meter base and service conductors) needs to be upgraded alongside the panel, and whether utility coordination is involved. Permitting fees vary by county. Site conditions also factor in: accessibility, the age of the existing wiring, and whether the facility needs to remain operational during the work. We provide a detailed quote after the site evaluation so you know exactly what's driving the number before you approve anything.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA — Purple bg ─────────────────────────────── -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner fade-up">
+      <h2 class="section-title">Ready to Talk About Your Project?</h2>
+      <p class="cta-desc">Tell us what you need. We'll give you a straight answer on scope, timeline, and cost.</p>
+
+      <div class="cta-btn-wrap">
+        <a href="/request-a-quote/" class="btn-primary">
+          Request a Quote
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <p class="cta-contact">Or call us at <a href="tel:+10000000000">(XXX) XXX-XXXX</a></p>
+
+      <div class="cta-checklist">
+        <span class="cta-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Facility type and location
+        </span>
+        <span class="cta-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Current panel size and age (if known)
+        </span>
+        <span class="cta-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          What's driving the upgrade
+        </span>
+        <span class="cta-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Timeline or urgency
+        </span>
+      </div>
+
+      <div class="cta-trust">
+        <span class="cta-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Based in Land O' Lakes, FL
+        </span>
+        <span class="cta-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Licensed Commercial Electrical Contractor [License Number]
+        </span>
+        <span class="cta-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+          15 Years of Commercial Experience
+        </span>
+        <span class="cta-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          Backed by The Purple Standard
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ──────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#49104F" stroke-width="2.5" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <span>Purple Current</span>
+      </div>
+      <p>Licensed commercial electrical contractor serving Tampa Bay and Florida.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="/services/">All Services</a>
+      <a href="/services/commercial-installation/">Installation</a>
+      <a href="/services/panel-upgrades/">Panel Upgrades</a>
+      <a href="/services/maintenance-repair/">Maintenance &amp; Repair</a>
+      <a href="/services/lighting-installation/">Lighting</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about/">About</a>
+      <a href="/service-areas/">Service Areas</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+10000000000">(XXX) XXX-XXXX</a>
+      <a>Land O' Lakes, FL</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Purple Current. All rights reserved.</span>
+    <span>Powered by The Purple Standard</span>
+  </div>
+</footer>
+
+
+<!-- ── SCRIPTS ──────────────────────────────────────── -->
+<script>
+  // Scroll fade-in
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Hamburger nav
+  var hamburger = document.getElementById('navHamburger');
+  var navLinks = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', function() {
+      var open = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+  }
+</script>
+
+</body>
+</html>
