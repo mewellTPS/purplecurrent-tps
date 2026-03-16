@@ -9,9 +9,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lexend+Exa:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     /* ============================================================
-       BOY Homepage — v1.0
+       BOY Homepage — v1.3
        Design reference: purple-current.com layout structure
        Brand tokens: TPS Purple palette + BOY overrides
+       
+       v1.3 Changes:
+       - Footer: removed jump links, restructured to logo + slogan +
+         contact (phone, email) + service area
+       
+       v1.2 Changes:
+       - Wired in BOY logo (header + footer)
+       - Replaced contact form placeholder with designed custom form
+       
+       v1.1 Changes:
+       - Nav: removed links, logo image placeholder, phone-only CTA
+       - Trust bar: reduced to Residential / Commercial / Agricultural
+       - Services: title case headline, 3x2 grid + full-width emergency bar
+       - Why section: removed "The Difference" label, added review carousel
+       - Emergency band: new headline/copy, removed phone number display
        ============================================================ */
 
     :root {
@@ -71,12 +86,12 @@
     }
 
     /* ============================================================
-       HEADER / NAV
+       HEADER / NAV — v1.1: Logo image + phone only
        ============================================================ */
     .site-header {
       background: var(--boy-white);
       border-bottom: 1px solid var(--boy-light-gray);
-      padding: 16px 0;
+      padding: 12px 0;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -89,6 +104,17 @@
     }
 
     .site-logo {
+      display: block;
+      text-decoration: none;
+    }
+
+    .site-logo img {
+      height: 48px;
+      width: auto;
+    }
+
+    /* Fallback text logo if image hasn't loaded */
+    .site-logo-text {
       font-family: var(--font-heading);
       font-weight: 800;
       font-size: 22px;
@@ -97,40 +123,33 @@
       letter-spacing: -0.02em;
     }
 
-    .site-logo span {
+    .site-logo-text span {
       color: var(--boy-accent);
     }
 
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .header-nav a {
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--boy-body-text);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .header-nav a:hover {
-      color: var(--boy-primary);
-    }
-
     .header-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-family: var(--font-label);
       font-size: 13px;
       font-weight: 600;
       color: var(--boy-primary);
       text-decoration: none;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border: 2px solid var(--boy-primary);
       border-radius: 4px;
       transition: all 0.2s;
+    }
+
+    .header-phone svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .header-phone:hover {
@@ -158,7 +177,6 @@
       pointer-events: none;
     }
 
-    /* Subtle grid pattern overlay */
     .hero::after {
       content: '';
       position: absolute;
@@ -266,7 +284,7 @@
     }
 
     /* ============================================================
-       TRUST BAR
+       TRUST BAR — v1.1: Three customer segments only
        ============================================================ */
     .trust-bar {
       background: var(--boy-off-white);
@@ -316,7 +334,7 @@
     }
 
     /* ============================================================
-       SERVICES OVERVIEW
+       SERVICES OVERVIEW — v1.1: 3x2 grid + emergency bar
        ============================================================ */
     .services {
       padding: var(--section-pad) 0;
@@ -355,7 +373,7 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
@@ -372,14 +390,6 @@
       border-color: var(--boy-primary);
       box-shadow: 0 8px 32px rgba(26,82,118,0.08);
       transform: translateY(-3px);
-    }
-
-    .service-card.emergency {
-      border-left: 4px solid var(--boy-emergency);
-    }
-
-    .service-card.emergency .card-icon {
-      background: var(--boy-emergency);
     }
 
     .card-icon {
@@ -447,8 +457,63 @@
       stroke-linejoin: round;
     }
 
+    /* Emergency services bar — full width below grid */
+    .emergency-service-bar {
+      margin-top: 24px;
+      background: var(--boy-white);
+      border: 1px solid var(--boy-light-gray);
+      border-left: 4px solid var(--boy-emergency);
+      border-radius: 6px;
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      transition: all 0.3s;
+    }
+
+    .emergency-service-bar:hover {
+      border-color: var(--boy-emergency);
+      border-left-color: var(--boy-emergency);
+      box-shadow: 0 8px 32px rgba(192,57,43,0.08);
+      transform: translateY(-2px);
+    }
+
+    .emergency-service-bar .card-icon {
+      background: var(--boy-emergency);
+      flex-shrink: 0;
+    }
+
+    .emergency-service-bar .bar-content {
+      flex: 1;
+    }
+
+    .emergency-service-bar h3 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--boy-dark-text);
+      margin-bottom: 4px;
+    }
+
+    .emergency-service-bar p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--boy-mid-gray);
+    }
+
+    .emergency-service-bar .card-link {
+      opacity: 1;
+      margin-top: 0;
+      color: var(--boy-emergency);
+      flex-shrink: 0;
+    }
+
+    .emergency-service-bar .card-link svg {
+      stroke: var(--boy-emergency);
+    }
+
     /* ============================================================
-       WHY BOYETTE
+       WHY BOYETTE — v1.1: No label, review carousel added
        ============================================================ */
     .why-boy {
       padding: var(--section-pad) 0;
@@ -502,8 +567,138 @@
       color: var(--boy-mid-gray);
     }
 
+    /* Review Carousel */
+    .reviews-section {
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 1px solid var(--boy-light-gray);
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .reviews-header h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--boy-dark-text);
+    }
+
+    .reviews-carousel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reviews-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .review-card {
+      min-width: 100%;
+      padding: 0 40px;
+      text-align: center;
+    }
+
+    .review-stars {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .review-stars svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--boy-accent);
+      stroke: none;
+    }
+
+    .review-card blockquote {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--boy-body-text);
+      font-style: italic;
+      max-width: 680px;
+      margin: 0 auto 20px;
+    }
+
+    .review-card cite {
+      font-family: var(--font-label);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--boy-primary);
+      font-style: normal;
+    }
+
+    .carousel-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--boy-light-gray);
+      background: var(--boy-white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .carousel-btn:hover {
+      border-color: var(--boy-primary);
+      background: var(--boy-primary);
+    }
+
+    .carousel-btn:hover svg {
+      stroke: var(--boy-white);
+    }
+
+    .carousel-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: var(--boy-primary);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--boy-light-gray);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--boy-primary);
+      width: 24px;
+      border-radius: 4px;
+    }
+
     /* ============================================================
-       EMERGENCY CTA BAND
+       EMERGENCY CTA BAND — v1.1: Updated headline/copy, button only
        ============================================================ */
     .emergency-band {
       background: linear-gradient(135deg, var(--boy-emergency-dark) 0%, var(--boy-emergency) 100%);
@@ -543,14 +738,6 @@
       line-height: 1.7;
     }
 
-    .emergency-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
     .btn-emergency {
       display: inline-flex;
       align-items: center;
@@ -572,13 +759,14 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
 
-    .emergency-phone {
-      font-family: var(--font-label);
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--boy-white);
-      text-decoration: none;
-      letter-spacing: 0.04em;
+    .btn-emergency svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     /* ============================================================
@@ -643,7 +831,7 @@
     }
 
     /* ============================================================
-       CONTACT SECTION
+       CONTACT
        ============================================================ */
     .contact {
       padding: var(--section-pad) 0;
@@ -722,16 +910,139 @@
       text-decoration: none;
     }
 
-    .contact-form-placeholder {
+    .contact-form-wrap {
       background: var(--boy-white);
       border: 1px solid var(--boy-light-gray);
       border-radius: 8px;
-      padding: 48px 40px;
-      text-align: center;
-      color: var(--boy-mid-gray);
-      font-family: var(--font-label);
+      overflow: hidden;
+    }
+
+    .form-header {
+      background: var(--boy-primary);
+      padding: 24px 32px;
+    }
+
+    .form-header h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--boy-white);
+      margin-bottom: 4px;
+    }
+
+    .form-header p {
       font-size: 13px;
-      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.65);
+      margin: 0;
+    }
+
+    .contact-form {
+      padding: 28px 32px 32px;
+    }
+
+    .form-row {
+      margin-bottom: 20px;
+    }
+
+    .form-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-row-half {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--boy-dark-text);
+      margin-bottom: 6px;
+    }
+
+    .required {
+      color: var(--boy-emergency);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--boy-dark-text);
+      background: var(--boy-off-white);
+      border: 1px solid var(--boy-light-gray);
+      border-radius: 4px;
+      padding: 10px 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      width: 100%;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 96px;
+    }
+
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237F8C9B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--boy-primary);
+      box-shadow: 0 0 0 3px rgba(26,82,118,0.1);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--boy-mid-gray);
+      font-weight: 400;
+    }
+
+    .form-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--boy-primary-deeper);
+      background: var(--boy-accent);
+      padding: 14px 32px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .form-submit:hover {
+      background: var(--boy-accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(235,169,80,0.35);
+    }
+
+    .form-disclaimer {
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--boy-mid-gray);
+      margin-top: 16px;
+      text-align: center;
     }
 
     /* ============================================================
@@ -754,11 +1065,29 @@
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    .footer-brand .site-logo {
-      color: var(--boy-white);
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-logo img {
+      height: 48px;
+      width: auto;
+      filter: brightness(1.8) contrast(0.9);
+      opacity: 0.85;
+    }
+
+    .footer-logo-text {
+      font-family: var(--font-heading);
+      font-weight: 800;
       font-size: 20px;
-      margin-bottom: 12px;
-      display: block;
+      color: var(--boy-white);
+      text-decoration: none;
+    }
+
+    .footer-logo-text span {
+      color: var(--boy-accent);
     }
 
     .footer-brand p {
@@ -782,14 +1111,6 @@
       text-transform: uppercase;
       color: rgba(255,255,255,0.4);
       margin-bottom: 16px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col li {
-      margin-bottom: 8px;
     }
 
     .footer-col a {
@@ -854,45 +1175,55 @@
     /* ============================================================
        RESPONSIVE
        ============================================================ */
+    @media (max-width: 960px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 768px) {
       :root { --section-pad: 56px; }
 
-      .header-nav { display: none; }
-
-      .hero { padding: 72px 0 80px; }
-
       .services-grid { grid-template-columns: 1fr; }
+
+      .emergency-service-bar {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+      }
 
       .why-grid { grid-template-columns: 1fr; }
 
       .area-layout,
       .contact-layout { grid-template-columns: 1fr; gap: 32px; }
 
+      .form-row-half { grid-template-columns: 1fr; }
+
       .trust-bar .container { gap: 24px; }
 
       .footer-top { flex-direction: column; }
 
       .footer-nav { gap: 32px; }
+
+      .review-card { padding: 0 16px; }
     }
   </style>
 </head>
 <body>
 
   <!-- ============================================================
-       HEADER
+       HEADER — v1.1: Logo image + phone button only
        ============================================================ -->
   <header class="site-header">
     <div class="container">
-      <a href="/" class="site-logo">Boyette Pump <span>&</span> Well</a>
-      <nav>
-        <ul class="header-nav">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#why">Why Boyette</a></li>
-          <li><a href="#area">Service Area</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="tel:8133639025" class="header-phone">(813) 363-9025</a></li>
-        </ul>
-      </nav>
+      <!-- BOY Logo -->
+      <a href="/" class="site-logo">
+        <img src="BOY-LOGO-STACKED-COLOR-DARK.png" alt="Boyette Pump & Well">
+      </a>
+      <a href="tel:8133639025" class="header-phone">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (813) 363-9025
+      </a>
     </div>
   </header>
 
@@ -918,39 +1249,42 @@
   </section>
 
   <!-- ============================================================
-       TRUST BAR
+       TRUST BAR — v1.1: Three customer segments only
        ============================================================ -->
   <div class="trust-bar">
     <div class="container">
       <div class="trust-item">
         <div class="trust-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <!-- Residential: house icon -->
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
-        8 Years Serving Tampa Bay
+        Residential
       </div>
       <div class="trust-item">
         <div class="trust-icon">
-          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <!-- Commercial: building icon -->
+          <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><line x1="8" y1="6" x2="8" y2="6.01"/><line x1="12" y1="6" x2="12" y2="6.01"/><line x1="16" y1="6" x2="16" y2="6.01"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="16" y1="14" x2="16" y2="14.01"/></svg>
         </div>
-        Emergency Service Available
+        Commercial
       </div>
       <div class="trust-item">
         <div class="trust-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <!-- Agricultural: sprout/leaf icon -->
+          <svg viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
         </div>
-        Residential &bull; Commercial &bull; Agricultural
+        Agricultural
       </div>
     </div>
   </div>
 
   <!-- ============================================================
-       SERVICES OVERVIEW
+       SERVICES OVERVIEW — v1.1: 3x2 grid + emergency bar
        ============================================================ -->
   <section class="services" id="services">
     <div class="container">
       <div class="section-intro">
         <p class="section-label">Services</p>
-        <h2 class="section-headline">From the pump to the tap.</h2>
+        <h2 class="section-headline">From the Pump to the Tap.</h2>
       </div>
       <div class="services-grid">
 
@@ -984,17 +1318,7 @@
           <a href="#" class="card-link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
         </div>
 
-        <!-- Card 4: Emergency Services -->
-        <div class="service-card emergency">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <h3>Emergency Services</h3>
-          <p>No-water calls, pump failure, ruptured tanks, no pressure, and electrical failures. We move fast.</p>
-          <a href="#" class="card-link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-        </div>
-
-        <!-- Card 5: Inspections & Analysis -->
+        <!-- Card 4: Inspections & Analysis -->
         <div class="service-card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
@@ -1004,7 +1328,7 @@
           <a href="#" class="card-link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
         </div>
 
-        <!-- Card 6: Irrigation & Outdoor -->
+        <!-- Card 5: Irrigation & Outdoor -->
         <div class="service-card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1014,7 +1338,7 @@
           <a href="#" class="card-link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
         </div>
 
-        <!-- Card 7: Maintenance & Repair -->
+        <!-- Card 6: Maintenance & Repair -->
         <div class="service-card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
@@ -1025,16 +1349,28 @@
         </div>
 
       </div>
+
+      <!-- Emergency Services — full-width bar below grid -->
+      <div class="emergency-service-bar">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="bar-content">
+          <h3>Emergency Services</h3>
+          <p>No-water calls, pump failure, ruptured tanks, no pressure, and electrical failures. We move fast.</p>
+        </div>
+        <a href="tel:8133639025" class="card-link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+
     </div>
   </section>
 
   <!-- ============================================================
-       WHY BOYETTE
+       WHY BOYETTE — v1.1: No label, review carousel added
        ============================================================ -->
   <section class="why-boy" id="why">
     <div class="container">
       <div class="section-intro">
-        <p class="section-label">The Difference</p>
         <h2 class="section-headline">Why Boyette Pump & Well</h2>
       </div>
       <div class="why-grid">
@@ -1080,23 +1416,109 @@
         </div>
 
       </div>
+
+      <!-- Review Carousel -->
+      <div class="reviews-section">
+        <div class="reviews-header">
+          <h3>What Our Customers Say</h3>
+        </div>
+        <div class="reviews-carousel" id="reviewsCarousel">
+          <div class="reviews-track" id="reviewsTrack">
+
+            <div class="review-card">
+              <div class="review-stars">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <blockquote>&ldquo;The best. Well-trained and service-oriented. You can tell from the years of experience and the quality of the work. Can't say enough great things about the crew.&rdquo;</blockquote>
+              <cite>Michael K.</cite>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <blockquote>&ldquo;Boyette Pump and Well delivers fantastic service. I called a day and a half ago because my pump stopped working and I had no water. He came by this morning and took care of my problem before 9 am. I am very thankful.&rdquo;</blockquote>
+              <cite>Pat M.</cite>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <blockquote>&ldquo;Absolutely the best!!!! Took great care of my horses having water!&rdquo;</blockquote>
+              <cite>Joyce M.</cite>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <blockquote>&ldquo;Called late into the evening, and he was at our house by 8 am the next day to install a new pump. Very friendly and honest, very efficient and a very good price.&rdquo;</blockquote>
+              <cite>Andy H.</cite>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <blockquote>&ldquo;Knowledgeable, professional, punctual, and honest. While I hope not to need well service again any time soon, if needed, they are the people I will call.&rdquo;</blockquote>
+              <cite>Suzanne S.</cite>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous review">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="carousel-dots" id="carouselDots">
+            <button class="carousel-dot active" data-index="0" aria-label="Review 1"></button>
+            <button class="carousel-dot" data-index="1" aria-label="Review 2"></button>
+            <button class="carousel-dot" data-index="2" aria-label="Review 3"></button>
+            <button class="carousel-dot" data-index="3" aria-label="Review 4"></button>
+            <button class="carousel-dot" data-index="4" aria-label="Review 5"></button>
+          </div>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next review">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- ============================================================
-       EMERGENCY CTA BAND
+       EMERGENCY CTA BAND — v1.1: Updated headline/copy, button only
        ============================================================ -->
   <section class="emergency-band">
     <div class="container">
-      <h2>No water?</h2>
-      <p>Whether it's pump failures, no pressure, or ruptured tanks, our emergency service is available across Tampa Bay.</p>
-      <div class="emergency-actions">
-        <a href="tel:8133639025" class="btn-emergency">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Call for Emergency Service
-        </a>
-        <a href="tel:8133639025" class="emergency-phone">(813) 363-9025</a>
-      </div>
+      <h2>Experiencing an emergency?</h2>
+      <p>Whether it's pump failures, low water pressure, or ruptured tanks, our emergency service is available across Tampa Bay.</p>
+      <a href="tel:8133639025" class="btn-emergency">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call for Emergency Service
+      </a>
     </div>
   </section>
 
@@ -1149,8 +1571,61 @@
             </div>
           </div>
         </div>
-        <div class="contact-form-placeholder">
-          Contact form placeholder — wire to WordPress form plugin
+        <div class="contact-form-wrap">
+          <div class="form-header">
+            <h3>Request a Quote</h3>
+            <p>We'll get back to you within one business day.</p>
+          </div>
+          <div class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name">Name <span class="required">*</span></label>
+                <input type="text" id="contact-name" name="name" placeholder="Your full name" required>
+              </div>
+            </div>
+            <div class="form-row form-row-half">
+              <div class="form-group">
+                <label for="contact-phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="contact-phone" name="phone" placeholder="(813) 000-0000" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email <span class="required">*</span></label>
+                <input type="email" id="contact-email" name="email" placeholder="you@email.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-issue">Describe the Issue You're Having <span class="required">*</span></label>
+                <textarea id="contact-issue" name="issue" rows="4" placeholder="Tell us about your water system, what's happening, and any details that might help us prepare." required></textarea>
+              </div>
+            </div>
+            <div class="form-row form-row-half">
+              <div class="form-group">
+                <label for="contact-zip">Zip Code <span class="required">*</span></label>
+                <input type="text" id="contact-zip" name="zip" placeholder="33510" maxlength="10" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-source">How Did You Hear About Us?</label>
+                <select id="contact-source" name="source">
+                  <option value="" disabled selected>Select one</option>
+                  <option value="google">Google</option>
+                  <option value="llm">Large Language Model (ChatGPT/Claude/etc.)</option>
+                  <option value="social">Social Media</option>
+                  <option value="yelp">Yelp</option>
+                  <option value="referral">Referral</option>
+                  <option value="returning">I've used Boyette Pump & Well before</option>
+                  <option value="unsure">Unsure</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <button type="submit" class="form-submit">
+                Submit Request
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </button>
+            </div>
+            <p class="form-disclaimer">By submitting this form, you consent to receive text messages from Boyette Pump & Well at the number provided. Msg & data rates may apply. Reply STOP to unsubscribe.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1163,20 +1638,12 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="/" class="site-logo">Boyette Pump <span>&</span> Well</a>
+          <a href="/" class="footer-logo">
+            <img src="BOY-LOGO-STACKED-COLOR-DARK.png" alt="Boyette Pump & Well">
+          </a>
           <p>End-to-end water system services for Tampa Bay and surrounding counties.</p>
         </div>
         <div class="footer-nav">
-          <div class="footer-col">
-            <h4>Navigation</h4>
-            <ul>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#area">Service Area</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="tel:8133639025">Emergency Service</a></li>
-            </ul>
-          </div>
           <div class="footer-col">
             <h4>Contact</h4>
             <div class="footer-contact">
@@ -1184,7 +1651,16 @@
                 <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 (813) 363-9025
               </a>
-              <a href="#">
+              <a href="mailto:office@boyettepumpandwell.com">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                office@boyettepumpandwell.com
+              </a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Service Area</h4>
+            <div class="footer-contact">
+              <a href="#area">
                 <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 Tampa Bay and surrounding counties
               </a>
@@ -1201,6 +1677,51 @@
       </div>
     </div>
   </footer>
+
+  <!-- ============================================================
+       CAROUSEL JS
+       ============================================================ -->
+  <script>
+    (function() {
+      const track = document.getElementById('reviewsTrack');
+      const dots = document.querySelectorAll('.carousel-dot');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const totalSlides = dots.length;
+      let current = 0;
+      let autoplayTimer;
+
+      function goTo(index) {
+        current = ((index % totalSlides) + totalSlides) % totalSlides;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(d => d.classList.remove('active'));
+        dots[current].classList.add('active');
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      function startAutoplay() {
+        autoplayTimer = setInterval(next, 5000);
+      }
+
+      function resetAutoplay() {
+        clearInterval(autoplayTimer);
+        startAutoplay();
+      }
+
+      prevBtn.addEventListener('click', function() { prev(); resetAutoplay(); });
+      nextBtn.addEventListener('click', function() { next(); resetAutoplay(); });
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          goTo(parseInt(this.getAttribute('data-index')));
+          resetAutoplay();
+        });
+      });
+
+      startAutoplay();
+    })();
+  </script>
 
 </body>
 </html>
