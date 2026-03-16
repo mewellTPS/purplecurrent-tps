@@ -1,0 +1,1815 @@
+<!--
+  Purple Current Website
+  Page: Commercial Surge Protection
+  Page ID: PC-SERVICE-017
+  Version: 1.0
+  Last Updated: 2026-03-16
+
+  Changes in this version:
+  - v1.0 (2026-03-16): Initial build from content doc v1.0
+    - Accordion treatment for What We Install (4 SPD subsections)
+    - Left-border accent bars for When Surge Protection Makes Sense (5 scenarios)
+    - Full-width prose for How We Scope and Install
+    - Type 1/Type 2 diagram placeholder alongside accordion
+    - Standard FAQ accordion, CTA, footer
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commercial Surge Protection in Tampa Bay | Purple Current</title>
+  <meta name="description" content="Commercial surge protection for Tampa Bay facilities. Type 1 and Type 2 SPD installation sized to your load profile. Permitted and inspected. Get a quote.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lexend+Exa:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       PURPLE CURRENT — Commercial Surge Protection Detail Page
+       Version: 1.0
+       Design System: The Purple Standard v1.2 / Tokens v1.1
+       ============================================================ */
+
+    :root {
+      --color-standard-purple:    #49104F;
+      --color-purple-grey:        #BAB0C6;
+      --color-pale-grey:          #F5EFFB;
+      --color-mid-purple:         #771686;
+      --color-neon-purple:        #A263D2;
+      --color-light-purple:       #D9BBF2;
+      --color-dark-purple:        #2A0A2D;
+      --color-black-purple:       #170218;
+      --color-horizon-yellow:     #EBA950;
+      --color-pale-yellow:        #E4B776;
+
+      --color-standard-purple-rgb: 73, 16, 79;
+      --color-dark-purple-rgb:     42, 10, 45;
+      --color-black-purple-rgb:    23, 2, 24;
+      --color-horizon-yellow-rgb:  235, 169, 80;
+      --color-neon-purple-rgb:     162, 99, 210;
+
+      --color-text-body:          #555555;
+      --color-text-muted:         #666666;
+      --color-text-subtle:        #888888;
+      --color-border-subtle:      #EEEEEE;
+      --color-border-medium:      #DDDDDD;
+      --color-border-strong:      #E5E5E5;
+      --color-border-purple-tint: #E0D8E2;
+
+      --font-heading: 'Poppins', sans-serif;
+      --font-subhead: 'Lexend Exa', sans-serif;
+      --font-body:    'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-black-purple);
+      background: #ffffff;
+      line-height: 1.75;
+      font-weight: 400;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-heading);
+      line-height: 1.25;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ── FADE ANIMATIONS ─────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+
+    /* ── CONTAINER ──────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ── SECTION LABELS / TITLES ─────────────────── */
+    .section-label {
+      font-family: var(--font-subhead);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-horizon-yellow);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--color-standard-purple);
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      font-size: 17px;
+      color: var(--color-text-body);
+      line-height: 1.75;
+      max-width: 780px;
+    }
+
+
+    /* ── NAVIGATION ──────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(var(--color-standard-purple-rgb), 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--color-horizon-yellow);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--color-standard-purple);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-subhead);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .nav-links a.nav-cta {
+      background: var(--color-horizon-yellow);
+      color: var(--color-black-purple);
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-left: 8px;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-links a.nav-cta:hover {
+      background: var(--color-pale-yellow);
+      box-shadow: 0 0 20px rgba(var(--color-horizon-yellow-rgb), 0.35);
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-mobile-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-mobile-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-mobile-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-mobile-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg,
+        var(--color-standard-purple) 0%,
+        rgba(var(--color-dark-purple-rgb), 0.95) 100%);
+      padding: 0 48px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(var(--color-neon-purple-rgb), 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding-top: 120px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      font-family: var(--font-subhead);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .hero-breadcrumb a {
+      color: rgba(255,255,255,0.55);
+      transition: color 0.2s;
+    }
+
+    .hero-breadcrumb a:hover { color: var(--color-horizon-yellow); }
+    .hero-breadcrumb span { color: rgba(255,255,255,0.35); }
+    .hero-breadcrumb span:last-child { color: rgba(255,255,255,0.8); }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-family: var(--font-subhead);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-horizon-yellow);
+      margin-bottom: 24px;
+    }
+
+    .hero-badge svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--color-horizon-yellow);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--color-horizon-yellow);
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.75;
+      max-width: 520px;
+    }
+
+    .hero-photo {
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg,
+        var(--color-standard-purple),
+        var(--color-neon-purple),
+        var(--color-horizon-yellow));
+    }
+
+    .hero-photo-placeholder {
+      text-align: center;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .hero-photo-placeholder svg {
+      width: 48px;
+      height: 48px;
+      stroke: rgba(255,255,255,0.2);
+      fill: none;
+      stroke-width: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .hero-photo-placeholder span {
+      display: block;
+      font-size: 12px;
+      font-family: var(--font-subhead);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+
+    /* ── INTRO SECTION ───────────────────────────── */
+    .intro-section {
+      padding: 100px 48px;
+      background: #ffffff;
+    }
+
+    .intro-layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .intro-text h2 {
+      font-size: 36px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--color-standard-purple);
+      margin-bottom: 28px;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+
+    .intro-text p {
+      font-size: 16px;
+      color: var(--color-text-body);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .intro-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-text p strong {
+      color: var(--color-black-purple);
+      font-weight: 600;
+    }
+
+    .intro-image {
+      position: sticky;
+      top: 100px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--color-pale-grey);
+      border: 1px solid var(--color-border-purple-tint);
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .intro-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg,
+        var(--color-standard-purple),
+        var(--color-neon-purple),
+        var(--color-horizon-yellow));
+    }
+
+    .image-placeholder {
+      text-align: center;
+      color: var(--color-text-subtle);
+    }
+
+    .image-placeholder svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--color-purple-grey);
+      fill: none;
+      stroke-width: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .image-placeholder span {
+      display: block;
+      font-size: 11px;
+      font-family: var(--font-subhead);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-purple-grey);
+    }
+
+
+    /* ── WHAT WE INSTALL — ACCORDION + DIAGRAM ──── */
+    .install-section {
+      padding: 100px 48px;
+      background: var(--color-pale-grey);
+    }
+
+    .install-header {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+    }
+
+    .install-layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    /* Accordion items */
+    .spd-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .spd-item {
+      border-bottom: 1px solid var(--color-border-purple-tint);
+      overflow: hidden;
+    }
+
+    .spd-item:first-child {
+      border-top: 3px solid var(--color-standard-purple);
+    }
+
+    .spd-trigger {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      padding: 24px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-standard-purple);
+      transition: color 0.2s;
+    }
+
+    .spd-trigger:hover {
+      color: var(--color-neon-purple);
+    }
+
+    .spd-trigger-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: #ffffff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-border-purple-tint);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .spd-item.open .spd-trigger-icon {
+      background: var(--color-standard-purple);
+      border-color: var(--color-standard-purple);
+    }
+
+    .spd-trigger-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--color-standard-purple);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      transition: stroke 0.2s;
+    }
+
+    .spd-item.open .spd-trigger-icon svg {
+      stroke: var(--color-horizon-yellow);
+    }
+
+    .spd-trigger-text {
+      flex: 1;
+    }
+
+    .spd-trigger-chevron {
+      width: 20px;
+      height: 20px;
+      stroke: var(--color-purple-grey);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      transition: transform 0.3s ease, stroke 0.2s;
+    }
+
+    .spd-item.open .spd-trigger-chevron {
+      transform: rotate(180deg);
+      stroke: var(--color-neon-purple);
+    }
+
+    .spd-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .spd-body-inner {
+      padding: 0 0 28px 56px;
+    }
+
+    .spd-body-inner p {
+      font-size: 15px;
+      color: var(--color-text-body);
+      line-height: 1.8;
+    }
+
+    /* Diagram placeholder */
+    .diagram-panel {
+      position: sticky;
+      top: 100px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid var(--color-border-purple-tint);
+      min-height: 460px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    .diagram-panel::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg,
+        var(--color-standard-purple),
+        var(--color-neon-purple),
+        var(--color-horizon-yellow));
+    }
+
+    .diagram-placeholder {
+      text-align: center;
+      width: 100%;
+    }
+
+    .diagram-placeholder-visual {
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto 24px;
+    }
+
+    /* Simplified inline diagram sketch */
+    .diagram-sketch {
+      width: 100%;
+      padding: 24px;
+    }
+
+    .diagram-layer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .diagram-layer--t1 {
+      background: rgba(var(--color-standard-purple-rgb), 0.08);
+      border: 1px solid rgba(var(--color-standard-purple-rgb), 0.15);
+    }
+
+    .diagram-layer--t2 {
+      background: rgba(var(--color-neon-purple-rgb), 0.06);
+      border: 1px solid rgba(var(--color-neon-purple-rgb), 0.12);
+      margin-left: 24px;
+    }
+
+    .diagram-layer--pou {
+      background: rgba(var(--color-horizon-yellow-rgb), 0.08);
+      border: 1px solid rgba(var(--color-horizon-yellow-rgb), 0.2);
+      margin-left: 48px;
+    }
+
+    .diagram-layer-label {
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .diagram-layer--t1 .diagram-layer-label { color: var(--color-standard-purple); }
+    .diagram-layer--t2 .diagram-layer-label { color: var(--color-neon-purple); }
+    .diagram-layer--pou .diagram-layer-label { color: #b07d20; }
+
+    .diagram-layer-desc {
+      font-size: 11px;
+      color: var(--color-text-muted);
+      font-family: var(--font-body);
+    }
+
+    .diagram-connector {
+      width: 2px;
+      height: 16px;
+      background: var(--color-border-purple-tint);
+      margin: 0 0 0 44px;
+    }
+
+    .diagram-caption {
+      font-size: 11px;
+      font-family: var(--font-subhead);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-purple-grey);
+      margin-top: 16px;
+    }
+
+
+    /* ── WHEN SURGE PROTECTION MAKES SENSE ──────── */
+    .scenarios-section {
+      padding: 100px 48px;
+      background: #ffffff;
+    }
+
+    .scenarios-header {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+    }
+
+    .scenarios-layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .scenarios-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .scenario-item {
+      padding: 28px 0 28px 28px;
+      border-left: 3px solid var(--color-border-subtle);
+      position: relative;
+      transition: border-color 0.3s ease;
+    }
+
+    .scenario-item:hover {
+      border-left-color: var(--color-neon-purple);
+    }
+
+    .scenario-item + .scenario-item {
+      border-top: 1px solid var(--color-border-subtle);
+    }
+
+    .scenario-item p {
+      font-size: 15px;
+      color: var(--color-text-body);
+      line-height: 1.8;
+    }
+
+    .scenario-item p a {
+      color: var(--color-neon-purple);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .scenario-item p a:hover {
+      color: var(--color-mid-purple);
+    }
+
+    .scenarios-image {
+      position: sticky;
+      top: 100px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--color-pale-grey);
+      border: 1px solid var(--color-border-purple-tint);
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .scenarios-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg,
+        var(--color-standard-purple),
+        var(--color-neon-purple),
+        var(--color-horizon-yellow));
+    }
+
+
+    /* ── HOW WE SCOPE AND INSTALL ───────────────── */
+    .process-section {
+      padding: 100px 48px;
+      background: var(--color-pale-grey);
+    }
+
+    .process-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .process-prose {
+      max-width: 780px;
+    }
+
+    .process-prose p {
+      font-size: 16px;
+      color: var(--color-text-body);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .process-prose p:last-child {
+      margin-bottom: 0;
+    }
+
+
+    /* ── FAQ ──────────────────────────────────────── */
+    .faq-section {
+      padding: 100px 48px;
+      background: #ffffff;
+    }
+
+    .faq-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .faq-wrapper {
+      max-width: 800px;
+      margin-top: 48px;
+      border-top: 3px solid var(--color-standard-purple);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--color-border-strong);
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 24px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-black-purple);
+      transition: color 0.2s;
+      gap: 16px;
+    }
+
+    .faq-question:hover {
+      color: var(--color-neon-purple);
+    }
+
+    .faq-chevron {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      stroke: var(--color-purple-grey);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      transition: transform 0.3s ease, stroke 0.2s;
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+      stroke: var(--color-neon-purple);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 0 28px;
+    }
+
+    .faq-answer-inner p {
+      font-size: 15px;
+      color: var(--color-text-body);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .faq-answer-inner p:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-answer-inner a {
+      color: var(--color-neon-purple);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .faq-answer-inner a:hover {
+      color: var(--color-mid-purple);
+    }
+
+
+    /* ── CTA SECTION ─────────────────────────────── */
+    .cta-section {
+      padding: 100px 48px;
+      background: linear-gradient(135deg,
+        var(--color-standard-purple) 0%,
+        rgba(var(--color-dark-purple-rgb), 0.95) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(var(--color-neon-purple-rgb), 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-inner .section-label {
+      color: var(--color-horizon-yellow);
+    }
+
+    .cta-inner h2 {
+      font-size: 36px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .cta-desc {
+      font-size: 17px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--color-horizon-yellow);
+      color: var(--color-black-purple);
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 10px;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-pale-yellow);
+      box-shadow: 0 0 28px rgba(var(--color-horizon-yellow-rgb), 0.4);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: transparent;
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 10px;
+      transition: background 0.2s, border-color 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .cta-contact {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 32px;
+    }
+
+    .cta-contact a {
+      color: rgba(255,255,255,0.7);
+      transition: color 0.2s;
+    }
+
+    .cta-contact a:hover {
+      color: var(--color-horizon-yellow);
+    }
+
+    .cta-checklist {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 24px;
+      margin-bottom: 32px;
+    }
+
+    .cta-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .cta-check svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--color-horizon-yellow);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+    }
+
+    .cta-trust {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 28px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .cta-trust-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-family: var(--font-subhead);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .cta-trust-item svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--color-horizon-yellow);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--color-dark-purple);
+      padding: 72px 48px 40px;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .footer-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--color-horizon-yellow);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--color-standard-purple);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-family: var(--font-subhead);
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 20px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--color-horizon-yellow);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 48px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-bottom span:last-child {
+      font-family: var(--font-subhead);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero { padding-bottom: 80px; }
+      .hero-inner { gap: 48px; padding-top: 110px; }
+      .hero h1 { font-size: 40px; }
+      .section-title { font-size: 34px; }
+      .intro-layout { gap: 48px; }
+      .install-layout { gap: 48px; }
+      .scenarios-layout { gap: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 24px; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: rgba(var(--color-standard-purple-rgb), 0.98); padding: 24px; gap: 4px; border-top: 1px solid rgba(255,255,255,0.06); }
+      .nav-links.open { display: flex; }
+      .nav-links a.nav-cta { text-align: center; margin-left: 0; }
+      .nav-mobile-toggle { display: flex; }
+
+      .hero { padding: 0 24px 72px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; padding-top: 100px; }
+      .hero h1 { font-size: 34px; }
+      .hero-photo { min-height: 240px; }
+
+      .intro-section { padding: 72px 24px; }
+      .intro-layout { grid-template-columns: 1fr; gap: 32px; }
+      .intro-text h2 { font-size: 28px; }
+      .intro-image { position: static; min-height: 260px; }
+
+      .install-section { padding: 72px 24px; }
+      .install-layout { grid-template-columns: 1fr; gap: 32px; }
+      .diagram-panel { position: static; min-height: 340px; order: -1; }
+
+      .scenarios-section { padding: 72px 24px; }
+      .scenarios-layout { grid-template-columns: 1fr; }
+      .scenarios-image { position: static; min-height: 240px; order: -1; margin-bottom: 32px; }
+
+      .process-section { padding: 72px 24px; }
+
+      .faq-section { padding: 72px 24px; }
+      .section-title { font-size: 28px; }
+
+      .cta-section { padding: 72px 24px; }
+      .cta-inner h2 { font-size: 28px; }
+
+      footer { padding: 56px 24px 32px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .section-title { font-size: 24px; }
+      .cta-inner h2 { font-size: 24px; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .cta-checklist { flex-direction: column; align-items: center; }
+      .cta-trust { flex-direction: column; align-items: center; }
+      .spd-trigger { font-size: 15px; }
+      .spd-trigger-icon { width: 36px; height: 36px; min-width: 36px; }
+      .scenario-item { padding: 24px 0 24px 20px; }
+      .diagram-layer--t2 { margin-left: 16px; }
+      .diagram-layer--pou { margin-left: 32px; }
+    }
+  </style>
+
+  <!-- Schema: Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Commercial Surge Protection",
+    "description": "Commercial surge protection installation for Tampa Bay facilities. Type 1 and Type 2 SPD installation at service entrance and branch panels, sized to facility load profiles. Permitted, inspected, and documented.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Purple Current",
+      "url": "https://purplecurrent.com",
+      "telephone": "(XXX) XXX-XXXX",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Land O' Lakes",
+        "addressRegion": "FL",
+        "postalCode": "[VERIFY]",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        "Tampa Bay, FL",
+        "Tampa, FL",
+        "Hillsborough County, FL",
+        "Pasco County, FL",
+        "Pinellas County, FL",
+        "Florida"
+      ]
+    },
+    "serviceType": "Commercial Surge Protection",
+    "areaServed": "Tampa Bay, FL"
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is commercial surge protection important?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Commercial facilities carry more load, more sensitive equipment, and more financial exposure per outage than residential properties. A single unprotected surge can destroy servers, HVAC controls, production equipment, or medical devices. The cost of commercial surge protection devices is a fraction of the cost of replacing what they protect."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is surge protection required in commercial buildings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NEC 2020 Article 230.67 requires surge protective devices on certain service entrances. Even where not strictly required by code, many insurance carriers and corporate compliance programs now expect SPDs to be in place. If your building predates the current code cycle, it likely doesn't have them."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do commercial surge protection systems include monitoring?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Some do. Purple Current offers surge monitoring and telemetry as part of our commercial surge protection services. Monitored SPDs can track surge events, device health, and end-of-life status. This gives you a documentation trail for insurance and maintenance purposes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can surge protection be added during a panel upgrade?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, and it's the most efficient way to do it. When the panel is already open for an upgrade, adding an SPD at the service entrance is straightforward — same permit, same inspection, minimal additional labor."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+<!-- ── NAVIGATION ──────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      Purple Current
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/industries/">Industries</a></li>
+      <li><a href="/service-areas/">Service Areas</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" id="navHamburger" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <a href="/services/">Services</a>
+        <span>/</span>
+        <span>Surge Protection</span>
+      </nav>
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Powered by The Purple Standard
+      </div>
+      <h1>Commercial <span>Surge Protection</span> for Tampa Bay Businesses</h1>
+      <p class="hero-desc">Type 1 and Type 2 SPD installation sized to your load profile. Permitted, inspected, and documented.</p>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg>
+        <span>Hero Photo Placeholder</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── INTRO: Whole-Building Surge Protection ──────────── -->
+<section class="intro-section">
+  <div class="intro-layout">
+    <div class="intro-text fade-up">
+      <span class="section-label">Overview</span>
+      <h2>Whole-Building Surge Protection — Sized to Your Electrical Load</h2>
+      <p>A single voltage event can take out equipment that costs more than the protection would have. Servers, HVAC controls, medical devices, production equipment — none of it is designed to absorb a surge through an unprotected service entrance.</p>
+      <p>Commercial surge protection starts at the panel and works outward. Purple Current installs surge protective devices (SPDs) at the service entrance and at branch panels throughout your facility, sized to match your load profile and the sensitivity of the equipment behind it. We handle the full scope: site assessment, SPD selection, installation, testing, and documentation. Every job is permitted and inspected.</p>
+      <p><strong>If your building doesn't have SPDs, or the ones installed are past their service life, the next surge decides what you lose.</strong></p>
+    </div>
+    <div class="intro-image fade-up stagger-1">
+      <div class="image-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Photo Placeholder</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── WHAT WE INSTALL — Accordion + Diagram ────────────── -->
+<section class="install-section">
+  <div class="install-header">
+    <span class="section-label fade-up">What We Install</span>
+    <h2 class="section-title fade-up stagger-1">Commercial Surge Protection Solutions</h2>
+    <p class="section-subtitle fade-up stagger-2">Purple Current provides commercial surge protection solutions across the full protection stack, from the service entrance to individual branch panels and point-of-use locations. The scope depends on your facility's load profile, equipment sensitivity, and existing electrical infrastructure.</p>
+  </div>
+
+  <div class="install-layout">
+
+    <!-- Accordion -->
+    <div class="spd-accordion fade-up">
+
+      <!-- Type 1 -->
+      <div class="spd-item open">
+        <button class="spd-trigger" aria-expanded="true">
+          <div class="spd-trigger-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="spd-trigger-text">Service Entrance Protection (Type 1 SPDs)</span>
+          <svg class="spd-trigger-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="spd-body">
+          <div class="spd-body-inner">
+            <p>Type 1 SPDs install at the main service entrance panel and are your first line of defense against surges entering the building from the utility side. These devices handle the highest energy levels and protect everything downstream. We size them based on your service amperage and the fault current available at your location.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Type 2 -->
+      <div class="spd-item">
+        <button class="spd-trigger" aria-expanded="false">
+          <div class="spd-trigger-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+          </div>
+          <span class="spd-trigger-text">Branch Panel and Point-of-Use Protection (Type 2 SPDs)</span>
+          <svg class="spd-trigger-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="spd-body">
+          <div class="spd-body-inner">
+            <p>Type 2 SPDs install at distribution panels and subpanels closer to the equipment they protect. For facilities with sensitive electronics, data infrastructure, or medical equipment, point-of-use protection adds a second layer that catches what gets past the service entrance device. We evaluate which panels need branch-level protection based on what's connected downstream.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lightning -->
+      <div class="spd-item">
+        <button class="spd-trigger" aria-expanded="false">
+          <div class="spd-trigger-icon">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <span class="spd-trigger-text">Lightning Protection</span>
+          <svg class="spd-trigger-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="spd-body">
+          <div class="spd-body-inner">
+            <p>In Central Florida, lightning is a primary source of surge events. Purple Current installs lightning-related surge protection as part of our SPD scope.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monitoring -->
+      <div class="spd-item">
+        <button class="spd-trigger" aria-expanded="false">
+          <div class="spd-trigger-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <span class="spd-trigger-text">Surge Monitoring and Telemetry</span>
+          <svg class="spd-trigger-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="spd-body">
+          <div class="spd-body-inner">
+            <p>We offer surge monitoring and telemetry as part of our commercial surge protection services. Monitored SPDs track surge events, device status, and end-of-life indicators, giving you documentation for insurance purposes and maintenance planning. As our telemetry capabilities expand, this becomes a more detailed reporting layer across your facility's electrical systems.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Diagram placeholder -->
+    <div class="diagram-panel fade-up stagger-1">
+      <div class="diagram-placeholder">
+        <div class="diagram-placeholder-visual">
+          <div class="diagram-sketch">
+            <div class="diagram-layer diagram-layer--t1">
+              <span class="diagram-layer-label">Type 1 SPD</span>
+              <span class="diagram-layer-desc">— Service Entrance</span>
+            </div>
+            <div class="diagram-connector"></div>
+            <div class="diagram-layer diagram-layer--t2">
+              <span class="diagram-layer-label">Type 2 SPD</span>
+              <span class="diagram-layer-desc">— Branch Panels</span>
+            </div>
+            <div class="diagram-connector" style="margin-left: 60px;"></div>
+            <div class="diagram-layer diagram-layer--pou">
+              <span class="diagram-layer-label">Point-of-Use</span>
+              <span class="diagram-layer-desc">— Sensitive Equipment</span>
+            </div>
+          </div>
+        </div>
+        <span class="diagram-caption">Diagram / Infographic Placeholder</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── WHEN SURGE PROTECTION MAKES SENSE ───────────────── -->
+<section class="scenarios-section">
+  <div class="scenarios-header">
+    <span class="section-label fade-up">When It Matters</span>
+    <h2 class="section-title fade-up stagger-1">When Surge Protection Makes Sense</h2>
+    <p class="section-subtitle fade-up stagger-2">Most commercial buildings don't have adequate surge protection. The ones that do often have devices that were installed during original construction and never evaluated since. Here are the situations where we see the most demand:</p>
+  </div>
+
+  <div class="scenarios-layout">
+
+    <div class="scenarios-stack">
+
+      <div class="scenario-item fade-up">
+        <p>After a surge event damages equipment or trips breakers, property owners want protection installed before the next one hits. Insurance carriers are increasingly asking whether SPDs are in place before processing equipment damage claims.</p>
+      </div>
+
+      <div class="scenario-item fade-up stagger-1">
+        <p>NEC 2020 Article 230.67 requires surge protective devices on certain service entrances. If your building predates that code cycle, you may not have SPDs at all.</p>
+      </div>
+
+      <div class="scenario-item fade-up stagger-2">
+        <p>If you're planning a <a href="/services/panel-upgrades/">panel upgrade</a>, adding surge protection during that project is the most cost-effective approach. The panel is already open, the electrician is already on-site, and the SPD gets installed as part of a single permitted job. The same applies to new construction and tenant buildouts.</p>
+      </div>
+
+      <div class="scenario-item fade-up stagger-3">
+        <p>Facilities with sensitive equipment have their own timeline. Data centers, medical offices, industrial controls, and any facility running EV charging infrastructure all carry enough risk to justify the investment before something fails.</p>
+      </div>
+
+      <div class="scenario-item fade-up">
+        <p>For facilities that already have <a href="/services/generator-installation/">generators</a> or <a href="/services/ups-installation/">UPS systems</a>, surge protection completes the power protection stack. Generators protect against outages. UPS systems bridge the gap during transfer. SPDs protect the equipment from the surge that caused the outage in the first place.</p>
+      </div>
+
+    </div>
+
+    <div class="scenarios-image fade-up stagger-1">
+      <div class="image-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Photo Placeholder</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── HOW WE SCOPE AND INSTALL ─────────────────────────── -->
+<section class="process-section">
+  <div class="process-content">
+    <span class="section-label fade-up">Our Process</span>
+    <h2 class="section-title fade-up stagger-1">How We Scope and Install Commercial Surge Protection</h2>
+
+    <div class="process-prose fade-up stagger-2">
+      <p>We start with a site assessment. That means reviewing your existing electrical infrastructure, documenting your load profile, identifying the equipment and systems that need protection, and evaluating whether your current panel configuration supports SPD installation or needs work first.</p>
+      <p>From there, we select and size the SPDs to match your facility. We install at the service entrance, at branch panels where warranted, and at point-of-use locations for high-sensitivity equipment. Every installation is permitted, inspected, and documented with records you can hand to your insurance carrier or compliance team.</p>
+      <p>If surge protection is part of a larger project, whether a panel upgrade, new construction, or a retrofit, we coordinate the SPD scope into the overall job so it's handled in one mobilization, one permit, and one inspection cycle.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FAQ ──────────────────────────────────────────────── -->
+<section class="faq-section">
+  <div class="faq-content">
+    <span class="section-label fade-up">Common Questions</span>
+    <h2 class="section-title fade-up stagger-1">Frequently Asked Questions</h2>
+
+    <div class="faq-wrapper fade-up stagger-2">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Why is commercial surge protection important?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Commercial facilities carry more load, more sensitive equipment, and more financial exposure per outage than residential properties. A single unprotected surge can destroy servers, HVAC controls, production equipment, or medical devices. The cost of commercial surge protection devices is a fraction of the cost of replacing what they protect.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Is surge protection required in commercial buildings?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>NEC 2020 Article 230.67 requires surge protective devices on certain service entrances. Even where not strictly required by code, many insurance carriers and corporate compliance programs now expect SPDs to be in place. If your building predates the current code cycle, it likely doesn't have them.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do commercial surge protection systems include monitoring?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Some do. Purple Current offers surge monitoring and telemetry as part of our commercial surge protection services. Monitored SPDs can track surge events, device health, and end-of-life status. This gives you a documentation trail for insurance and maintenance purposes. Not every installation requires monitoring, but for facilities managing insurance claims or compliance requirements, it adds real value.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can surge protection be added during a panel upgrade?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes, and it's the most efficient way to do it. When the panel is already open for an upgrade, adding an SPD at the service entrance is straightforward. Same permit, same inspection, minimal additional labor. We recommend evaluating surge protection needs as part of any <a href="/services/panel-upgrades/">panel upgrade</a> project.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA ──────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="cta-inner fade-up">
+    <span class="section-label">Get Started</span>
+    <h2>Protect Your Facility From the Next Surge</h2>
+    <p class="cta-desc">Tell us about your facility and what you're protecting. We'll assess your surge exposure and give you a straight quote.</p>
+    <div class="cta-buttons">
+      <a href="/contact/" class="btn-primary">
+        Request a Quote
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="tel:+10000000000" class="btn-outline">Call Us at (XXX) XXX-XXXX</a>
+    </div>
+    <div class="cta-contact">
+      Or email us at <a href="mailto:hello@purplecurrent.com">hello@purplecurrent.com</a>
+    </div>
+    <div class="cta-checklist">
+      <span class="cta-check">
+        <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        Facility type and location
+      </span>
+      <span class="cta-check">
+        <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        Current panel configuration (if known)
+      </span>
+      <span class="cta-check">
+        <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        Equipment or systems to protect
+      </span>
+      <span class="cta-check">
+        <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        Timeline or urgency
+      </span>
+    </div>
+    <div class="cta-trust">
+      <span class="cta-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Based in Land O' Lakes, FL
+      </span>
+      <span class="cta-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Licensed Commercial Electrical Contractor
+      </span>
+      <span class="cta-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+        15 Years of Commercial Experience
+      </span>
+      <span class="cta-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Powered by The Purple Standard
+      </span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ──────────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        Purple Current
+      </div>
+      <p>Licensed commercial, industrial, and municipal electrical contractor serving Tampa Bay.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="/services/commercial-installation/">Installation</a>
+      <a href="/services/maintenance-repair/">Maintenance & Repair</a>
+      <a href="/services/panel-upgrades/">Panel Upgrades</a>
+      <a href="/services/surge-protection/">Surge Protection</a>
+      <a href="/services/lighting-installation/">Lighting</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about/">About</a>
+      <a href="/service-areas/">Service Areas</a>
+      <a href="/industries/">Industries</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+10000000000">(XXX) XXX-XXXX</a>
+      <a href="mailto:hello@purplecurrent.com">hello@purplecurrent.com</a>
+      <a>Land O' Lakes, FL</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Purple Current. All rights reserved.</span>
+    <span>Powered by The Purple Standard</span>
+  </div>
+</footer>
+
+
+<!-- ── SCRIPTS ─────────────────────────────────────────── -->
+<script>
+  // Scroll fade-in
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+  // SPD Accordion — one open at a time
+  document.querySelectorAll('.spd-trigger').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.spd-item');
+      var isOpen = item.classList.contains('open');
+      var body = item.querySelector('.spd-body');
+      var bodyInner = item.querySelector('.spd-body-inner');
+
+      // Close all
+      document.querySelectorAll('.spd-item').forEach(function(si) {
+        si.classList.remove('open');
+        si.querySelector('.spd-trigger').setAttribute('aria-expanded', 'false');
+        si.querySelector('.spd-body').style.maxHeight = '0';
+      });
+
+      // Open clicked (if it wasn't already open)
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        body.style.maxHeight = bodyInner.scrollHeight + 28 + 'px';
+      }
+    });
+  });
+
+  // Set initial open item height
+  var firstOpen = document.querySelector('.spd-item.open .spd-body');
+  var firstInner = document.querySelector('.spd-item.open .spd-body-inner');
+  if (firstOpen && firstInner) {
+    firstOpen.style.maxHeight = firstInner.scrollHeight + 28 + 'px';
+  }
+
+  // FAQ Accordion — one open at a time
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      var answer = item.querySelector('.faq-answer');
+      var answerInner = item.querySelector('.faq-answer-inner');
+
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(function(fi) {
+        fi.classList.remove('open');
+        fi.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        fi.querySelector('.faq-answer').style.maxHeight = '0';
+      });
+
+      // Open clicked (if it wasn't already open)
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answerInner.scrollHeight + 28 + 'px';
+      }
+    });
+  });
+
+  // Hamburger nav
+  var hamburger = document.getElementById('navHamburger');
+  var navLinks = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', function() {
+      var open = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+  }
+</script>
+
+
+</body>
+</html>
