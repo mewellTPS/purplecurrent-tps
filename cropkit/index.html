@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CropKit v1.6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F7F6E5;
+  --panel:#ffffff;
+  --panel2:#F0EFE0;
+  --border:#E2E0CC;
+  --border2:#D0CEBC;
+  --text:#36064D;
+  --muted:#9085A0;
+  --muted2:#CEC7D8;
+  --teal:#76D2DB;
+  --teal-dk:#4AABB5;
+  --teal-dim:rgba(118,210,219,.14);
+  --red:#DA4848;
+  --green:#2DBF80;
+  --snap-glow:rgba(118,210,219,.45);
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'DM Sans',sans-serif;
+  --canvas-bg:#A8A89A;
+  font-size:19px;
+}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:1rem;overflow:hidden;}
+
+/* ── LAYOUT ── */
+#app{display:flex;flex-direction:column;height:100vh;}
+#hdr{height:60px;background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:12px;flex-shrink:0;}
+#main{display:flex;flex:1;min-height:0;}
+#exports{height:178px;background:var(--panel);border-top:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;}
+
+/* ── HEADER ── */
+.brand{font-family:var(--mono);font-size:18px;font-weight:600;letter-spacing:.14em;color:var(--text);}
+.brand em{color:var(--teal);font-style:normal;}
+.ver-btn{font-size:13px;color:var(--muted);font-family:var(--mono);background:none;border:none;cursor:pointer;padding:2px 4px;border-radius:2px;transition:color .12s;}
+.ver-btn:hover{color:var(--teal-dk);}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.lbl{font-size:13px;color:var(--muted);font-family:var(--mono);letter-spacing:.06em;white-space:nowrap;}
+.fmt-btn{padding:6px 13px;border-radius:3px;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:var(--mono);font-size:13px;cursor:pointer;transition:all .14s;}
+.fmt-btn:hover{color:var(--text);}
+.fmt-btn.on{border-color:var(--teal);color:var(--teal-dk);background:var(--teal-dim);}
+.hdr-sep{width:1px;height:24px;background:var(--border);flex-shrink:0;}
+.icon-btn{width:36px;height:36px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:var(--mono);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .12s;}
+.icon-btn:hover{color:var(--text);background:var(--bg);}
+#qual-group{display:flex;align-items:center;gap:8px;transition:opacity .15s;}
+#qual-group.disabled{opacity:.35;pointer-events:none;}
+#qual-sl{width:88px;flex-shrink:0;}
+#qual-v{font-family:var(--mono);font-size:13px;color:var(--teal-dk);min-width:34px;}
+
+/* ── FILENAME + FILL ROW ── */
+#fname-row{height:44px;background:var(--panel2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;flex-shrink:0;}
+.fname-lbl{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.07em;white-space:nowrap;}
+#fname-in{flex:1;max-width:280px;border:1px solid var(--border2);border-radius:3px;background:var(--panel);color:var(--text);font-family:var(--mono);font-size:13px;padding:5px 10px;outline:none;}
+#fname-in:focus{border-color:var(--teal);}
+.fname-tokens{display:flex;gap:5px;}
+.tok{font-family:var(--mono);font-size:12px;padding:3px 8px;border-radius:3px;background:var(--teal-dim);color:var(--teal-dk);cursor:pointer;border:none;white-space:nowrap;}
+.tok:hover{background:rgba(118,210,219,.25);}
+.fname-hint{font-family:var(--mono);font-size:12px;color:var(--muted2);white-space:nowrap;margin-left:auto;overflow:hidden;text-overflow:ellipsis;max-width:220px;}
+.fill-group{display:flex;align-items:center;gap:7px;padding-left:10px;border-left:1px solid var(--border);flex-shrink:0;}
+.fill-lbl{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap;}
+#fill-swatch{width:24px;height:24px;border-radius:3px;border:1px solid var(--border2);cursor:pointer;padding:0;background:transparent;overflow:hidden;position:relative;}
+#fill-swatch input[type=color]{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);border:none;cursor:pointer;padding:0;opacity:0;}
+#fill-preview{position:absolute;inset:0;border-radius:2px;pointer-events:none;}
+#fill-hex{width:72px;border:1px solid var(--border2);border-radius:3px;background:var(--panel);color:var(--text);font-family:var(--mono);font-size:12px;padding:4px 7px;outline:none;}
+#fill-hex:focus{border-color:var(--teal);}
+.fill-none-btn{font-family:var(--mono);font-size:12px;padding:3px 9px;border-radius:3px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;}
+.fill-none-btn:hover{color:var(--text);}
+.fill-none-btn.on{background:var(--teal-dim);border-color:var(--teal);color:var(--teal-dk);}
+
+/* ── SIDEBAR ── */
+#sidebar{width:215px;min-width:215px;background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;}
+#dz-wrap{padding:12px;border-bottom:1px solid var(--border);}
+#dz{border:1.5px dashed var(--border2);border-radius:5px;padding:16px 10px;text-align:center;cursor:pointer;transition:all .15s;background:var(--bg);}
+#dz:hover,#dz.over{border-color:var(--teal);background:var(--teal-dim);}
+.dz-plus{font-size:31px;line-height:1;color:var(--teal);margin-bottom:8px;font-weight:300;}
+.dz-text{font-size:13px;color:var(--muted);line-height:1.7;}
+.dz-text strong{color:var(--teal-dk);font-weight:500;}
+#file-in{display:none;}
+#queue{flex:1;overflow-y:auto;padding:6px;display:flex;flex-direction:column;gap:3px;}
+#queue::-webkit-scrollbar{width:3px;}
+#queue::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.qi{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:4px;border:1px solid transparent;cursor:pointer;transition:all .12s;}
+.qi:hover{background:var(--bg);}
+.qi.cur{background:var(--teal-dim);border-color:rgba(118,210,219,.3);}
+.qthumb{width:40px;height:40px;border-radius:3px;object-fit:cover;background:var(--border);flex-shrink:0;}
+.qinfo{flex:1;min-width:0;}
+.qname{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.qstat{font-size:11px;font-family:var(--mono);color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;}
+.qsize{color:var(--muted2);}
+.qdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.qdot.pending{background:var(--muted2);}
+.qdot.active{background:var(--teal);}
+.qdot.done{background:var(--green);}
+.qdot.skipped{background:var(--border2);}
+.qdot.converting{background:#f0a030;animation:pulse .8s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.q-empty{font-size:13px;color:var(--muted2);font-family:var(--mono);padding:8px 4px;}
+
+/* ── EDITOR ── */
+#editor{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+#preset-bar{height:52px;background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:stretch;padding:0 12px;flex-shrink:0;}
+.ptab{display:flex;align-items:center;gap:6px;padding:0 14px;font-size:14px;font-family:var(--mono);color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .12s;white-space:nowrap;}
+.ptab:hover{color:var(--text);}
+.ptab.on{color:var(--text);border-bottom-color:var(--teal);}
+.pdims{font-size:12px;color:var(--muted2);}
+.ptab.on .pdims{color:var(--teal);}
+.ptab.custom-tab{gap:0;}
+.custom-form{display:flex;align-items:center;gap:7px;height:100%;padding:0 8px;}
+.custom-form input[type=text]{width:66px;border:1px solid var(--border2);border-radius:3px;background:var(--bg);color:var(--text);font-family:var(--mono);font-size:13px;padding:4px 8px;outline:none;}
+.custom-form input[type=text]:focus{border-color:var(--teal);}
+.custom-form .cx{font-family:var(--mono);font-size:13px;color:var(--muted);}
+.custom-form .apply-btn{padding:4px 11px;border-radius:3px;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:var(--mono);font-size:12px;cursor:pointer;white-space:nowrap;}
+.custom-form .apply-btn:hover{border-color:var(--teal);color:var(--teal-dk);}
+
+/* ── CANVAS ── */
+#canvas-area{flex:1;position:relative;overflow:hidden;background:var(--canvas-bg);}
+#vp{position:absolute;top:0;left:0;width:100%;height:100%;cursor:grab;overflow:hidden;user-select:none;display:none;}
+#vp.show{display:block;}
+#vp:active{cursor:grabbing;}
+#cimg{position:absolute;pointer-events:none;max-width:none;max-height:none;transform-origin:center center;}
+#snap-h,#snap-v{position:absolute;background:var(--snap-glow);pointer-events:none;display:none;z-index:5;}
+#snap-h{height:1px;left:0;right:0;}
+#snap-v{width:1px;top:0;bottom:0;}
+#overlay-crop{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;display:flex;align-items:center;justify-content:center;}
+#cframe{position:relative;transition:border-color .18s,box-shadow .18s;}
+#cframe.invalid{border:2px solid var(--red);box-shadow:0 0 0 9999px rgba(0,0,0,.48);}
+#cframe.valid{border:2px solid var(--green);box-shadow:0 0 0 9999px rgba(0,0,0,.48);}
+#cframe::before,#cframe::after,.cc-bl,.cc-br{content:'';position:absolute;width:12px;height:12px;z-index:4;}
+#cframe::before{top:-2px;left:-2px;border-top:2px solid #fff;border-left:2px solid #fff;}
+#cframe::after{top:-2px;right:-2px;border-top:2px solid #fff;border-right:2px solid #fff;}
+.cc-bl{bottom:-2px;left:-2px;border-bottom:2px solid #fff;border-left:2px solid #fff;}
+.cc-br{bottom:-2px;right:-2px;border-bottom:2px solid #fff;border-right:2px solid #fff;}
+
+/* ── FRAME DIM (darkening overlay inside crop frame when overlays active) ── */
+#frame-dim{position:absolute;inset:0;background:rgba(0,0,0,0);pointer-events:none;z-index:1;transition:background .22s;}
+#frame-dim.on{background:rgba(0,0,0,.30);}
+
+/* ── GRID OVERLAY ── */
+#grid-overlay{position:absolute;inset:0;pointer-events:none;z-index:2;}
+
+/* ── SAFE ZONE OVERLAY ── */
+#safe-overlay{position:absolute;pointer-events:none;border:2.5px dashed rgba(255,225,60,1);z-index:3;display:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25);}
+#safe-overlay::before{content:'safe zone';position:absolute;top:-18px;left:0;font-family:var(--mono);font-size:11px;font-weight:600;color:rgba(255,225,60,1);white-space:nowrap;letter-spacing:.07em;text-shadow:0 1px 3px rgba(0,0,0,.7);}
+
+/* ── FLOATING OVERLAY CONTROLS ── */
+#ovr-controls{position:absolute;bottom:14px;left:14px;display:flex;gap:6px;z-index:10;pointer-events:all;}
+.ovr-btn{font-family:var(--mono);font-size:11px;padding:4px 11px;border-radius:3px;border:1px solid rgba(255,255,255,.32);background:rgba(0,0,0,.42);color:rgba(255,255,255,.85);cursor:pointer;transition:all .12s;white-space:nowrap;letter-spacing:.04em;}
+.ovr-btn:hover{background:rgba(0,0,0,.62);color:#fff;}
+.ovr-btn.on{background:rgba(118,210,219,.35);border-color:rgba(118,210,219,.7);color:#fff;}
+
+/* ── CANVAS STATUS TAGS ── */
+#dim-tag{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.6);background:rgba(0,0,0,.36);padding:4px 14px;border-radius:20px;pointer-events:none;white-space:nowrap;}
+#vtag{position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:12px;padding:4px 11px;border-radius:3px;pointer-events:none;transition:all .18s;}
+#vtag.invalid{background:rgba(218,72,72,.2);color:var(--red);}
+#vtag.valid{background:rgba(45,191,128,.2);color:var(--green);}
+#snaptag{position:absolute;top:14px;left:14px;font-family:var(--mono);font-size:12px;padding:4px 11px;border-radius:3px;background:var(--teal-dim);color:var(--teal-dk);pointer-events:none;display:none;}
+#nudge-tag{position:absolute;bottom:50px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.7);background:rgba(0,0,0,.4);padding:4px 14px;border-radius:20px;pointer-events:none;opacity:0;transition:opacity .3s;}
+#undo-tag{position:absolute;bottom:50px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.7);background:rgba(0,0,0,.4);padding:4px 14px;border-radius:20px;pointer-events:none;opacity:0;transition:opacity .3s;}
+#copy-tag{position:absolute;bottom:50px;right:14px;font-family:var(--mono);font-size:12px;padding:4px 11px;border-radius:3px;background:rgba(45,191,128,.22);color:var(--green);pointer-events:none;opacity:0;transition:opacity .3s;}
+#focal-tag{position:absolute;top:50px;right:14px;font-family:var(--mono);font-size:12px;padding:4px 11px;border-radius:3px;background:rgba(118,210,219,.22);color:var(--teal-dk);pointer-events:none;opacity:0;transition:opacity .3s;}
+#empty{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;}
+.e-icon{font-size:48px;color:rgba(168,168,154,.5);margin-bottom:14px;line-height:1;}
+.e-text{font-size:14px;color:rgba(168,168,154,.7);line-height:2;font-family:var(--mono);}
+
+/* ── CONTROLS ── */
+#ctrl{height:80px;background:var(--panel);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:12px;flex-shrink:0;}
+.slg{display:flex;align-items:center;gap:9px;flex:1;}
+.slabel{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em;min-width:50px;}
+.sval{font-family:var(--mono);font-size:13px;color:var(--teal-dk);min-width:50px;text-align:right;}
+input[type=range]{-webkit-appearance:none;flex:1;height:2px;background:var(--border);border-radius:1px;outline:none;cursor:pointer;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--teal);cursor:pointer;border:2px solid #fff;box-shadow:0 1px 3px rgba(54,6,77,.2);}
+.vd{width:1px;height:30px;background:var(--border);flex-shrink:0;}
+.btn{padding:8px 15px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--text);font-family:var(--sans);font-size:16px;font-weight:500;cursor:pointer;transition:all .12s;white-space:nowrap;}
+.btn:hover{background:var(--bg);}
+.btn.primary{background:#36064D;color:#F7F6E5;border-color:#36064D;font-size:17px;}
+.btn.primary:hover{background:#4d0a6e;}
+.btn.secondary{background:var(--teal-dim);color:var(--teal-dk);border-color:var(--teal);font-size:16px;}
+.btn.secondary:hover{background:rgba(118,210,219,.24);}
+.btn.ghost{color:var(--muted);font-size:14px;padding:7px 12px;}
+.btn.ghost:hover{color:var(--text);}
+.btn.copy-btn{font-family:var(--mono);font-size:13px;padding:7px 12px;color:var(--muted);}
+.btn.copy-btn.on{background:rgba(45,191,128,.12);border-color:var(--green);color:var(--green);}
+.btn.flip-btn{font-family:var(--mono);font-size:14px;padding:7px 12px;color:var(--muted);}
+.btn.flip-btn.on{background:var(--teal-dim);border-color:var(--teal);color:var(--teal-dk);}
+.flip-group{display:flex;align-items:center;gap:6px;}
+
+/* ── EXPORTS ── */
+#exp-hdr{height:42px;display:flex;align-items:center;padding:0 14px;border-bottom:1px solid var(--border);gap:10px;flex-shrink:0;}
+.exp-title{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;flex-shrink:0;}
+#exp-summary{font-family:var(--mono);font-size:12px;color:var(--teal-dk);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#exp-list{flex:1;overflow-x:auto;display:flex;align-items:center;padding:6px 12px;gap:10px;}
+#exp-list::-webkit-scrollbar{height:3px;}
+#exp-list::-webkit-scrollbar-thumb{background:var(--border);}
+.no-crops{color:var(--muted2);font-size:13px;font-family:var(--mono);margin:auto;}
+.ccard{flex-shrink:0;background:var(--bg);border:1px solid var(--border);border-radius:4px;overflow:hidden;width:128px;transition:border-color .12s;}
+.ccard:hover{border-color:var(--teal);}
+.ccard img{width:128px;height:80px;object-fit:cover;display:block;background:var(--border2);}
+.ccard-info{padding:6px 8px;}
+.ccard-name{font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--mono);}
+.ccard-row{display:flex;align-items:center;justify-content:space-between;margin-top:4px;}
+.cbadge{font-size:10px;font-family:var(--mono);padding:2px 5px;border-radius:2px;background:var(--teal-dim);color:var(--teal-dk);}
+.csize{font-size:10px;font-family:var(--mono);color:var(--muted2);}
+.btn-dl{font-size:13px;font-family:var(--mono);color:var(--muted);background:none;border:none;cursor:pointer;padding:1px 3px;}
+.btn-dl:hover{color:var(--teal-dk);}
+.btn-zip{padding:5px 13px;border-radius:3px;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .12s;flex-shrink:0;}
+.btn-zip:hover{color:var(--teal-dk);border-color:var(--teal);}
+
+/* ── MODALS ── */
+.modal-bg{position:fixed;inset:0;background:rgba(54,6,77,.38);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;}
+.modal-bg.show{opacity:1;pointer-events:all;}
+.modal{background:var(--panel);border:1px solid var(--border2);border-radius:8px;width:620px;max-width:92vw;max-height:84vh;display:flex;flex-direction:column;overflow:hidden;}
+.modal-hdr{display:flex;align-items:center;padding:18px 22px 16px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.modal-title{font-size:18px;font-weight:600;color:var(--text);font-family:var(--mono);}
+.modal-title em{color:var(--teal);font-style:normal;}
+.modal-close{margin-left:auto;width:32px;height:32px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;transition:all .12s;}
+.modal-close:hover{color:var(--text);background:var(--bg);}
+.modal-body{overflow-y:auto;padding:22px;flex:1;}
+.modal-body::-webkit-scrollbar{width:4px;}
+.modal-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.help-section{margin-bottom:24px;}
+.help-section:last-child{margin-bottom:0;}
+.help-h{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.1em;color:var(--teal-dk);text-transform:uppercase;margin-bottom:11px;}
+.help-row{display:flex;align-items:baseline;gap:14px;padding:6px 0;border-bottom:1px solid var(--border);}
+.help-row:last-child{border-bottom:none;}
+.kbd-group{display:flex;gap:4px;flex-shrink:0;min-width:148px;flex-wrap:wrap;}
+kbd{display:inline-block;font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:3px;border:1px solid var(--border2);background:var(--bg);color:var(--text);}
+.help-desc{font-size:14px;color:var(--muted);line-height:1.5;}
+.cl-entry{margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--border);}
+.cl-entry:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.cl-ver{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.cl-date{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:11px;}
+.cl-items{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.cl-items li{font-size:14px;color:var(--muted);padding-left:15px;position:relative;line-height:1.5;}
+.cl-items li::before{content:'·';position:absolute;left:0;color:var(--teal);}
+.cl-items li strong{color:var(--text);font-weight:500;}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- HEADER -->
+  <div id="hdr">
+    <span class="brand">CROP<em>·</em>KIT</span>
+    <button class="ver-btn" onclick="openModal('changelog')">v1.6</button>
+    <div class="hdr-right">
+      <span class="lbl">FORMAT</span>
+      <button class="fmt-btn on" onclick="setFmt('image/webp','webp',this)">WebP</button>
+      <button class="fmt-btn" onclick="setFmt('image/jpeg','jpg',this)">JPEG</button>
+      <button class="fmt-btn" onclick="setFmt('image/png','png',this)">PNG</button>
+      <div class="hdr-sep"></div>
+      <div id="qual-group">
+        <span class="lbl">QUALITY</span>
+        <input type="range" id="qual-sl" min="50" max="100" value="92" step="1" oninput="onQuality(this)">
+        <span id="qual-v">92</span>
+      </div>
+      <div class="hdr-sep"></div>
+      <button class="icon-btn" onclick="openModal('help')" title="Help (?)">?</button>
+    </div>
+  </div>
+
+  <!-- FILENAME + FILL ROW -->
+  <div id="fname-row">
+    <span class="fname-lbl">FILENAME</span>
+    <input type="text" id="fname-in" value="{name}_{preset}" placeholder="{name}_{preset}">
+    <div class="fname-tokens">
+      <button class="tok" onclick="insertToken('{name}')">{name}</button>
+      <button class="tok" onclick="insertToken('{preset}')">{preset}</button>
+      <button class="tok" onclick="insertToken('{dims}')">{dims}</button>
+      <button class="tok" onclick="insertToken('{date}')">{date}</button>
+    </div>
+    <div class="fill-group">
+      <span class="fill-lbl">FILL</span>
+      <div id="fill-swatch" title="Background fill color">
+        <input type="color" id="fill-color-in" value="#ffffff" oninput="onFillColor(this)">
+        <div id="fill-preview" style="background:#ffffff;"></div>
+      </div>
+      <input type="text" id="fill-hex" value="#ffffff" maxlength="7" oninput="onFillHex(this)">
+      <button class="fill-none-btn" id="fill-none-btn" onclick="toggleFillNone()">none</button>
+    </div>
+    <span class="fname-hint" id="fname-preview"></span>
+  </div>
+
+  <div id="main">
+
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+      <div id="dz-wrap">
+        <div id="dz" onclick="document.getElementById('file-in').click()">
+          <div class="dz-plus">+</div>
+          <div class="dz-text"><strong>Click to upload</strong><br>or drag images here<br>JPG · PNG · WebP · GIF<br>HEIC · AVIF · BMP · SVG</div>
+        </div>
+        <input type="file" id="file-in" multiple accept="image/*,.heic,.heif">
+      </div>
+      <div id="queue"><div class="q-empty">No images loaded</div></div>
+    </div>
+
+    <!-- EDITOR -->
+    <div id="editor">
+      <div id="preset-bar"></div>
+      <div id="canvas-area">
+        <div id="empty">
+          <div class="e-icon">⊡</div>
+          <div class="e-text">Upload images to begin<br>Select preset → Position → Crop</div>
+        </div>
+        <div id="vp">
+          <img id="cimg" alt="">
+          <div id="snap-h"></div>
+          <div id="snap-v"></div>
+          <div id="overlay-crop">
+            <div id="cframe" class="invalid">
+              <div class="cc-bl"></div><div class="cc-br"></div>
+              <div id="frame-dim"></div>
+              <div id="grid-overlay"></div>
+              <div id="safe-overlay"></div>
+            </div>
+          </div>
+          <div id="ovr-controls">
+            <button class="ovr-btn" id="grid-btn" onclick="cycleGrid()">grid off</button>
+            <button class="ovr-btn" id="safe-btn" onclick="toggleSafe()">safe zone</button>
+          </div>
+          <div id="dim-tag"></div>
+          <div id="vtag" class="invalid">outside bounds</div>
+          <div id="snaptag">snapped</div>
+          <div id="nudge-tag"></div>
+          <div id="undo-tag"></div>
+          <div id="copy-tag">position copied</div>
+          <div id="focal-tag">focal point restored</div>
+        </div>
+      </div>
+      <div id="ctrl">
+        <div class="slg">
+          <span class="slabel">ZOOM</span>
+          <input type="range" id="zoom-sl" min="0" max="100" value="50" step="0.5" oninput="onZoomSlider(this)">
+          <span class="sval" id="zoom-v">100%</span>
+        </div>
+        <div class="vd"></div>
+        <div class="slg">
+          <span class="slabel">ROTATE</span>
+          <input type="range" id="rot-sl" min="-180" max="180" value="0" step="0.5" oninput="onRot(this)">
+          <span class="sval" id="rot-v">0.0°</span>
+        </div>
+        <div class="vd"></div>
+        <div class="flip-group">
+          <span class="slabel">FLIP</span>
+          <button class="btn flip-btn" id="btn-fh" onclick="doFlip('h')">⇄ H</button>
+          <button class="btn flip-btn" id="btn-fv" onclick="doFlip('v')">⇅ V</button>
+        </div>
+        <div class="vd"></div>
+        <button class="btn ghost" onclick="doReset()">Reset</button>
+        <button class="btn copy-btn" id="btn-copy" onclick="toggleCopyNext()" title="Copy position to next (C)">Copy pos</button>
+        <button class="btn ghost" onclick="doSkip()">Skip</button>
+        <button class="btn secondary" onclick="doCropAll()">All Sizes</button>
+        <button class="btn primary" onclick="doCrop()">Crop →</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EXPORTS -->
+  <div id="exports">
+    <div id="exp-hdr">
+      <span class="exp-title">Exports</span>
+      <span id="exp-summary">0 crops</span>
+      <button class="btn-zip" onclick="downloadAll()">↓ Download All (.zip)</button>
+    </div>
+    <div id="exp-list"><span class="no-crops">Cropped images will appear here</span></div>
+  </div>
+
+</div>
+
+<!-- HELP MODAL -->
+<div class="modal-bg" id="modal-help" onclick="closeBg(event,'help')">
+  <div class="modal">
+    <div class="modal-hdr">
+      <span class="modal-title">CROP<em>·</em>KIT — Help</span>
+      <button class="modal-close" onclick="closeModal('help')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="help-section">
+        <div class="help-h">Workflow</div>
+        <div class="help-row"><div class="kbd-group"><kbd>Upload</kbd></div><div class="help-desc">Click + or drag images in. Supports JPG, PNG, WebP, GIF, AVIF, BMP, SVG, and HEIC (converts automatically). File sizes shown in sidebar.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>Preset</kbd></div><div class="help-desc">Select a size above the canvas, or enter custom W × H. Crop frame scales to fill available space.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>Drag / scroll</kbd></div><div class="help-desc">Drag to pan. Scroll to zoom. Frame turns green when fully inside image bounds. Edges snap to align.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>Crop →</kbd></div><div class="help-desc">Exports at full resolution. Auto-advances. Output size shown on each card.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>All Sizes</kbd></div><div class="help-desc">Crops current position across all four standard presets at once.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>Copy pos</kbd></div><div class="help-desc">Toggle (C) to carry zoom/rotation/flip/pan into the next image instead of resetting.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>Focal memory</kbd></div><div class="help-desc">Clicking a previous image in the sidebar restores your last position for it. Teal dot = focal point saved.</div></div>
+      </div>
+      <div class="help-section">
+        <div class="help-h">Keyboard Shortcuts</div>
+        <div class="help-row"><div class="kbd-group"><kbd>Enter</kbd></div><div class="help-desc">Crop at current preset.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>Space</kbd></div><div class="help-desc">Skip and advance.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>R</kbd></div><div class="help-desc">Reset transform.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>↑↓←→</kbd></div><div class="help-desc">Nudge 1px. Hold <kbd>Shift</kbd> for 10px.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>A</kbd></div><div class="help-desc">Crop all presets.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>C</kbd></div><div class="help-desc">Toggle copy position to next.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>Ctrl Z</kbd></div><div class="help-desc">Undo last transform (up to 30 steps).</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>?</kbd></div><div class="help-desc">Open this panel.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>Esc</kbd></div><div class="help-desc">Close dialogs.</div></div>
+      </div>
+      <div class="help-section">
+        <div class="help-h">Canvas Overlays</div>
+        <div class="help-row"><div class="kbd-group"><kbd>Grid</kbd></div><div class="help-desc">Cycles: off → rule of thirds → golden ratio (38.2%) → 4×4 grid. A darkening overlay appears inside the frame to improve line contrast.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>Safe zone</kbd></div><div class="help-desc">Dashed inset guide calibrated per preset. Instagram 14%, Hero 20%/15%, Card 10%, Thumbnail 20%. Also triggers the darkening overlay.</div></div>
+      </div>
+      <div class="help-section">
+        <div class="help-h">Output Options</div>
+        <div class="help-row"><div class="kbd-group"><kbd>Quality</kbd></div><div class="help-desc">Controls lossy compression for WebP/JPEG (50–100). Grayed out for lossless PNG.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>Fill color</kbd></div><div class="help-desc">Canvas background when image doesn't cover the frame. "none" = transparent (best with PNG).</div></div>
+      </div>
+      <div class="help-section">
+        <div class="help-h">Filename Tokens</div>
+        <div class="help-row"><div class="kbd-group"><kbd>{name}</kbd></div><div class="help-desc">Original filename without extension.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>{preset}</kbd></div><div class="help-desc">Preset ID: ig, hero, card, thumb, or custom.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>{dims}</kbd></div><div class="help-desc">Output dimensions, e.g. 1080x1080.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>{date}</kbd></div><div class="help-desc">Today's date: YYYY-MM-DD.</div></div>
+        <div class="help-row"><div class="kbd-group"><kbd>Auto sep</kbd></div><div class="help-desc">Clicking tokens back-to-back inserts _ separator automatically.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHANGELOG MODAL -->
+<div class="modal-bg" id="modal-changelog" onclick="closeBg(event,'changelog')">
+  <div class="modal">
+    <div class="modal-hdr">
+      <span class="modal-title">CROP<em>·</em>KIT — Changelog</span>
+      <button class="modal-close" onclick="closeModal('changelog')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="cl-entry">
+        <div class="cl-ver">v1.6</div><div class="cl-date">Current</div>
+        <ul class="cl-items">
+          <li><strong>Font size +20%</strong> — Base increased from 16px to 19px across all UI text, labels, buttons, modals, and controls.</li>
+          <li><strong>Darkening frame overlay</strong> — When the grid or safe zone is toggled on, a semi-transparent dark layer renders inside the crop frame, making guide lines and the dashed safe zone border clearly visible against any image content.</li>
+          <li><strong>Grid visibility</strong> — Grid lines increased to 55% white opacity with stronger anti-alias width. Safe zone border increased to 2.5px solid yellow with a drop shadow for contrast.</li>
+          <li><strong>HEIC/HEIF import</strong> — iPhone photos load via heic2any library. The image shows "converting…" in the sidebar while processing, then becomes available in the editor as a standard PNG.</li>
+          <li><strong>AVIF + BMP import</strong> — Added to accepted formats. Both decode natively in modern browsers, no library required.</li>
+          <li><strong>SVG import</strong> — SVG files load via canvas drawImage and render at full vector quality. Note: SVGs without explicit width/height attributes may need a viewBox to size correctly.</li>
+        </ul>
+      </div>
+      <div class="cl-entry">
+        <div class="cl-ver">v1.5</div><div class="cl-date">Previous</div>
+        <ul class="cl-items">
+          <li><strong>File sizes</strong> — Shown in sidebar (original) and crop cards (output). Export header: last crop | (n) total.</li>
+          <li><strong>Focal point memory</strong> — Navigating back to a prior image restores your last zoom/pan/rotation.</li>
+          <li><strong>Grid overlays</strong> — Cycling thirds → golden ratio → 4×4 via floating canvas button.</li>
+          <li><strong>Safe zone overlays</strong> — Per-preset inset guides (Instagram, Hero, Card, Thumb).</li>
+          <li><strong>Undo stack</strong> — Ctrl/Cmd+Z, up to 30 states.</li>
+        </ul>
+      </div>
+      <div class="cl-entry">
+        <div class="cl-ver">v1.4</div><div class="cl-date">Previous</div>
+        <ul class="cl-items">
+          <li>Token auto-underscore, quality slider, background fill color, copy position to next.</li>
+        </ul>
+      </div>
+      <div class="cl-entry">
+        <div class="cl-ver">v1.3</div><div class="cl-date">Previous</div>
+        <ul class="cl-items">
+          <li>Keyboard shortcuts, crop all sizes, custom filename patterns, help + changelog overlays.</li>
+        </ul>
+      </div>
+      <div class="cl-entry">
+        <div class="cl-ver">v1.0–1.2</div><div class="cl-date">Earlier</div>
+        <ul class="cl-items">
+          <li>v1.2: 16px base font, magnetic snap, custom size input, JPEG export.</li>
+          <li>v1.1: Light theme, responsive viewport, log zoom, validity indicator, flip controls.</li>
+          <li>v1.0: Core editor, four presets, image queue, WebP/PNG, zip export.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const PRESETS=[
+  {id:'ig',    label:'Instagram',  dims:'1080×1080', w:1080,h:1080},
+  {id:'hero',  label:'Hero Banner',dims:'1920×600',  w:1920,h:600},
+  {id:'card',  label:'Side/Card',  dims:'800×600',   w:800, h:600},
+  {id:'thumb', label:'Thumbnail',  dims:'300×300',   w:300, h:300},
+];
+const SAFE_ZONES={
+  ig:{t:14,r:14,b:14,l:14},
+  hero:{t:15,r:20,b:15,l:20},
+  card:{t:10,r:10,b:10,l:10},
+  thumb:{t:20,r:20,b:20,l:20},
+  custom:{t:10,r:10,b:10,l:10},
+};
+const GRID_LABELS=['grid off','thirds','golden','4×4'];
+const GRID_STOPS=[[],[33.33,66.67],[38.2,61.8],[25,50,75]];
+const SNAP_PX=10;
+const UNDO_MAX=30;
+
+let VW=800,VH=500;
+let S={
+  files:[],cur:-1,
+  preset:PRESETS[0],
+  tx:0,ty:0,uScale:1,rot:0,imgScale:1,
+  flipX:false,flipY:false,
+  dragging:false,dsx:0,dsy:0,dtx:0,dty:0,
+  crops:[],fmt:'image/webp',ext:'webp',quality:0.92,
+  fillColor:'#ffffff',fillNone:false,
+  copyNext:false,
+  snappedX:false,snappedY:false,
+  gridMode:0,showSafe:false,
+};
+let undoStack=[];
+let nudgeTimer=null;let lastNudgePush=0;
+
+// ── DOM ──
+const vpEl      =document.getElementById('vp');
+const cimg      =document.getElementById('cimg');
+const cframe    =document.getElementById('cframe');
+const frameDim  =document.getElementById('frame-dim');
+const gridOvr   =document.getElementById('grid-overlay');
+const safeOvr   =document.getElementById('safe-overlay');
+const dimTag    =document.getElementById('dim-tag');
+const vtag      =document.getElementById('vtag');
+const snaptag   =document.getElementById('snaptag');
+const nudgeTag  =document.getElementById('nudge-tag');
+const undoTagEl =document.getElementById('undo-tag');
+const copyTag   =document.getElementById('copy-tag');
+const focalTag  =document.getElementById('focal-tag');
+const emptyEl   =document.getElementById('empty');
+const queueEl   =document.getElementById('queue');
+const expList   =document.getElementById('exp-list');
+const expSummary=document.getElementById('exp-summary');
+const zoomSl    =document.getElementById('zoom-sl');
+const rotSl     =document.getElementById('rot-sl');
+const zoomV     =document.getElementById('zoom-v');
+const rotV      =document.getElementById('rot-v');
+const snapH     =document.getElementById('snap-h');
+const snapV     =document.getElementById('snap-v');
+const fnameIn   =document.getElementById('fname-in');
+const fnamePrevEl=document.getElementById('fname-preview');
+const qualSl    =document.getElementById('qual-sl');
+const qualV     =document.getElementById('qual-v');
+const qualGrp   =document.getElementById('qual-group');
+const fillColorIn=document.getElementById('fill-color-in');
+const fillPreview=document.getElementById('fill-preview');
+const fillHexIn  =document.getElementById('fill-hex');
+const fillNoneBtn=document.getElementById('fill-none-btn');
+const copyBtn    =document.getElementById('btn-copy');
+const gridBtn    =document.getElementById('grid-btn');
+const safeBtn    =document.getElementById('safe-btn');
+
+// ── UTILS ──
+function formatBytes(n){
+  if(n<1024)return n+' B';
+  if(n<1024*1024)return Math.round(n/1024)+' KB';
+  return(n/1024/1024).toFixed(1)+' MB';
+}
+function sliderToScale(v){return Math.pow(10,v/50-1);}
+function scaleToSlider(s){return(Math.log10(Math.max(0.001,s))+1)*50;}
+function scaleToDisplay(s){return Math.round(s*100);}
+function transformSnap(){return{tx:S.tx,ty:S.ty,uScale:S.uScale,rot:S.rot,flipX:S.flipX,flipY:S.flipY};}
+
+// ── UNDO ──
+function pushUndo(){
+  undoStack.push(transformSnap());
+  if(undoStack.length>UNDO_MAX)undoStack.shift();
+}
+function doUndo(){
+  if(!undoStack.length)return;
+  const st=undoStack.pop();
+  S.tx=st.tx;S.ty=st.ty;S.uScale=st.uScale;S.rot=st.rot;S.flipX=st.flipX;S.flipY=st.flipY;
+  zoomSl.value=scaleToSlider(S.uScale);rotSl.value=S.rot;
+  zoomV.textContent=scaleToDisplay(S.uScale)+'%';rotV.textContent=S.rot.toFixed(1)+'°';
+  document.getElementById('btn-fh').classList.toggle('on',S.flipX);
+  document.getElementById('btn-fv').classList.toggle('on',S.flipY);
+  applyTransform();flashTag(undoTagEl,'undo',800);
+}
+
+// ── VIEWPORT ──
+function cropDisplayDims(p){
+  const maxW=VW*0.78,maxH=VH*0.74;
+  const s=Math.min(maxW/p.w,maxH/p.h);
+  return{w:Math.round(p.w*s),h:Math.round(p.h*s)};
+}
+function initVP(){
+  const area=document.getElementById('canvas-area');
+  VW=area.clientWidth||800;VH=area.clientHeight||500;
+  updateCropFrame();if(S.cur>=0)applyTransform();
+}
+new ResizeObserver(initVP).observe(document.getElementById('canvas-area'));
+
+// ── PRESETS ──
+function initPresetBar(){
+  const bar=document.getElementById('preset-bar');
+  PRESETS.forEach((p,i)=>{
+    const t=document.createElement('div');
+    t.className='ptab'+(i===0?' on':'');t.dataset.pid=p.id;
+    t.innerHTML=`${p.label} <span class="pdims">${p.dims}</span>`;
+    t.onclick=()=>selectPreset(p,t);bar.appendChild(t);
+  });
+  const ct=document.createElement('div');
+  ct.className='ptab custom-tab';ct.dataset.pid='custom';
+  ct.innerHTML=`<div class="custom-form">
+    <span style="font-family:var(--mono);font-size:12px;color:var(--muted);margin-right:2px;">Custom</span>
+    <input type="text" id="cw-in" placeholder="1200" title="Width">
+    <span class="cx">×</span>
+    <input type="text" id="ch-in" placeholder="628" title="Height">
+    <button class="apply-btn" onclick="applyCustom(event)">Apply</button>
+  </div>`;
+  ct.onclick=()=>ct.classList.add('on');bar.appendChild(ct);
+  ['cw-in','ch-in'].forEach(id=>{
+    document.getElementById(id).addEventListener('keydown',e=>{if(e.key==='Enter')applyCustom(e);e.stopPropagation();});
+    document.getElementById(id).addEventListener('click',e=>e.stopPropagation());
+  });
+}
+function applyCustom(e){
+  e.stopPropagation();
+  const w=Math.max(10,Math.min(8000,parseInt(document.getElementById('cw-in').value)||1200));
+  const h=Math.max(10,Math.min(8000,parseInt(document.getElementById('ch-in').value)||628));
+  document.getElementById('cw-in').value=w;document.getElementById('ch-in').value=h;
+  const p={id:'custom',label:'Custom',dims:`${w}×${h}`,w,h};
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('on'));
+  document.querySelector('[data-pid="custom"]').classList.add('on');
+  S.preset=p;
+  if(S.cur>=0){S.imgScale=calcImgScale(S.files[S.cur].img,p);doReset(false);}
+  updateCropFrame();
+}
+function selectPreset(p,el){
+  S.preset=p;
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  if(S.cur>=0){S.imgScale=calcImgScale(S.files[S.cur].img,p);doReset(false);}
+  updateCropFrame();
+}
+function updateCropFrame(){
+  const{w,h}=cropDisplayDims(S.preset);
+  cframe.style.width=w+'px';cframe.style.height=h+'px';
+  dimTag.textContent=`${S.preset.w} × ${S.preset.h} px`;
+  refreshValidity();updateFilenamePreview();
+  updateGridOverlay();updateSafeOverlay();updateFrameDim();
+}
+function calcImgScale(img,p){
+  const{w:cw,h:ch}=cropDisplayDims(p);
+  return Math.max(cw/img.naturalWidth,ch/img.naturalHeight);
+}
+
+// ── OVERLAYS ──
+function updateFrameDim(){
+  const active=S.gridMode>0||S.showSafe;
+  frameDim.classList.toggle('on',active);
+}
+function cycleGrid(){
+  S.gridMode=(S.gridMode+1)%4;
+  gridBtn.textContent=GRID_LABELS[S.gridMode];
+  gridBtn.classList.toggle('on',S.gridMode>0);
+  updateGridOverlay();updateFrameDim();
+}
+function updateGridOverlay(){
+  const stops=GRID_STOPS[S.gridMode];
+  if(!stops.length){gridOvr.style.backgroundImage='none';return;}
+  const lc='rgba(255,255,255,0.55)';
+  const w=0.3;
+  const makeGrad=dir=>{
+    const parts=[];
+    stops.forEach(p=>{
+      parts.push(`transparent ${p-w}%`,`${lc} ${p-w}%`,`${lc} ${p+w}%`,`transparent ${p+w}%`);
+    });
+    return`linear-gradient(${dir},${parts.join(',')})`;
+  };
+  gridOvr.style.backgroundImage=`${makeGrad('to bottom')},${makeGrad('to right')}`;
+}
+function toggleSafe(){
+  S.showSafe=!S.showSafe;
+  safeBtn.classList.toggle('on',S.showSafe);
+  updateSafeOverlay();updateFrameDim();
+}
+function updateSafeOverlay(){
+  if(!S.showSafe){safeOvr.style.display='none';return;}
+  const z=SAFE_ZONES[S.preset.id]||SAFE_ZONES.custom;
+  safeOvr.style.display='block';
+  safeOvr.style.top=z.t+'%';safeOvr.style.right=z.r+'%';
+  safeOvr.style.bottom=z.b+'%';safeOvr.style.left=z.l+'%';
+}
+
+// ── QUALITY / FORMAT ──
+function onQuality(sl){S.quality=parseInt(sl.value)/100;qualV.textContent=sl.value;}
+function updateQualityState(){qualGrp.classList.toggle('disabled',S.fmt==='image/png');}
+
+// ── FILL COLOR ──
+function onFillColor(inp){
+  S.fillColor=inp.value;fillPreview.style.background=inp.value;fillHexIn.value=inp.value;
+  S.fillNone=false;fillNoneBtn.classList.remove('on');
+}
+function onFillHex(inp){
+  const v=inp.value.trim();
+  if(/^#[0-9a-fA-F]{6}$/.test(v)){
+    S.fillColor=v;fillColorIn.value=v;fillPreview.style.background=v;
+    S.fillNone=false;fillNoneBtn.classList.remove('on');
+  }
+}
+function toggleFillNone(){S.fillNone=!S.fillNone;fillNoneBtn.classList.toggle('on',S.fillNone);}
+
+// ── FILENAME ──
+function todayStr(){
+  const d=new Date();
+  return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function buildFilename(entry,preset){
+  const base=entry?entry.name.replace(/\.[^.]+$/,''):'photo';
+  const tmpl=fnameIn.value||'{name}_{preset}';
+  return tmpl
+    .replace(/\{name\}/g,base)
+    .replace(/\{preset\}/g,preset.id)
+    .replace(/\{dims\}/g,`${preset.w}x${preset.h}`)
+    .replace(/\{date\}/g,todayStr())
+    +'.'+S.ext;
+}
+function updateFilenamePreview(){
+  fnamePrevEl.textContent='→ '+buildFilename(S.cur>=0?S.files[S.cur]:null,S.preset);
+}
+fnameIn.addEventListener('input',updateFilenamePreview);
+fnameIn.addEventListener('keydown',e=>e.stopPropagation());
+fnameIn.addEventListener('click',e=>e.stopPropagation());
+fillHexIn.addEventListener('keydown',e=>e.stopPropagation());
+fillHexIn.addEventListener('click',e=>e.stopPropagation());
+
+function insertToken(tok){
+  const el=fnameIn,s=el.selectionStart,end=el.selectionEnd;
+  const before=el.value.slice(0,s);
+  const sep=(before.length>0&&before[before.length-1]==='}')?'_':'';
+  const insert=sep+tok;
+  el.value=before+insert+el.value.slice(end);
+  el.selectionStart=el.selectionEnd=s+insert.length;
+  el.focus();updateFilenamePreview();
+}
+
+// ── MODALS ──
+function openModal(id){document.getElementById('modal-'+id).classList.add('show');}
+function closeModal(id){document.getElementById('modal-'+id).classList.remove('show');}
+function closeBg(e,id){if(e.target===document.getElementById('modal-'+id))closeModal(id);}
+
+// ── VALIDITY ──
+function getImgAABB(){
+  if(S.cur<0)return null;
+  const e=S.files[S.cur];
+  const ts=S.imgScale*S.uScale;
+  const iW=e.img.naturalWidth/2*ts,iH=e.img.naturalHeight/2*ts;
+  const rad=S.rot*Math.PI/180;
+  const cos=Math.abs(Math.cos(rad)),sin=Math.abs(Math.sin(rad));
+  return{hw:iW*cos+iH*sin,hh:iW*sin+iH*cos};
+}
+function checkValidity(){
+  if(S.cur<0)return true;
+  const e=S.files[S.cur];
+  const{w:cw,h:ch}=cropDisplayDims(S.preset);
+  const halfCW=cw/2,halfCH=ch/2;
+  const ts=S.imgScale*S.uScale;
+  const hw=e.img.naturalWidth/2*ts,hh=e.img.naturalHeight/2*ts;
+  const rad=S.rot*Math.PI/180;
+  const cos=Math.cos(rad),sin=Math.sin(rad);
+  const corners=[[-halfCW-S.tx,-halfCH-S.ty],[halfCW-S.tx,-halfCH-S.ty],[halfCW-S.tx,halfCH-S.ty],[-halfCW-S.tx,halfCH-S.ty]];
+  for(const[x,y]of corners){const rx=x*cos+y*sin,ry=-x*sin+y*cos;if(Math.abs(rx)>hw||Math.abs(ry)>hh)return false;}
+  return true;
+}
+function refreshValidity(){
+  if(S.cur<0)return;
+  const ok=checkValidity();
+  cframe.className=ok?'valid':'invalid';
+  vtag.className=ok?'valid':'invalid';
+  vtag.textContent=ok?'ready to crop':'outside image bounds';
+}
+
+// ── SNAP ──
+function computeSnap(rawTx,rawTy){
+  if(S.cur<0)return{tx:rawTx,ty:rawTy,sx:false,sy:false};
+  const{hw,hh}=getImgAABB();
+  const{w:cw,h:ch}=cropDisplayDims(S.preset);
+  const halfCW=cw/2,halfCH=ch/2;
+  const txSnaps=[hw-halfCW,-(hw-halfCW),0];
+  let bestTx=rawTx,bestDX=SNAP_PX,sx=false;
+  for(const snap of txSnaps){const d=Math.abs(rawTx-snap);if(d<bestDX){bestDX=d;bestTx=snap;sx=true;}}
+  const tySnaps=[hh-halfCH,-(hh-halfCH),0];
+  let bestTy=rawTy,bestDY=SNAP_PX,sy=false;
+  for(const snap of tySnaps){const d=Math.abs(rawTy-snap);if(d<bestDY){bestDY=d;bestTy=snap;sy=true;}}
+  return{tx:bestTx,ty:bestTy,sx,sy};
+}
+function showSnapGuides(sx,sy){
+  if(sx){snapV.style.left=(VW/2+S.tx)+'px';snapV.style.display='block';}else{snapV.style.display='none';}
+  if(sy){snapH.style.top=(VH/2+S.ty)+'px';snapH.style.display='block';}else{snapH.style.display='none';}
+  snaptag.style.display=(sx||sy)?'block':'none';S.snappedX=sx;S.snappedY=sy;
+}
+
+// ── FILE LOADING (with HEIC conversion) ──
+document.getElementById('file-in').addEventListener('change',e=>{loadFiles([...e.target.files]);e.target.value='';});
+const dzEl=document.getElementById('dz');
+dzEl.addEventListener('dragover',e=>{e.preventDefault();dzEl.classList.add('over');});
+dzEl.addEventListener('dragleave',()=>dzEl.classList.remove('over'));
+dzEl.addEventListener('drop',e=>{
+  e.preventDefault();dzEl.classList.remove('over');
+  loadFiles([...e.dataTransfer.files].filter(f=>f.type.startsWith('image/')||/\.(heic|heif|avif|bmp|svg)$/i.test(f.name)));
+});
+
+function isHEICFile(file){
+  return file.type==='image/heic'||file.type==='image/heif'||/\.(heic|heif)$/i.test(file.name);
+}
+
+function loadFiles(files){
+  files.forEach(file=>{
+    if(isHEICFile(file)){loadHEIC(file);}
+    else{loadStandard(file);}
+  });
+}
+
+function loadStandard(file){
+  const img=new Image();
+  const url=URL.createObjectURL(file);
+  img.onload=()=>{
+    S.files.push({file,img,name:file.name,url,status:'pending',focal:null});
+    renderQueue();if(S.cur<0)activate(S.files.length-1);
+  };
+  img.onerror=()=>console.warn('Could not load:',file.name);
+  img.src=url;
+}
+
+async function loadHEIC(file){
+  // Add placeholder
+  const placeholder={file,img:null,name:file.name,url:'',status:'converting',focal:null};
+  const idx=S.files.push(placeholder)-1;
+  renderQueue();
+  try{
+    const lib=window.heic2any;
+    if(!lib){console.warn('heic2any not loaded');S.files.splice(idx,1);renderQueue();return;}
+    const converted=await lib({blob:file,toType:'image/png',quality:0.95});
+    const blob=Array.isArray(converted)?converted[0]:converted;
+    const url=URL.createObjectURL(blob);
+    const img=new Image();
+    img.onload=()=>{
+      const syntheticFile={name:file.name,size:blob.size,type:'image/png'};
+      S.files[idx]={file:syntheticFile,img,name:file.name,url,status:'pending',focal:null};
+      renderQueue();if(S.cur<0)activate(idx);
+    };
+    img.src=url;
+  }catch(err){
+    console.warn('HEIC conversion failed:',err);
+    S.files[idx].status='error';renderQueue();
+  }
+}
+
+// ── FOCAL POINT MEMORY ──
+function saveFocal(idx){if(idx>=0&&idx<S.files.length)S.files[idx].focal=transformSnap();}
+function restoreFocal(entry){
+  const f=entry.focal;
+  S.tx=f.tx;S.ty=f.ty;S.uScale=f.uScale;S.rot=f.rot;S.flipX=f.flipX;S.flipY=f.flipY;
+  zoomSl.value=scaleToSlider(S.uScale);rotSl.value=S.rot;
+  zoomV.textContent=scaleToDisplay(S.uScale)+'%';rotV.textContent=S.rot.toFixed(1)+'°';
+  document.getElementById('btn-fh').classList.toggle('on',S.flipX);
+  document.getElementById('btn-fv').classList.toggle('on',S.flipY);
+}
+
+// ── ACTIVATE ──
+function activate(idx){
+  if(idx<0||idx>=S.files.length){vpEl.classList.remove('show');emptyEl.style.display='';S.cur=-1;return;}
+  const e=S.files[idx];
+  if(e.status==='converting'){return;}
+  if(!e.img){return;}
+  const prevIdx=S.cur;
+  const prevT=transformSnap();
+  const wasCopyNext=S.copyNext;
+  saveFocal(prevIdx);
+  S.cur=idx;e.status='active';
+  cimg.src=e.url;
+  vpEl.classList.add('show');emptyEl.style.display='none';
+  S.imgScale=calcImgScale(e.img,S.preset);
+  undoStack=[];
+  if(wasCopyNext&&prevIdx>=0&&prevIdx!==idx){
+    S.tx=prevT.tx;S.ty=prevT.ty;S.uScale=prevT.uScale;S.rot=prevT.rot;S.flipX=prevT.flipX;S.flipY=prevT.flipY;
+    zoomSl.value=scaleToSlider(S.uScale);rotSl.value=S.rot;
+    zoomV.textContent=scaleToDisplay(S.uScale)+'%';rotV.textContent=S.rot.toFixed(1)+'°';
+    document.getElementById('btn-fh').classList.toggle('on',S.flipX);
+    document.getElementById('btn-fv').classList.toggle('on',S.flipY);
+    applyTransform();flashTag(copyTag,'position copied',900);
+  }else if(e.focal&&!wasCopyNext){
+    restoreFocal(e);applyTransform();flashTag(focalTag,'focal point restored',900);
+  }else{doReset(true);}
+  renderQueue();
+}
+
+// ── TRANSFORM ──
+function applyTransform(){
+  const ts=S.imgScale*S.uScale;
+  const sx=ts*(S.flipX?-1:1),sy=ts*(S.flipY?-1:1);
+  cimg.style.left=(VW/2)+'px';cimg.style.top=(VH/2)+'px';
+  cimg.style.transform=`translate(calc(-50% + ${S.tx}px),calc(-50% + ${S.ty}px)) rotate(${S.rot}deg) scale(${sx},${sy})`;
+  refreshValidity();updateFilenamePreview();
+}
+function doReset(render=true){
+  pushUndo();
+  S.tx=0;S.ty=0;S.uScale=1;S.rot=0;S.flipX=false;S.flipY=false;
+  S.snappedX=false;S.snappedY=false;
+  zoomSl.value=50;rotSl.value=0;
+  zoomV.textContent='100%';rotV.textContent='0.0°';
+  document.getElementById('btn-fh').classList.remove('on');
+  document.getElementById('btn-fv').classList.remove('on');
+  snapH.style.display='none';snapV.style.display='none';snaptag.style.display='none';
+  if(render)applyTransform();
+}
+function onZoomSlider(sl){S.uScale=sliderToScale(parseFloat(sl.value));zoomV.textContent=scaleToDisplay(S.uScale)+'%';applyTransform();}
+function onRot(sl){S.rot=parseFloat(sl.value);rotV.textContent=S.rot.toFixed(1)+'°';applyTransform();}
+function doFlip(axis){
+  pushUndo();
+  if(axis==='h'){S.flipX=!S.flipX;document.getElementById('btn-fh').classList.toggle('on',S.flipX);}
+  else{S.flipY=!S.flipY;document.getElementById('btn-fv').classList.toggle('on',S.flipY);}
+  applyTransform();
+}
+function toggleCopyNext(){S.copyNext=!S.copyNext;copyBtn.classList.toggle('on',S.copyNext);}
+
+// ── FLASH TAGS ──
+function flashTag(el,text,ms){el.textContent=text;el.style.opacity='1';setTimeout(()=>{el.style.opacity='0';},ms);}
+
+// ── KEYBOARD ──
+function isTyping(){return['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName);}
+document.addEventListener('keydown',e=>{
+  if(isTyping())return;
+  if(e.key==='Escape'){document.querySelectorAll('.modal-bg.show').forEach(m=>m.classList.remove('show'));return;}
+  if((e.ctrlKey||e.metaKey)&&e.key==='z'){e.preventDefault();doUndo();return;}
+  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){
+    e.preventDefault();
+    const now=Date.now();
+    if(now-lastNudgePush>400){pushUndo();lastNudgePush=now;}
+    const step=e.shiftKey?10:1;
+    if(e.key==='ArrowUp')S.ty-=step;
+    else if(e.key==='ArrowDown')S.ty+=step;
+    else if(e.key==='ArrowLeft')S.tx-=step;
+    else if(e.key==='ArrowRight')S.tx+=step;
+    applyTransform();flashTag(nudgeTag,`nudge ${e.shiftKey?'10':'1'}px`,700);return;
+  }
+  switch(e.key){
+    case'Enter':e.preventDefault();doCrop();break;
+    case' ':e.preventDefault();doSkip();break;
+    case'r':case'R':doReset();break;
+    case'a':case'A':doCropAll();break;
+    case'c':case'C':toggleCopyNext();break;
+    case'?':openModal('help');break;
+  }
+});
+
+// ── DRAG PAN ──
+vpEl.addEventListener('mousedown',e=>{
+  if(e.button!==0)return;
+  pushUndo();
+  S.dragging=true;S.dsx=e.clientX;S.dsy=e.clientY;S.dtx=S.tx;S.dty=S.ty;
+  e.preventDefault();
+});
+document.addEventListener('mousemove',e=>{
+  if(!S.dragging)return;
+  const rawTx=S.dtx+(e.clientX-S.dsx),rawTy=S.dty+(e.clientY-S.dsy);
+  const{tx,ty,sx,sy}=computeSnap(rawTx,rawTy);
+  S.tx=tx;S.ty=ty;applyTransform();showSnapGuides(sx,sy);
+});
+document.addEventListener('mouseup',()=>{
+  S.dragging=false;
+  snapH.style.display='none';snapV.style.display='none';snaptag.style.display='none';
+});
+zoomSl.addEventListener('mousedown',pushUndo);
+rotSl.addEventListener('mousedown',pushUndo);
+
+// ── SCROLL ZOOM ──
+vpEl.addEventListener('wheel',e=>{
+  e.preventDefault();
+  const factor=e.deltaY>0?0.97:1.03;
+  S.uScale=Math.max(0.1,Math.min(10,S.uScale*factor));
+  zoomSl.value=scaleToSlider(S.uScale);
+  zoomV.textContent=scaleToDisplay(S.uScale)+'%';
+  applyTransform();
+},{passive:false});
+
+// ── RENDER CANVAS ──
+function renderCropCanvas(entry,p){
+  const{w:cw}=cropDisplayDims(p);
+  const d2a=p.w/cw;
+  const canvas=document.createElement('canvas');
+  canvas.width=p.w;canvas.height=p.h;
+  const ctx=canvas.getContext('2d');
+  if(!S.fillNone){ctx.fillStyle=S.fillColor;ctx.fillRect(0,0,p.w,p.h);}
+  const ts=S.imgScale*S.uScale*d2a;
+  const sx=ts*(S.flipX?-1:1),sy=ts*(S.flipY?-1:1);
+  ctx.save();
+  ctx.translate(p.w/2+S.tx*d2a,p.h/2+S.ty*d2a);
+  ctx.rotate(S.rot*Math.PI/180);
+  ctx.scale(sx,sy);
+  ctx.drawImage(entry.img,-entry.img.naturalWidth/2,-entry.img.naturalHeight/2);
+  ctx.restore();
+  return canvas;
+}
+function canvasToBlob(canvas,fmt,q){return new Promise(res=>canvas.toBlob(res,fmt,q));}
+function getQuality(){return S.fmt==='image/png'?undefined:S.quality;}
+
+// ── CROP SINGLE ──
+async function doCrop(){
+  if(S.cur<0)return;
+  const entry=S.files[S.cur];
+  const canvas=renderCropCanvas(entry,S.preset);
+  const blob=await canvasToBlob(canvas,S.fmt,getQuality());
+  const url=URL.createObjectURL(blob);
+  const filename=buildFilename(entry,S.preset);
+  const crop={blob,url,filename,preset:S.preset,size:blob.size};
+  S.crops.push(crop);addCropCard(crop);
+  S.files[S.cur].status='done';
+  renderQueue();updateExportSummary();advance();
+}
+
+// ── CROP ALL ──
+async function doCropAll(){
+  if(S.cur<0)return;
+  const entry=S.files[S.cur];const q=getQuality();
+  for(const p of PRESETS){
+    const canvas=renderCropCanvas(entry,p);
+    const blob=await canvasToBlob(canvas,S.fmt,q);
+    const url=URL.createObjectURL(blob);
+    const filename=buildFilename(entry,p);
+    const crop={blob,url,filename,preset:p,size:blob.size};
+    S.crops.push(crop);addCropCard(crop);
+  }
+  S.files[S.cur].status='done';renderQueue();updateExportSummary();advance();
+}
+
+function doSkip(){if(S.cur<0)return;S.files[S.cur].status='skipped';renderQueue();advance();}
+function advance(){
+  let next=S.files.findIndex((f,i)=>i>S.cur&&f.status==='pending');
+  if(next<0)next=S.files.findIndex(f=>f.status==='pending');
+  activate(next);
+}
+
+// ── RENDER QUEUE ──
+function renderQueue(){
+  if(!S.files.length){queueEl.innerHTML='<div class="q-empty">No images loaded</div>';return;}
+  queueEl.innerHTML='';
+  S.files.forEach((e,i)=>{
+    const el=document.createElement('div');
+    el.className='qi'+(i===S.cur?' cur':'');
+    const sizeStr=formatBytes(e.file.size);
+    const thumb=e.url?`<img class="qthumb" src="${e.url}" alt="">`:`<div class="qthumb" style="display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);">…</div>`;
+    el.innerHTML=`${thumb}
+      <div class="qinfo">
+        <div class="qname">${e.name}</div>
+        <div class="qstat">
+          <span>${e.status}</span>
+          <span class="qsize">${sizeStr}</span>
+          ${e.focal?'<span style="color:var(--teal-dk);font-size:10px;" title="Focal point saved">●</span>':''}
+        </div>
+      </div>
+      <div class="qdot ${e.status}"></div>`;
+    el.onclick=()=>activate(i);
+    queueEl.appendChild(el);
+  });
+}
+
+// ── EXPORTS ──
+function updateExportSummary(){
+  const count=S.crops.length;
+  if(!count){expSummary.textContent='0 crops';return;}
+  const total=S.crops.reduce((sum,c)=>sum+c.size,0);
+  const last=S.crops[S.crops.length-1].size;
+  expSummary.textContent=`${formatBytes(last)} | (${count}) ${formatBytes(total)} Total`;
+}
+function addCropCard(crop){
+  const emp=document.querySelector('.no-crops');if(emp)emp.remove();
+  const card=document.createElement('div');card.className='ccard';
+  card.innerHTML=`<img src="${crop.url}" alt="">
+    <div class="ccard-info">
+      <div class="ccard-name" title="${crop.filename}">${crop.filename}</div>
+      <div class="ccard-row">
+        <span class="cbadge">${crop.preset.dims}</span>
+        <span class="csize">${formatBytes(crop.size)}</span>
+        <button class="btn-dl" title="Download">↓</button>
+      </div>
+    </div>`;
+  card.querySelector('.btn-dl').onclick=e=>{e.stopPropagation();dlSingle(crop);};
+  expList.appendChild(card);
+}
+function dlSingle(crop){const a=document.createElement('a');a.href=crop.url;a.download=crop.filename;a.click();}
+async function downloadAll(){
+  if(!S.crops.length)return;
+  const zip=new JSZip();
+  S.crops.forEach(c=>zip.file(c.filename,c.blob));
+  const blob=await zip.generateAsync({type:'blob'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download='cropkit-exports.zip';a.click();
+  URL.revokeObjectURL(url);
+}
+function setFmt(fmt,ext,btn){
+  S.fmt=fmt;S.ext=ext;
+  document.querySelectorAll('.fmt-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  updateQualityState();updateFilenamePreview();
+}
+
+initPresetBar();
+initVP();
+updateFilenamePreview();
+updateQualityState();
+</script>
+</body>
+</html>
