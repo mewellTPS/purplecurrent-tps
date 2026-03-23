@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Boyette Pump & Well</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- 
+    FONT NOTE FOR DEVELOPER:
+    Brand guide specifies Trade Gothic Next LT Pro (Bold + Regular) for body copy.
+    Licensed font — swap in via @font-face or Adobe Fonts when in WordPress.
+    Using DM Sans as a web-safe stand-in for wireframe purposes.
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       BOY Services Hub — v1.2
+       Brand guide applied: official BOY color palette + Poppins type
+       Body font: DM Sans (stand-in for Trade Gothic Next LT Pro)
+       
+       v1.2 Changes:
+       - Emergency section: added secondary "View All Emergency Services" CTA
+       - Shrunk direct line phone number styling
+       
+       v1.1 Changes:
+       - Added click-to-call CTA in page hero
+       - Added setup/intro paragraph before service sections
+       - Full service lists from sitemap (3-col layout)
+       - CTAs now read "See All [Service] Services"
+       ============================================================ */
+
+    :root {
+      --boy-orange: #F93822;
+      --boy-light-blue: #63C1C1;
+      --boy-medium-blue: #3C81F5;
+      --boy-dark-blue: #335E89;
+      --boy-navy: #1D374F;
+      --boy-purple: #49104F;
+      --boy-black: #000000;
+      --boy-light-grey: #EDEDED;
+      --boy-medium-grey: #BABABA;
+      --boy-white: #FFFFFF;
+
+      --color-primary: var(--boy-dark-blue);
+      --color-primary-dark: var(--boy-navy);
+      --color-accent: var(--boy-orange);
+      --color-accent-hover: #D92E1A;
+      --color-highlight: var(--boy-medium-blue);
+      --color-teal: var(--boy-light-blue);
+      --color-bg: var(--boy-white);
+      --color-bg-alt: var(--boy-light-grey);
+      --color-text: #2A3A4A;
+      --color-text-light: #6B7B8D;
+      --color-border: #D6DCE2;
+
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+
+      --container-max: 1140px;
+      --section-pad: 88px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================================================
+       HEADER
+       ============================================================ */
+    .site-header {
+      background: var(--boy-white);
+      border-bottom: 1px solid var(--color-border);
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-logo { display: block; text-decoration: none; }
+    .site-logo img { height: 48px; width: auto; }
+
+    .header-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 2px solid var(--color-primary);
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .header-phone svg {
+      width: 16px; height: 16px;
+      fill: none; stroke: currentColor; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .header-phone:hover {
+      background: var(--color-primary);
+      color: var(--boy-white);
+    }
+
+    /* ============================================================
+       PAGE HERO
+       ============================================================ */
+    .page-hero {
+      background: linear-gradient(160deg, var(--boy-navy) 0%, var(--boy-dark-blue) 60%, #3A6D9A 100%);
+      padding: 72px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 85% 70%, rgba(99,193,193,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 15% 30%, rgba(255,255,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+    }
+
+    .page-hero .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 780px;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(40px, 5.5vw, 58px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--boy-white);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.15s;
+    }
+
+    .page-hero p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.3s;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--boy-navy);
+      background: var(--boy-light-blue);
+      padding: 14px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.25s;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.45s;
+    }
+
+    .hero-cta:hover {
+      background: #52AEAE;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(99,193,193,0.3);
+    }
+
+    .hero-cta svg {
+      width: 16px; height: 16px;
+      fill: none; stroke: currentColor; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================================
+       JUMP NAV
+       ============================================================ */
+    .service-jump-nav {
+      background: var(--boy-white);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 73px;
+      z-index: 90;
+    }
+
+    .jump-nav-inner {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .jump-nav-inner a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 24px;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .jump-nav-inner a:hover {
+      color: var(--boy-navy);
+      border-bottom-color: var(--boy-light-blue);
+    }
+
+    .jump-nav-inner a svg {
+      width: 16px; height: 16px;
+      fill: none; stroke: currentColor; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .jump-nav-inner a.emergency-link { color: var(--boy-orange); }
+    .jump-nav-inner a.emergency-link:hover { border-bottom-color: var(--boy-orange); }
+
+    /* ============================================================
+       INTRO SECTION
+       ============================================================ */
+    .services-intro {
+      padding: 56px 0 0;
+      text-align: center;
+    }
+
+    .services-intro .container {
+      max-width: 780px;
+    }
+
+    .services-intro p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--color-text);
+    }
+
+    .intro-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--boy-light-blue);
+      margin: 40px auto 0;
+      border: none;
+      border-radius: 2px;
+    }
+
+    /* ============================================================
+       SERVICE SECTIONS
+       ============================================================ */
+    .service-section {
+      padding: var(--section-pad) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .service-section:nth-child(even) { background: var(--color-bg-alt); }
+    .service-section:last-of-type { border-bottom: none; }
+
+    .service-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .service-section:nth-child(even) .service-layout { direction: rtl; }
+    .service-section:nth-child(even) .service-layout > * { direction: ltr; }
+
+    .service-content { padding-top: 8px; }
+
+    .service-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--boy-light-blue);
+      margin-bottom: 12px;
+    }
+
+    .service-label svg {
+      width: 18px; height: 18px;
+      fill: none; stroke: var(--boy-light-blue); stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .service-content h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(26px, 3.2vw, 34px);
+      font-weight: 700;
+      color: var(--boy-navy);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .service-content > p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--color-text);
+      margin-bottom: 14px;
+    }
+
+    /* 3-column service list */
+    .service-list {
+      margin: 24px 0 28px;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px 20px;
+    }
+
+    .service-list li {
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--color-text);
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .service-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--boy-light-blue);
+    }
+
+    /* 2-column variant for shorter lists */
+    .service-list.two-col {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--boy-white);
+      background: var(--boy-dark-blue);
+      padding: 12px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .service-cta:hover {
+      background: var(--boy-navy);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(29,55,79,0.2);
+    }
+
+    .service-cta svg {
+      width: 16px; height: 16px;
+      fill: none; stroke: currentColor; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* Service visual placeholder */
+    .service-visual {
+      background: var(--boy-white);
+      border: 2px dashed var(--color-border);
+      border-radius: 8px;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--boy-medium-grey);
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .service-section:nth-child(even) .service-visual { background: var(--boy-white); }
+
+    /* ============================================================
+       EMERGENCY SECTION
+       ============================================================ */
+    .emergency-section {
+      background: linear-gradient(135deg, #7A1A10 0%, var(--boy-orange) 100%);
+      padding: var(--section-pad) 0;
+      position: relative;
+      overflow: hidden;
+      border-bottom: none;
+    }
+
+    .emergency-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 80% at 20% 50%, rgba(255,255,255,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .emergency-section .container { position: relative; z-index: 1; }
+
+    .emergency-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .emergency-content .service-label { color: rgba(255,255,255,0.6); }
+    .emergency-content .service-label svg { stroke: rgba(255,255,255,0.6); }
+
+    .emergency-content h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 38px);
+      font-weight: 700;
+      color: var(--boy-white);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .emergency-content > p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 14px;
+    }
+
+    .emergency-list {
+      margin: 24px 0 32px;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 24px;
+    }
+
+    .emergency-list li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.85);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .emergency-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--boy-white);
+    }
+
+    .emergency-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .emergency-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--boy-orange);
+      background: var(--boy-white);
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .emergency-cta:hover {
+      background: var(--boy-light-grey);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    .emergency-cta svg {
+      width: 18px; height: 18px;
+      fill: none; stroke: currentColor; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .emergency-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--boy-white);
+      padding: 14px 28px;
+      border: 2px solid rgba(255,255,255,0.45);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .emergency-cta-secondary:hover {
+      border-color: var(--boy-white);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .emergency-cta-secondary svg {
+      width: 16px; height: 16px;
+      fill: none; stroke: currentColor; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .emergency-phone {
+      display: block;
+      margin-top: 14px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .emergency-phone span {
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .emergency-visual {
+      background: rgba(255,255,255,0.08);
+      border: 2px dashed rgba(255,255,255,0.2);
+      border-radius: 8px;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.4);
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       BOTTOM CTA BAND
+       ============================================================ */
+    .cta-band {
+      background: var(--boy-navy);
+      padding: 56px 0;
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700;
+      color: var(--boy-white);
+      margin-bottom: 12px;
+    }
+
+    .cta-band p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin: 0 auto 28px;
+    }
+
+    .cta-band-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--boy-navy);
+      background: var(--boy-light-blue);
+      padding: 14px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .cta-band-btn:hover {
+      background: #52AEAE;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(99,193,193,0.3);
+    }
+
+    .cta-band-btn svg {
+      width: 16px; height: 16px;
+      fill: none; stroke: currentColor; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .site-footer {
+      background: var(--boy-navy);
+      padding: 56px 0 32px;
+      color: rgba(255,255,255,0.6);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-logo img {
+      height: 48px;
+      width: auto;
+      filter: brightness(1.8) contrast(0.9);
+      opacity: 0.85;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.5);
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+
+    .footer-contact a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      margin-bottom: 10px;
+    }
+
+    .footer-contact a:hover { color: var(--boy-light-blue); }
+
+    .footer-contact svg {
+      width: 16px; height: 16px;
+      stroke: var(--boy-light-blue);
+      fill: none; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+    .tps-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .tps-badge svg { width: 20px; height: 20px; fill: rgba(255,255,255,0.25); }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 960px) {
+      .service-layout,
+      .emergency-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .service-section:nth-child(even) .service-layout { direction: ltr; }
+
+      .service-visual, .emergency-visual { aspect-ratio: 16 / 9; }
+
+      .service-list { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      :root { --section-pad: 56px; }
+
+      .page-hero { padding: 56px 0 64px; }
+
+      .service-list,
+      .service-list.two-col,
+      .emergency-list { grid-template-columns: 1fr; }
+
+      .jump-nav-inner {
+        justify-content: flex-start;
+      }
+
+      .jump-nav-inner a {
+        padding: 14px 16px;
+        font-size: 11px;
+      }
+
+      .footer-top { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <img src="BOY-LOGO-STACKED-COLOR-DARK.png" alt="Boyette Pump & Well">
+      </a>
+      <a href="tel:8133639025" class="header-phone">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (813) 363-9025
+      </a>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       PAGE HERO
+       ============================================================ -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Our Services</h1>
+      <p>From the pump to the tap, Boyette Pump & Well delivers end-to-end water system services for residential, commercial, and agricultural customers across Tampa Bay.</p>
+      <a href="tel:8133639025" class="hero-cta">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call (813) 363-9025
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       JUMP NAV
+       ============================================================ -->
+  <nav class="service-jump-nav">
+    <div class="container">
+      <div class="jump-nav-inner">
+        <a href="#pump-services">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2"/><path d="M12 21v2"/><path d="M4.22 4.22l1.42 1.42"/><path d="M18.36 18.36l1.42 1.42"/><path d="M1 12h2"/><path d="M21 12h2"/><path d="M4.22 19.78l1.42-1.42"/><path d="M18.36 5.64l1.42-1.42"/></svg>
+          Pump Services
+        </a>
+        <a href="#well-services">
+          <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          Well Services
+        </a>
+        <a href="#water-treatment">
+          <svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          Water Treatment
+        </a>
+        <a href="#irrigation">
+          <svg viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
+          Irrigation & Outdoor
+        </a>
+        <a href="#emergency" class="emergency-link">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Emergency Services
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       INTRO
+       ============================================================ -->
+  <section class="services-intro">
+    <div class="container">
+      <p>Most water system companies specialize in one piece of the puzzle. Boyette Pump & Well was built to handle the full picture. From pump installation and well maintenance to water treatment, irrigation, and emergency response, we bring every discipline under one roof so your water system gets the coordinated attention it deserves.</p>
+      <hr class="intro-divider">
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 1: PUMP SERVICES
+       ============================================================ -->
+  <section class="service-section" id="pump-services">
+    <div class="container">
+      <div class="service-layout">
+        <div class="service-content">
+          <div class="service-label">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2"/><path d="M12 21v2"/><path d="M4.22 4.22l1.42 1.42"/><path d="M18.36 18.36l1.42 1.42"/><path d="M1 12h2"/><path d="M21 12h2"/><path d="M4.22 19.78l1.42-1.42"/><path d="M18.36 5.64l1.42-1.42"/></svg>
+            Pump Services
+          </div>
+          <h2>Installation, Repair, and Pressure Systems</h2>
+          <p>Your pump is the heart of your water system. When it fails, everything stops. Boyette Pump & Well handles the full range of pump work, from first-time installations and complete replacements to diagnostics and targeted repair. We work with every major pump type used in the Tampa Bay region and size each system to your property's specific demands.</p>
+          <p>We also service the pressure side of your system. If your home is experiencing cycling, surges, or inconsistent flow, the issue often traces back to a failing pressure tank, a worn switch, or an undersized setup. We diagnose, repair, and upgrade pressure systems so your water delivery stays consistent from the well to every fixture in the building.</p>
+          <ul class="service-list">
+            <li>Submersible Pump Installation & Replacement</li>
+            <li>Above-Ground Pump Replacement</li>
+            <li>Jet Pump Installation</li>
+            <li>Booster Pump Installation</li>
+            <li>Constant Pressure Systems</li>
+            <li>Variable Frequency Drive (VFD) Systems</li>
+            <li>Pump Diagnostics & Troubleshooting</li>
+            <li>Pump Rebuilds</li>
+            <li>Motor Replacement</li>
+            <li>Pump Control Box Replacement</li>
+          </ul>
+          <a href="/services/pump-services/" class="service-cta">
+            See All Pump Services
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="service-visual">Photo / Illustration Placeholder</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 2: WELL SERVICES
+       ============================================================ -->
+  <section class="service-section" id="well-services">
+    <div class="container">
+      <div class="service-layout">
+        <div class="service-content">
+          <div class="service-label">
+            <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            Well Services
+          </div>
+          <h2>Inspections, Maintenance, and Well System Care</h2>
+          <p>A well is a long-term investment, and keeping it in working order requires more than waiting for something to break. Boyette Pump & Well provides comprehensive well system services, including real estate inspections, water quality analysis, flow rate testing, and static water level assessments. Whether you're buying a property with an existing well or maintaining the one you've relied on for years, we give you clear answers about the condition of your system.</p>
+          <p>On the maintenance side, we handle well sanitizing, sediment removal, pipe repair, and component replacement. Florida's aquifer conditions create specific challenges. Hard water, iron, sulfur, and bacterial intrusion are common across the Tampa Bay region. Regular well maintenance helps catch these issues before they escalate into costly repairs or health concerns.</p>
+          <ul class="service-list">
+            <li>Pressure Tank Installation & Replacement</li>
+            <li>Bladder Tank Replacement</li>
+            <li>Well Diagnostics</li>
+            <li>Pressure Switch Replacement</li>
+            <li>Electrical Troubleshooting</li>
+            <li>Pipe Repair</li>
+            <li>Well Sanitizing & Chlorination</li>
+            <li>Sediment & Mineral Scale Removal</li>
+            <li>Well Pump Maintenance</li>
+            <li>Leak Detection (Equipment)</li>
+            <li>Water Quality Analysis</li>
+            <li>Real Estate Well Inspections</li>
+            <li>Well Permits & Compliance</li>
+            <li>Well Abandonment & Permitting</li>
+          </ul>
+          <a href="/services/well-services/" class="service-cta">
+            See All Well Services
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="service-visual">Photo / Illustration Placeholder</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3: WATER TREATMENT & FILTRATION
+       ============================================================ -->
+  <section class="service-section" id="water-treatment">
+    <div class="container">
+      <div class="service-layout">
+        <div class="service-content">
+          <div class="service-label">
+            <svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+            Water Treatment &amp; Filtration
+          </div>
+          <h2>Clean Water Tailored to Florida's Chemistry</h2>
+          <p>Florida's groundwater presents a unique set of treatment challenges. Iron staining, sulfur odor, hard water buildup, and bacterial presence are not exceptions here; they're the norm. Boyette Pump & Well designs treatment systems around your specific water chemistry, not a one-size-fits-all filter package. We test first, then recommend a solution that targets what's actually in your water.</p>
+          <p>Our approach to bacterial treatment is grounded in science. We use hydrogen peroxide-based systems, which are more effective and cleaner than UV treatment in most Florida well water applications. Combined with the right filtration stages, this approach delivers consistent water quality from every tap in your home or building.</p>
+          <ul class="service-list two-col">
+            <li>Water Softeners</li>
+            <li>Whole-House Filtration Systems</li>
+            <li>Iron Removal Systems</li>
+            <li>Sulfur Removal Systems</li>
+            <li>Reverse Osmosis Systems</li>
+            <li>Hydrogen Peroxide Water Treatment</li>
+            <li>Carbon Filtration</li>
+            <li>Nitrate Removal Systems</li>
+          </ul>
+          <a href="/services/water-treatment/" class="service-cta">
+            See All Water Treatment Services
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="service-visual">Photo / Illustration Placeholder</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4: IRRIGATION & OUTDOOR WATER SYSTEMS
+       ============================================================ -->
+  <section class="service-section" id="irrigation">
+    <div class="container">
+      <div class="service-layout">
+        <div class="service-content">
+          <div class="service-label">
+            <svg viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
+            Irrigation &amp; Outdoor
+          </div>
+          <h2>Sprinkler Pumps, Lake Pumps, and Agricultural Systems</h2>
+          <p>Outdoor water demands in Florida are year-round, and the systems that support them need to be built accordingly. Boyette Pump & Well installs, repairs, and maintains sprinkler pump systems, lake and pond pumps, and full-scale irrigation setups for residential lawns, commercial landscapes, golf courses, and agricultural operations.</p>
+          <p>Whether you need a dedicated irrigation pump pulling from a lake or pond, a sprinkler system tied to your well, or a commercial-grade setup for acreage, we size and configure each system for reliable delivery and long-term durability. We also handle diagnostics and repair when existing systems lose pressure, cycle excessively, or fail outright.</p>
+          <ul class="service-list two-col">
+            <li>Sprinkler Pump Systems</li>
+            <li>Lake & Pond Pump Systems</li>
+            <li>Landscape Irrigation Pumps</li>
+            <li>Golf Course Irrigation Service</li>
+            <li>Agriculture Irrigation Systems</li>
+          </ul>
+          <a href="/services/irrigation/" class="service-cta">
+            See All Irrigation Services
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="service-visual">Photo / Illustration Placeholder</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5: EMERGENCY SERVICES
+       ============================================================ -->
+  <section class="emergency-section" id="emergency">
+    <div class="container">
+      <div class="emergency-layout">
+        <div class="emergency-content">
+          <div class="service-label">
+            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Emergency Services
+          </div>
+          <h2>When Your Water Stops, We Move Fast</h2>
+          <p>A complete loss of water is not something that can wait until Monday. Boyette Pump & Well provides emergency response for pump failures, ruptured tanks, electrical faults, and sudden pressure loss across the Tampa Bay region. We understand what it means to have no water flowing to your home, your livestock, or your business, and we prioritize getting you back online as quickly as possible.</p>
+          <p>Our emergency service covers the same scope of work we handle during scheduled calls. The difference is urgency. If your system goes down, call us directly and we will work to get a technician to your property as fast as conditions allow.</p>
+          <ul class="emergency-list">
+            <li>Emergency Pump Replacement</li>
+            <li>No-Water Service Calls</li>
+            <li>Electrical Failures</li>
+            <li>No Pressure / Low Pressure</li>
+            <li>Ruptured Tank</li>
+            <li>Plumbing Leaks</li>
+            <li>Flood Damage Pump Repair</li>
+          </ul>
+          <div class="emergency-actions">
+            <a href="tel:8133639025" class="emergency-cta">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call for Emergency Service
+            </a>
+            <a href="/services/emergency/" class="emergency-cta-secondary">
+              View All Emergency Services
+              <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+          <a href="tel:8133639025" class="emergency-phone">
+            Direct line: <span>(813) 363-9025</span>
+          </a>
+        </div>
+        <div class="emergency-visual">Photo / Illustration Placeholder</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BOTTOM CTA BAND
+       ============================================================ -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Not Sure What You Need?</h2>
+      <p>Tell us what's going on with your water system and we'll point you in the right direction.</p>
+      <a href="/contact" class="cta-band-btn">
+        Contact Us
+        <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">
+            <img src="BOY-LOGO-STACKED-COLOR-DARK.png" alt="Boyette Pump & Well">
+          </a>
+          <p>End-to-end water system services for Tampa Bay and surrounding counties.</p>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <div class="footer-contact">
+              <a href="tel:8133639025">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                (813) 363-9025
+              </a>
+              <a href="mailto:office@boyettepumpwell.com">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                office@boyettepumpwell.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Boyette Pump & Well &bull; Privacy Policy &bull; Terms of Service</p>
+        <div class="tps-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Powered by The Purple Standard
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
